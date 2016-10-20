@@ -1,0 +1,5 @@
+sudo killall nodejs
+sudo killall node
+sudo killall forever
+
+sudo forever start server.js &
