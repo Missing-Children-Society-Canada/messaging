@@ -6,6 +6,15 @@
       "name": "storein",
       "type": "serviceBusTrigger",
       "direction": "in"
+    },
+    {
+      "name": "tweetstorage",
+      "type": "documentdb",
+      "databaseName": "missingdat",
+      "collectionName": "twitter-data",
+      "createIfNotExists": true,
+      "connection": "AccountEndpoint=https://testingnodeprofile.documents.azure.com:443/;AccountKey=bePUG1VcuyFNwL27cHi67CDjXaa55PF4x6PaIdZ0O9a1SybPmsUV5F1JQWf6fvaIVjOlSzkHh9kdwThcjoEwVg==;",
+      "direction": "out"
     }
   ],
   "disabled": false
