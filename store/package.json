@@ -2,6 +2,7 @@
   "name": "store-fucntion",
   "version": "0.0.0",
   "dependencies": {
+    "azure":"^1.2.0-preview",
     "documentdb":"^1.10.0",
     "applicationinsights": "~0.15.19"
   }

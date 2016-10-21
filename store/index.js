@@ -1,3 +1,4 @@
+var azure = require('azure');
 var DocumentDBClient = require('documentdb').DocumentClient;
 var appInsights = require("applicationinsights");
 
