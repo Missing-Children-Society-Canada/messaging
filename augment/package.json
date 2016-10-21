@@ -1,5 +1,5 @@
 {
-  "name": "filter-fucntion",
+  "name": "augment-fucntion",
   "version": "0.0.0",
   "dependencies": {
     "applicationinsights": "~0.15.19"
