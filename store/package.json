@@ -1,0 +1,7 @@
+{
+  "name": "store-fucntion",
+  "version": "0.0.0",
+  "dependencies": {
+    "applicationinsights": "~0.15.19"
+  }
+}
