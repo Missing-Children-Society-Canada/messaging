@@ -6,14 +6,7 @@ var config = require('./config');
 appInsights.setup(config.AppInsightsKey).start();
 
 //Store data from service bus messages
-var serviceBusService = azure.createServiceBusService(config.ServiceBusConnection);
-
-serviceBusService.receiveQueueMessage(config.QueueName, function (error, receivedMessage) {
-    if (error) {
-        appInsights.client.trackException(error);
-    }
-    else
-    {
-     //Work with message   
-    }
-});
+module.exports = function(context, message) {
+    context.log('Node.js ServiceBus queue trigger function processed message', message);
+    context.done();
+};
