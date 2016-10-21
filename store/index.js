@@ -12,4 +12,8 @@ serviceBusService.receiveQueueMessage(config.QueueName, function (error, receive
     if (error) {
         appInsights.client.trackException(error);
     }
+    else
+    {
+     //Work with message   
+    }
 });
