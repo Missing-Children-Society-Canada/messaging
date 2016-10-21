@@ -2,6 +2,7 @@
   "name": "store-fucntion",
   "version": "0.0.0",
   "dependencies": {
+    "documentdb":"^1.10.0",
     "applicationinsights": "~0.15.19"
   }
 }
