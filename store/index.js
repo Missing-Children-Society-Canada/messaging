@@ -6,3 +6,4 @@ var config = require('./config');
 appInsights.setup(config.AppInsightsKey).start();
 
 //Store data from service bus messages
+var serviceBusService = azure.createServiceBusService(config.ServiceBusConnection);
