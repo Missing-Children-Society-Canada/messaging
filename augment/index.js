@@ -6,3 +6,4 @@ appInsights.setup(config.AppInsightsKey).start();
 
 //add extraa data to messages
 //sentiment analysis?
+var serviceBusService = azure.createServiceBusService(config.ServiceBusConnection);
