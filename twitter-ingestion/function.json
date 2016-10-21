@@ -1,11 +1,11 @@
 {
   "bindings": [
     {
-      "queueName": "store",
+      "name": "twitter-ingestion",
+      "queueName": "filter",
       "connection": "Endpoint=sb://asgasdsdasdasdas.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=h4doSwMPpuzjiEf/CELZICfpNlIlYhaMS0xK/oYooAI=",
-      "name": "augment",
       "type": "serviceBusTrigger",
-      "direction": "in"
+      "direction": "out"
     }
   ],
   "disabled": false
