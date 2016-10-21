@@ -2,7 +2,7 @@
   "bindings": [
     {
       "name": "twitter-ingestion",
-      "queueName": "filter",
+      "queueName": "tofilter",
       "connection": "Endpoint=sb://asgasdsdasdasdas.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=h4doSwMPpuzjiEf/CELZICfpNlIlYhaMS0xK/oYooAI=",
       "type": "serviceBusTrigger",
       "direction": "out"
