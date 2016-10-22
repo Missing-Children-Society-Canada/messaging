@@ -20,9 +20,6 @@
         },
         "HASH_TAG": {
             "type": "string"
-        },
-        "WEBSITE_NODE_DEFAULT_VERSION": {
-            "type": "string"
         }
     },
     "variables": {},
