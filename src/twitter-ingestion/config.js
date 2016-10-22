@@ -1,14 +1,14 @@
 var config = {}
 
-config.ConsumerKey = 'q2JfZwE8BTIHHNruzRqaWubEI';
-config.ConsumerSecret = 'FI4nM1BuayKsMBLZ2fA4zicaOkNUvjrhfRgiDYngVQVBtkXRyT';
-config.AccessToken = '242907489-B4Xul8Rik2fzwnLrhim6pQEElnLZYLNMHXAeuDn3';
-config.AccessTokenSecret = 'KAQjh2M9I2Pf6BUrwoF4QsYrb0wXO696UlmGeOscMLrGj';
+config.ConsumerKey = process.env.TWITTER_CONSUMER_KEY;
+config.ConsumerSecret = process.env.TWITTER_CONSUMER_SECRET;
+config.AccessToken = process.env.TWITTER_ACCESS_TOKEN;
+config.AccessTokenSecret = process.env.TWITTER_ACCESS_TOKEN_SECRET;
 
-config.ServiceBusConnection = 'Endpoint=sb://asgasdsdasdasdas.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=h4doSwMPpuzjiEf/CELZICfpNlIlYhaMS0xK/oYooAI=';
+config.ServiceBusConnection = process.env.SERVICE_BUS_CONNECTION;
 
-config.AppInsightsKey = 'c31db7e0-5df2-44ad-9e76-892af521eecf';
+config.AppInsightsKey = process.env.APP_INSIGHTS_KEY;
 
-config.HashTag = 'helpme';
+config.HashTag = process.env.HASH_TAG;
 
 module.exports = config;
