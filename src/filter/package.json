@@ -2,7 +2,5 @@
   "name": "filter-fucntion",
   "version": "0.0.0",
   "dependencies": {
-    "azure":"^1.2.0-preview",
-    "applicationinsights": "~0.15.19"
   }
 }
