@@ -7,19 +7,19 @@
             "defaultValue": "mcsc-cf-functions"
         },
         "TWITTER_CONSUMER_KEY": {
-            "type": "string",
+            "type": "string"
         },
         "TWITTER_CONSUMER_SECRET": {
-            "type": "string",
+            "type": "string"
         },
         "TWITTER_ACCESS_TOKEN": {
-            "type": "string",
+            "type": "string"
         },
         "TWITTER_ACCESS_TOKEN_SECRET": {
-            "type": "string",
+            "type": "string"
         },
         "HASH_TAG": {
-            "type": "string",
+            "type": "string"
         }
     },
     "variables": {},
