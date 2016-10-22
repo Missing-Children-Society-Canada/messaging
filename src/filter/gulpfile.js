@@ -7,6 +7,6 @@ gulp.task('default', function() {
 
 gulp.task("deploy", function () {
   return gulp.src(["**"])
-      .pipe(zip("deploy.zip"))
+      .pipe(zip("deploy-filter.zip"))
       .pipe(gulp.dest("./"));
 });
