@@ -20,6 +20,9 @@
         },
         "HASH_TAG": {
             "type": "string"
+        },
+        "WEBSITE_NODE_DEFAULT_VERSION": {
+            "type": "string"
         }
     },
     "variables": {},
@@ -53,6 +56,10 @@
                         {
                             "Name": "HASH_TAG",
                             "Value": ""
+                        },
+                        {
+                            "Name": "WEBSITE_NODE_DEFAULT_VERSION",
+                            "Value": "4.4.7"
                         }
                     ]
                 }
