@@ -12,7 +12,18 @@ config.collLink = 'dbs/' + config.DatabaseId + '/colls/' + config.TwitterCollect
 var docDbClient = new DocumentDBClient(config.Host, { masterKey: config.AuthKey });
 
 module.exports = function (context, message) {
-    //fliter on twitter handle
-    context.bindings.out = message;
-    context.done();
+
+    switch (message.social) {
+        case 1://filter on twitter
+            context.bindings.out = message;
+            context.done();
+            break;
+        case 2://filter on facebook
+            context.done(new Error('Facebook is not implemented yet'), message);
+            break;
+        default:
+            context.done(new Error('unknown type'), message);
+            break;
+    }
+
 };
