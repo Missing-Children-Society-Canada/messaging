@@ -4,7 +4,7 @@
       "name": "twitter",
       "type": "timerTrigger",
       "direction": "in",
-      "schedule": "*/15 * * * * *",
+      "schedule": "* * * * * *",
       "runOnStartup": true
     },
     {
