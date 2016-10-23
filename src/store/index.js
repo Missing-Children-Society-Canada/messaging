@@ -23,7 +23,7 @@ module.exports = function (context, message) {
         log: message.longitude,
         lat: message.latitude,
         profilepic: message.profileimageurl,
-        photos: [],
+        photos: message.photos,
         social_content: [content]
     };
 
