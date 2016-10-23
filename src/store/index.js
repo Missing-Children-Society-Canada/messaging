@@ -5,11 +5,10 @@ module.exports = function (context, message) {
         return v.toString(16);
     });
     
-    var item = {
+    context.bindings.out = {
         id: id,
         raw: message
     };
 
-    context.bindings.out = item;
     context.done();
 };
