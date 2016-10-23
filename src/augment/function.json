@@ -2,11 +2,13 @@
   "bindings": [
     {
       "queueName": "toaugment",
+      "name": "in",
       "type": "serviceBusTrigger",
       "direction": "in"
     },
     {
       "queueName": "tostore",
+      "name": "out",
       "name": "augmentout",
       "direction": "out"
     }

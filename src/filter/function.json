@@ -2,11 +2,13 @@
   "bindings": [
     {
       "queueName": "tofilter",
+      "name": "in",
       "type": "serviceBusTrigger",
       "direction": "in"
     },
     {
       "queueName": "toaugment",
+      "name": "out",
       "name": "filterout",
       "direction": "out"
     }

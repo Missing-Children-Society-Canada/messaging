@@ -2,11 +2,12 @@
   "bindings": [
     {
       "queueName": "tostore",
+      "name": "in",
       "type": "serviceBusTrigger",
       "direction": "in"
     },
     {
-      "name": "tweetstorage",
+      "name": "out",
       "databaseName": "missingdat",
       "collectionName": "twitter-data",
       "createIfNotExists": true,
