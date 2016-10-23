@@ -1,7 +1,4 @@
-var config = require('./config');
-
-//confirm messasges should be processed
-module.exports = function(context, message) {
-    context.bindings.myOutput = message;
+module.exports = function (context, message) {
+    context.bindings.outMessage = message;
     context.done();
 };
