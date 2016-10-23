@@ -2,8 +2,10 @@
   "bindings": [
     {
       "name": "twitter",
-      "type": "singleton",
-      "direction": "in"
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "*/15 * * * * *",
+      "runOnStartup": true
     },
     {
       "name": "ingestion",
