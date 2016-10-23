@@ -17,7 +17,7 @@ module.exports = function (context, message) {
         id: id,
         registered_account_id: message.userid,
         is_archived: false,
-        archived_by: 1,
+        archived_by: 0,
         last_update: new Date(),
         created_date: new Date(),
         log: message.longitude,
