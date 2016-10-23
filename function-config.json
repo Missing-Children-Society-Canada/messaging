@@ -6,19 +6,7 @@
             "type": "string",
             "defaultValue": "mcsc-cf-functions"
         },
-        "TWITTER_CONSUMER_KEY": {
-            "type": "string"
-        },
-        "TWITTER_CONSUMER_SECRET": {
-            "type": "string"
-        },
-        "TWITTER_ACCESS_TOKEN": {
-            "type": "string"
-        },
-        "TWITTER_ACCESS_TOKEN_SECRET": {
-            "type": "string"
-        },
-        "HASH_TAG": {
+        "AzureWebJobsEndpoint": {
             "type": "string"
         }
     },
@@ -35,24 +23,8 @@
                     "phpVersion": "off",
                     "appSettings": [
                         {
-                            "Name": "TWITTER_CONSUMER_KEY",
-                            "Value": "[parameters('TWITTER_CONSUMER_KEY')]"
-                        },
-                        {
-                            "Name": "TWITTER_CONSUMER_SECRET",
-                            "Value": "[parameters('TWITTER_CONSUMER_SECRET')]"
-                        },
-                        {
-                            "Name": "TWITTER_ACCESS_TOKEN",
-                            "Value": "[parameters('TWITTER_ACCESS_TOKEN')]"
-                        },
-                        {
-                            "Name": "TWITTER_ACCESS_TOKEN_SECRET",
-                            "Value": "[parameters('TWITTER_ACCESS_TOKEN_SECRET')]"
-                        },
-                        {
-                            "Name": "HASH_TAG",
-                            "Value": "[parameters('HASH_TAG')]"
+                            "Name": "AzureWebJobsEndpoint",
+                            "Value": "[parameters('AzureWebJobsEndpoint')]"
                         },
                         {
                             "Name": "WEBSITE_NODE_DEFAULT_VERSION",

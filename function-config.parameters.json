@@ -5,19 +5,7 @@
         "MCSC_functions_name": {
             "value": "mcsc-cf-functions"
         },
-        "TWITTER_CONSUMER_KEY": {
-            "value": ""
-        },
-        "TWITTER_CONSUMER_SECRET": {
-            "value": ""
-        },
-        "TWITTER_ACCESS_TOKEN": {
-            "value": ""
-        },
-        "TWITTER_ACCESS_TOKEN_SECRET": {
-            "value": ""
-        },
-        "HASH_TAG": {
+        "AzureWebJobsEndpoint": {
             "value": ""
         }
     }

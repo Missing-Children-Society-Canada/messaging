@@ -2,14 +2,12 @@
   "bindings": [
     {
       "queueName": "toaugment",
-      "connection": "Endpoint=sb://mcscchildfinderbotdev.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=F99PyRovVLd1je+XlyMK3gfA77gYPIAH35gsG940w04=",
       "name": "augmentin",
       "type": "serviceBusTrigger",
       "direction": "in"
     },
     {
       "queueName": "tostore",
-      "connection": "Endpoint=sb://mcscchildfinderbotdev.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=F99PyRovVLd1je+XlyMK3gfA77gYPIAH35gsG940w04=",
       "name": "augmentout",
       "type": "serviceBusTrigger",
       "direction": "out"
