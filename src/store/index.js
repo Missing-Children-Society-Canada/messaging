@@ -20,8 +20,8 @@ module.exports = function (context, message) {
         archived_by: 1,
         last_update: new Date(),
         created_date: new Date(),
-        log: 41.94000,
-        lat: -115.00002,
+        log: message.longitude,
+        lat: message.latitude,
         profilepic: message.profileimageurl,
         photos: [],
         social_content: [content]
