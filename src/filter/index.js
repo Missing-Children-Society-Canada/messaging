@@ -16,16 +16,14 @@ module.exports = function (context, message) {
 
     switch (message.social_site) {
         case 1://filter on twitter
-context.log(config.CollLink);
-context.log(config.TwitterCollectionId);
-            docdbUtils.getDocumentByID(docDbClient, config.CollLink, '124293141', function (err, results) {
 
-context.log(err);
-context.log(results);
+            docDbClient.readDocument(config.CollLink + '/docs/' + message.id, function (err, results) {
+
                 if (!err && results != null) {
-context.log('hi c');
+                    context.log('person needs help');
                     context.bindings.out = message;
                 }
+
                 context.done(err, message);
             });
 
@@ -37,5 +35,4 @@ context.log('hi c');
             context.done(new Error('unknown type'), message);
             break;
     }
-
 };
