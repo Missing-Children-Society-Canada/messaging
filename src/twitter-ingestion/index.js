@@ -2,11 +2,11 @@ var Twitter = require('./twitter');
 var config = {}
 
 //TWITTER CONFIG
-config.ConsumerKey = 'q2JfZwE8BTIHHNruzRqaWubEI';
-config.ConsumerSecret = 'FI4nM1BuayKsMBLZ2fA4zicaOkNUvjrhfRgiDYngVQVBtkXRyT';
-config.AccessToken = '242907489-B4Xul8Rik2fzwnLrhim6pQEElnLZYLNMHXAeuDn3';
-config.AccessTokenSecret = 'KAQjh2M9I2Pf6BUrwoF4QsYrb0wXO696UlmGeOscMLrGj';
-config.HashTag = 'test';
+config.ConsumerKey = GetEnvironmentVariable('TWITTER_CONSUMER_KEY');
+config.ConsumerSecret = GetEnvironmentVariable('TWITTER_CONSUMER_SECRET');
+config.AccessToken = GetEnvironmentVariable('TWITTER_ACCESS_TOKEN');
+config.AccessTokenSecret = GetEnvironmentVariable('TWITTER_ACCESS_TOKEN_SECRET');
+config.HashTag = GetEnvironmentVariable('HASH_TAG');
 
 var twitterClient = new Twitter({
     consumer_key: config.ConsumerKey,
@@ -21,13 +21,13 @@ var stream = twitterClient.stream('statuses/filter', {
 });
 
 module.exports = function (context) {
-    
+
+context.log(config);
+
     stream.on('tweet', function (tweet) {
-        var data = {
+        context.bindings.ingestion = {
             content: tweet,
             type: 1
         };
-        
-        context.done(null, data);
     });
 };
