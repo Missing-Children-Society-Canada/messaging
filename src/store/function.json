@@ -13,7 +13,7 @@
       "databaseName": "missingdat",
       "collectionName": "twitter-data",
       "createIfNotExists": true,
-      "connection": "AccountEndpoint=https://missingchildrendata.documents.azure.com:443/;AccountKey=agHqTdTA7xaIlSEnaVU63O0sFCnrSZuZHYcBLLoUgeyPCYC5qYSSFca7eMGbqRFmPaAPeaakJmMxYSy0OvxHog==;",
+      "connection": "DocumentDB",
       "direction": "out"
     }
   ],
