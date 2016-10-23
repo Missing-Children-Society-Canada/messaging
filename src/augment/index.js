@@ -9,14 +9,13 @@ var twit = new twitter({
 });
 
 module.exports = function (context, message) {
-    //Pull Lat/Long from Twitter, based on Tweet
-    var rest = '/statuses/show/' + message.tweetid;
-    context.log(rest);
-
-    twit.get(rest, { include_entities: true }, function (data) {
-        context.log(data);
-        message.latitude = -115.00002;
-        message.longitude = 41.94000;
+    var rest = 'statuses/show/' + message.tweetid;
+    context.log(message.tweetid);
+    twit.get(rest, { include_entities: true }, function (error, tweets, response) {
+        if (tweets.coordinates != null && 2 <= tweets.coordinates.coordinates.length) {
+            message.latitude = tweets.coordinates.coordinates[0];
+            message.longitude = tweets.coordinates.coordinates[1];
+        }
     });
 
     //Pull in X # of Photos from Twitter
