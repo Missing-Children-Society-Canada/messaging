@@ -20,7 +20,6 @@ module.exports = function (context, message) {
             docDbClient.readDocument(config.CollLink + '/docs/' + message.id, function (err, results) {
 
                 if (!err && results != null) {
-                    context.log('person needs help');
                     context.bindings.out = message;
                 }
 
