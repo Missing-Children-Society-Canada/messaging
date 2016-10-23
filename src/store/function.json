@@ -2,8 +2,6 @@
   "bindings": [
     {
       "queueName": "tostore",
-      "name": "storein",
-      "connection":"AzureWebJobsServiceBus",
       "type": "serviceBusTrigger",
       "direction": "in"
     },
@@ -12,7 +10,6 @@
       "databaseName": "missingdat",
       "collectionName": "twitter-data",
       "createIfNotExists": true,
-      "connection": "DocumentDB",
       "direction": "out"
     }
   ],

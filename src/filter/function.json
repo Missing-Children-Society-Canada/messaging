@@ -2,15 +2,12 @@
   "bindings": [
     {
       "queueName": "tofilter",
-      "name": "filterin",
-      "connection":"AzureWebJobsServiceBus",
       "type": "serviceBusTrigger",
       "direction": "in"
     },
     {
       "queueName": "toaugment",
       "name": "filterout",
-      "connection":"AzureWebJobsServiceBus",
       "direction": "out"
     }
   ],
