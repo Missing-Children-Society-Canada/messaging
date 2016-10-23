@@ -39,13 +39,13 @@ var DocDBUtils = {
                 name: '@id',
                 value: collectionId
             }]
-        };             
+        };
 
         client.queryCollections(databaseLink, querySpec).toArray(function (err, results) {
             if (err) {
                 callback(err);
 
-            } else {        
+            } else {
                 if (results.length === 0) {
                     var collectionSpec = {
                         id: collectionId
@@ -62,47 +62,45 @@ var DocDBUtils = {
         });
     },
 
-     getDocuments: function (client, databaseLink, collectionId, callback) {
+    getDocuments: function (client, databaseLink, collectionId, callback) {
 
-         var querySpec = {
+        var querySpec = {
             query: 'SELECT * FROM root r',
-    
-         };
-         client.queryDocuments(databaseLink, querySpec).toArray(function (err, results) {
+
+        };
+        client.queryDocuments(databaseLink, querySpec).toArray(function (err, results) {
             if (err) {
                 callback(err);
 
-            } else 
-                {
-                   
-                        callback(null, results);
-                
-                }     
-         });
+            } else {
 
-     },
+                callback(null, results);
 
-     getDocumentByID: function (client, databaseLink, documentId, callback) {
+            }
+        });
 
-         var querySpec = {
+    },
+
+    getDocumentByID: function (client, databaseLink, id, callback) {
+
+        var querySpec = {
             query: 'SELECT * FROM root r WHERE id=@id',
             parameters: [{
                 name: '@id',
-                value: documentId
+                value: id
             }]
-    
-         };
-         client.queryDocuments(databaseLink, querySpec).toArray(function (err, result) {
+
+        };
+        client.queryDocuments(databaseLink, querySpec).toArray(function (err, result) {
             if (err) {
                 callback(err);
 
-            } else 
-                {
-                        callback(null, result);
-                }     
-         });
+            } else {
+                callback(null, result);
+            }
+        });
 
-     }
+    }
 
 };
 

@@ -18,7 +18,7 @@ module.exports = function (context, message) {
         case 1://filter on twitter
 context.log(config.CollLink);
 context.log(config.TwitterCollectionId);
-            docdbUtils.getDocumentByID(docDbClient, config.CollLinkd, '124293141', function (err, results) {
+            docdbUtils.getDocumentByID(docDbClient, config.CollLink, '124293141', function (err, results) {
 
 context.log(err);
 context.log(results);
