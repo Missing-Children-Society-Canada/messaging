@@ -13,7 +13,7 @@ module.exports = function (context) {
 
     var stream = twitterClient.stream('statuses/filter', {
         track: [config.HashTag]
-    })
+    });
 
     stream.on('tweet', function (tweet) {
         context.bindings.myOutput = {
