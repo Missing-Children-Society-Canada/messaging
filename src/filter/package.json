@@ -1,0 +1,7 @@
+{
+  "name": "messaging-functions",
+  "version": "0.0.0",
+  "dependencies": {
+    "documentdb":"^1.10.0"
+  }
+}
