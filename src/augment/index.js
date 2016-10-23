@@ -15,6 +15,8 @@ module.exports = function (context, message) {
         if (tweets.coordinates != null && 2 <= tweets.coordinates.coordinates.length) {
             message.latitude = tweets.coordinates.coordinates[0];
             message.longitude = tweets.coordinates.coordinates[1];
+
+            context.log('Lat: ' + message.latitude + ' Long:' + message.longitude);
         }
     });
 
