@@ -36,23 +36,23 @@
                     "appSettings": [
                         {
                             "Name": "TWITTER_CONSUMER_KEY",
-                            "Value": ""
+                            "Value": "[parameters('TWITTER_CONSUMER_KEY')]"
                         },
                         {
                             "Name": "TWITTER_CONSUMER_SECRET",
-                            "Value": ""
+                            "Value": "[parameters('TWITTER_CONSUMER_SECRET')]"
                         },
                         {
                             "Name": "TWITTER_ACCESS_TOKEN",
-                            "Value": ""
+                            "Value": "[parameters('TWITTER_ACCESS_TOKEN')]"
                         },
                         {
                             "Name": "TWITTER_ACCESS_TOKEN_SECRET",
-                            "Value": ""
+                            "Value": "[parameters('TWITTER_ACCESS_TOKEN_SECRET')]"
                         },
                         {
                             "Name": "HASH_TAG",
-                            "Value": ""
+                            "Value": "[parameters('HASH_TAG')]"
                         },
                         {
                             "Name": "WEBSITE_NODE_DEFAULT_VERSION",
