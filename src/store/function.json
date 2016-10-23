@@ -9,10 +9,12 @@
       "accessRights": "Manage"
     },
     {
+      "type": "documentDB",
       "name": "out",
       "databaseName": "missingdat",
       "collectionName": "twitter-data",
       "createIfNotExists": true,
+      "connection": "DocumentDB",
       "direction": "out"
     }
   ],
