@@ -3,6 +3,7 @@
     {
       "queueName": "tostore",
       "name": "storein",
+      "connection":"AzureWebJobsServiceBus",
       "type": "serviceBusTrigger",
       "direction": "in"
     },

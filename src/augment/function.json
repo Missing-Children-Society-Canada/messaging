@@ -3,12 +3,14 @@
     {
       "queueName": "toaugment",
       "name": "augmentin",
+      "connection":"AzureWebJobsServiceBus",
       "type": "serviceBusTrigger",
       "direction": "in"
     },
     {
       "queueName": "tostore",
       "name": "augmentout",
+      "connection":"AzureWebJobsServiceBus",
       "type": "serviceBusTrigger",
       "direction": "out"
     }
