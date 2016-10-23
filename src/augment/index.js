@@ -10,8 +10,9 @@ var twit = new twitter({
 
 module.exports = function (context, message) {
     //Pull Lat/Long from Twitter, based on Tweet
-    var rest = '/statuses/show/' + message.tweetid + '.json';
+    var rest = '/statuses/show/' + message.tweetid;
     context.log(rest);
+
     twit.get(rest, { include_entities: true }, function (data) {
         context.log(data);
         message.latitude = -115.00002;
