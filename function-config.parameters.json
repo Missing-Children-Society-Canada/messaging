@@ -5,7 +5,7 @@
         "MCSC_functions_name": {
             "value": "mcsc-cf-functions"
         },
-        "AzureWebJobsEndpoint": {
+        "AzureWebJobsServiceBus": {
             "value": ""
         }
     }

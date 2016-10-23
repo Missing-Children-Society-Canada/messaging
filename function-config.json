@@ -6,7 +6,7 @@
             "type": "string",
             "defaultValue": "mcsc-cf-functions"
         },
-        "AzureWebJobsEndpoint": {
+        "AzureWebJobsServiceBus": {
             "type": "string"
         }
     },
@@ -23,8 +23,8 @@
                     "phpVersion": "off",
                     "appSettings": [
                         {
-                            "Name": "AzureWebJobsEndpoint",
-                            "Value": "[parameters('AzureWebJobsEndpoint')]"
+                            "Name": "AzureWebJobsServiceBus",
+                            "Value": "[parameters('AzureWebJobsServiceBus')]"
                         },
                         {
                             "Name": "WEBSITE_NODE_DEFAULT_VERSION",
