@@ -10,5 +10,6 @@ module.exports = function (context, message) {
         raw: message
     };
 
-    context.done(null, item);
+    context.bindings.tweetstorage = item;
+    context.done();
 };
