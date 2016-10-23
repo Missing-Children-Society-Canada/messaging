@@ -13,7 +13,7 @@ var docDbClient = new DocumentDBClient(config.Host, { masterKey: config.AuthKey 
 
 module.exports = function (context, message) {
 
-    switch (message.social) {
+    switch (message.social_site) {
         case 1://filter on twitter
             context.bindings.out = message;
             context.done();
