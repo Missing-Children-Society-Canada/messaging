@@ -4,12 +4,16 @@
       "queueName": "tofilter",
       "name": "in",
       "type": "serviceBusTrigger",
-      "direction": "in"
+      "direction": "in",
+      "connection": "AzureWebJobsServiceBus",
+      "accessRights": "Manage"
     },
     {
+      "type": "serviceBus",
+      "name": "message",
       "queueName": "toaugment",
-      "name": "out",
-      "name": "filterout",
+      "connection": "AzureWebJobsServiceBus",
+      "accessRights_": "Manage",
       "direction": "out"
     }
   ],

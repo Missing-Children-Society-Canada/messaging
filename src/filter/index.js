@@ -1,5 +1,5 @@
 module.exports = function (context, message) {
     //fliter on twitter handle
-    context.bindings.filterout = message;
+    context.bindings.out = message;
     context.done();
 };

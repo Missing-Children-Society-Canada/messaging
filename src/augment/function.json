@@ -1,15 +1,20 @@
 {
   "bindings": [
+
     {
       "queueName": "toaugment",
       "name": "in",
       "type": "serviceBusTrigger",
-      "direction": "in"
+      "direction": "in",
+      "connection": "AzureWebJobsServiceBus",
+      "accessRights": "Manage"
     },
     {
+      "type": "serviceBus",
+      "name": "message",
       "queueName": "tostore",
-      "name": "out",
-      "name": "augmentout",
+      "connection": "AzureWebJobsServiceBus",
+      "accessRights_": "Manage",
       "direction": "out"
     }
   ],
