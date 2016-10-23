@@ -1,5 +1,5 @@
 module.exports = function(context, message) {
     //add more data
-    context.bindings.augmentout = JSON.stringify(message);
+    context.bindings.augmentout = message;
     context.done();
 };
