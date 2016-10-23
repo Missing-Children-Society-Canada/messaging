@@ -5,9 +5,11 @@ module.exports = function (context, message) {
         return v.toString(16);
     });
 
+    var social_site = message.social_site == 1 ? 'Twitter' : 'unknown';
+
     var content = {
         id: message.tweetid,
-        social_site: "Twitter",
+        social_site: social_site,
         content: message.tweettext
     };
 
