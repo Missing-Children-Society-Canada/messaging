@@ -11,7 +11,6 @@
       "queueName": "toaugment",
       "name": "filterout",
       "connection":"AzureWebJobsServiceBus",
-      "type": "serviceBusTrigger",
       "direction": "out"
     }
   ],

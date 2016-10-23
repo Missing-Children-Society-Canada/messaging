@@ -9,7 +9,6 @@
     },
     {
       "name": "tweetstorage",
-      "type": "documentdb",
       "databaseName": "missingdat",
       "collectionName": "twitter-data",
       "createIfNotExists": true,
