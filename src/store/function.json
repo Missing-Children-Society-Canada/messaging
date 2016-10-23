@@ -4,7 +4,9 @@
       "queueName": "tostore",
       "name": "in",
       "type": "serviceBusTrigger",
-      "direction": "in"
+      "direction": "in",
+      "connection": "AzureWebJobsServiceBus",
+      "accessRights": "Manage"
     },
     {
       "name": "out",
