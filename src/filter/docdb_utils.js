@@ -82,13 +82,13 @@ var DocDBUtils = {
 
      },
 
-     getDocumentByID: function (client, databaseLink, collectionId, documentId, callback) {
+     getDocumentByID: function (client, databaseLink, documentId, callback) {
 
          var querySpec = {
             query: 'SELECT * FROM root r WHERE id=@id',
             parameters: [{
                 name: '@id',
-                value: collectionId
+                value: documentId
             }]
     
          };
