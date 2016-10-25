@@ -17,7 +17,7 @@ module.exports = function (context, message) {
     switch (message.social_site) {
         case 1://filter on twitter
 
-            docDbClient.readDocument(config.CollLink + '/docs/' + message.tweetid, function (err, results) {
+            docDbClient.readDocument(config.CollLink + '/docs/' + message.userid, function (err, results) {
 
                 if (!err && results != null) {
                     context.bindings.out = message;
