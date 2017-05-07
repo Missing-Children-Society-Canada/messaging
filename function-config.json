@@ -10,7 +10,6 @@
             "type": "string"
         }
     },
-    "variables": {},
     "resources": [
         {
             "type": "Microsoft.Web/Sites",
