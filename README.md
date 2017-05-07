@@ -7,6 +7,10 @@ Ensures that only register users are tracked; within geo-boundaries
 
 ## Augment
 Additional Context added to messages for reporting.
+- GPS or Lat/Long is critical
+- Social context: friends, who, types of activity.
+- Time: social patterns, location patterns etc.
 
 ## Store
-Data is stored in DocumentDB (needs to be moved to SQL Database)
+Data is stored in DocumentDB
+- needs to be moved to SQL Database.
