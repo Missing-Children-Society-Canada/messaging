@@ -4,9 +4,9 @@
             "name": "req",
             "type": "httpTrigger",
             "direction": "in",
-            "authLevel": "function",
+            "authLevel": "anonymous",
             "methods": [
-                "GET"
+                "get"
             ],
             "route": "profiles"
         },

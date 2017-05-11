@@ -2,5 +2,6 @@
   "name": "profile-api",
   "version": "0.0.0",
   "dependencies": {
+    "applicationinsights": "^0.20.0"
   }
 }

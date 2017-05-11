@@ -2,6 +2,7 @@
   "name": "messaging-functions",
   "version": "0.0.0",
   "dependencies": {
-    "documentdb":"^1.10.0"
+    "documentdb":"^1.10.0",
+    "applicationinsights": "^0.20.0"
   }
 }
