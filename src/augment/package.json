@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "util":"^0.10.3",
-    "twitter":"^1.4.0"
+    "twitter":"^1.4.0",
+    "applicationinsights": "^0.20.0"
   }
 }
