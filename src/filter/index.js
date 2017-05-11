@@ -1,5 +1,5 @@
 var DocumentDBClient = require('documentdb').DocumentClient;
-var docdbUtils = require('./docdb_utils');
+var providers = require('..\constants').providers;
 
 var config = {
     DatabaseId: "missingdata",
@@ -15,7 +15,7 @@ var docDbClient = new DocumentDBClient(config.Host, { masterKey: config.AuthKey 
 module.exports = function (context, message) {
 
     switch (message.social_site) {
-        case 1://filter on twitter
+        case providers.twitter://filter on twitter
 
             docDbClient.readDocument(config.CollLink + '/docs/' + message.userid, function (err, results) {
 
@@ -27,9 +27,12 @@ module.exports = function (context, message) {
             });
 
             break;
-        case 2://filter on facebook
+        case providers.facebook://filter on facebook
             context.done(new Error('Facebook is not implemented yet'), message);
             break;
+        case providers.instagram://filter on ig - see ig_media_filter
+            break;
+
         default:
             context.done(new Error('unknown type'), message);
             break;

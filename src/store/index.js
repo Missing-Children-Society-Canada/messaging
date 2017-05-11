@@ -1,3 +1,5 @@
+let providers = require('..\constants').providers;
+
 module.exports = function (context, message) {
 
     var id = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -5,12 +7,12 @@ module.exports = function (context, message) {
         return v.toString(16);
     });
 
-    var social_site = message.social_site == 1 ? 'Twitter' : 'unknown';
+    var social_site = providers.getProvider(message.social_site);
 
     var content = {
-        id: message.tweetid,
+        id: message.tweetid || message.media_id,
         social_site: social_site,
-        content: message.tweettext
+        content: message.tweettext || message.media_text
     };
 
     var data = {
