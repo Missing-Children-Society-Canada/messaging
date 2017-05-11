@@ -1,4 +1,4 @@
-module.exports = function (context, req) {
+module.exports = function (req) {
 
     return [
         {
