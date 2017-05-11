@@ -1,9 +1,20 @@
 {
-  "bindings": [
-    {
-    },
-    {
-    }
-  ],
-  "disabled": false
+    "bindings": [
+        {
+            "name": "req",
+            "type": "httpTrigger",
+            "direction": "in",
+            "authLevel": "function",
+            "methods": [
+                "GET"
+            ],
+            "route": "profiles"
+        },
+        {
+            "name": "res",
+            "type": "http",
+            "direction": "out"
+        }
+    ],
+    "disabled": false
 }
