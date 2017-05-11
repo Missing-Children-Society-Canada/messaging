@@ -11,5 +11,8 @@ Additional Context added to messages for reporting.
 - Social context: friends, who, types of activity.
 - Time: social patterns, location patterns etc.
 
+## Store
+Data is stored in DocumentDB (needs to be moved to SQL Database)
+
 ## Profile API
 Get Profile data of missing persons that have initiated a call for help.
