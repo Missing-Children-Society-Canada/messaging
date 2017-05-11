@@ -6,7 +6,7 @@
             "direction": "in",
             "authLevel": "anonymous",
             "methods": [
-                "GET"
+                "get"
             ],
             "route": "profiles"
         },
