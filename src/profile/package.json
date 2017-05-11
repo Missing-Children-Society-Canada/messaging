@@ -3,6 +3,6 @@
   "version": "0.0.0",
   "dependencies": {
     "msnodesql": "^0.2.1",
-    "applicationinsights": "^0.20.0"
+    "applicationinsights": "latest"
   }
 }

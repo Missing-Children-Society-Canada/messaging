@@ -4,6 +4,6 @@
   "dependencies": {
     "util":"^0.10.3",
     "twitter":"^1.4.0",
-    "applicationinsights": "^0.20.0"
+    "applicationinsights": "latest"
   }
 }
