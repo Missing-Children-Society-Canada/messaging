@@ -1,32 +1,30 @@
-var Connection = require('tedious').Connection;
-var Request = require('tedious').Request;
+var sql = require('msnodesql');
 
-var config = {
-    userName: 'mcscroot',
-    password: 'mqRJAxoRd1lvlS1N1UVuhn220OzT0d',
-    server: 'mcsc.database.windows.net',
-    options: {
-        database: 'social'
-    }
-}
+var conn_str = "Driver={SQL Server Native Client 11.0};Server=tcp:mcscroot.database.windows.net;UID=mcscroot;PWD=mqRJAxoRd1lvlS1N1UVuhn220OzT0d;Database=social;";
 
 module.exports = function (context, req) {
 
-    var connection = new Connection(config);
+    sql.open(conn_str, function (err, conn) {
+        if (err) {
+            console.log("Error opening the connection!");
+            return;
+        }
+        else {
+            conn.queryRaw("SELECT * FROM [dbo].[vwProfiles]", function (err, results) {
+                if (err) {
+                    console.log("Error running query1!");
+                    return;
+                }
 
-    connection.on('connect', function (err) {
-
-        var request = new Request("SELECT * FROM [dbo].[vwProfiles]",
-            function (err, rowCount, rows) {
                 context.res = {
                     status: 200,
-                    body: "WTF"//rows
+                    body: "WTF"//results.rows
                 };
-            });
-
-        connection.execSql(request);
-    });
-
+            }
+        }
+        );
+}
+);
 
     context.done();
 }
