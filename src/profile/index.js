@@ -12,7 +12,9 @@ const config = {
 };
 
 module.exports = function (context, req) {
+    var saved_pool;
     return sql.connect(config).then(pool => {
+        saved_pool = pool;
         return pool.request()
             .query('select * from [dbo].[vwProfiles]')
     }).then(result => {
@@ -21,5 +23,6 @@ module.exports = function (context, req) {
             status: 200,
             body: result
         };
+        return saved_pool.close();
     });
 }
