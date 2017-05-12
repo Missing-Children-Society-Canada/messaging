@@ -35,8 +35,8 @@ module.exports = function (context, req) {
                             status: 200,
                             body: rows
                         };
-                }
-            );
+                    }
+                });
 
             connection.execSql(request);
         }
