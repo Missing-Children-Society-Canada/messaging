@@ -14,10 +14,6 @@ module.exports = function (context, req) {
             **/
     context.res = {
         status: 200,
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-            'SuperSecret':'hahaha'
-        },
         body: [
             {
                 "id": "785a9b14-a9b8-457b-a851-803d3cd1a93e",
