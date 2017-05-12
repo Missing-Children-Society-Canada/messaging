@@ -5,50 +5,18 @@ var sql = require('mssql');
 
 module.exports = function (context, req) {
 
-    var config = {
-        server: "mcscroot.database.windows.net", // Use your SQL server name
-        database: "social", // Database to connect to
-        user: "mcscroot", // Use your username
-        password: "mqRJAxoRd1lvlS1N1UVuhn220OzT0d", // Use your password
-        port: 1433,
-        // Since we're on Windows Azure, we need to set the following options
-        options: {
-            encrypt: true
-        }
-    };
+    try {
 
-    var conn = new sql.connection(config);
+        const pool = await sql.connect('mssql://mcscroot:mqRJAxoRd1lvlS1N1UVuhn220OzT0d@mcscroot.database.windows.net/social?encrypt=true')
+        const result = await sql.query`select * from [dbo].[vwProfiles]`
+        context.res = {
+            status: 200,
+            body: result
+        };
 
-    conn.connect()
-        .then(function () {
+    } catch (err) {
+        // ... error checks 
+    }
 
-            // Create request instance, passing in connection instance
-            var req = new sql.request(conn);
-
-            // Call mssql's query method passing in params
-            req.query("SELECT * FROM [SalesLT].[Customer]")
-                .then(function (recordset) {
-
-                    context.res = {
-                        status: 200,
-                        body: recordset
-                    };
-
-                    conn.close();
-                })
-
-                // Handle sql statement execution errors
-                .catch(function (err) {
-                    console.log(err);
-                    conn.close();
-                })
-
-        })
-        // Handle connection errors
-        .catch(function (err) {
-            console.log(err);
-            conn.close();
-        });
-        
     context.done();
 }
