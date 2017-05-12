@@ -16,14 +16,14 @@ module.exports = function (context, req) {
             encrypt: true
         }
     };
-    
-    var conn = new sql.Connection(config);
+
+    var conn = new sql.connection(config);
 
     conn.connect()
         .then(function () {
 
             // Create request instance, passing in connection instance
-            var req = new sql.Request(conn);
+            var req = new sql.request(conn);
 
             // Call mssql's query method passing in params
             req.query("SELECT * FROM [SalesLT].[Customer]")
@@ -36,6 +36,7 @@ module.exports = function (context, req) {
 
                     conn.close();
                 })
+
                 // Handle sql statement execution errors
                 .catch(function (err) {
                     console.log(err);
@@ -48,31 +49,6 @@ module.exports = function (context, req) {
             console.log(err);
             conn.close();
         });
-    // sql.open(conn_str, function (err, conn) {
-    //     if (err) {
-    //         context.res = {
-    //             status: 500
-    //         };
-    //         return;
-    //     }
-    //     else {
-    //         conn.queryRaw("SELECT * FROM [dbo].[vwProfiles]", function (err, results) {
-    //             if (err) {
-    //                 console.log("Error running query1!");
-    //                 return;
-    //             }
-
-    //             context.res = {
-    //                 status: 200,
-    //                 headers: {
-    //                     'Access-Control-Allow-Origin': '*'
-    //                 },
-    //                 body: "WTF"//results.rows
-    //             };
-    //         });
-
-    //         return;
-    //     }
-    // });
+        
     context.done();
 }
