@@ -33,11 +33,12 @@ module.exports = function (context, req) {
                     else {
                         context.res = {
                             status: 200,
-                            body: "WTF"//{ test: "test", count: rowCount, rows }
+                            body: rows
                         };
-                    }s
                 }
             );
+
+            connection.execSql(request);
         }
     });
 
