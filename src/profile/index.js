@@ -16,21 +16,16 @@ module.exports = function (context, req) {
         return pool.request()
             .query('select * from [dbo].[vwProfiles]')
     }).then(result => {
-        context.res = {
-            status: 200,
-            body: result
-        };
-
-        sql.close()
+        context.log(result);
+        // context.res = {
+        //     status: 200,
+        //     body: result
+        // };
     }).catch(err => {
         context.log(err);
-
-        sql.close()
     })
 
     sql.on('error', err => {
         context.log(err);
     })
-
-    context.done();
 }
