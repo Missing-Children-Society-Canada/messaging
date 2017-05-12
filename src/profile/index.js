@@ -12,5 +12,7 @@ module.exports = function (context, req) {
                 };
             });
         });
+
+        pool.close();
     });
 }
