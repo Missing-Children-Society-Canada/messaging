@@ -23,30 +23,12 @@ module.exports = function (context, req) {
         else {
             request = new Request("SELECT * FROM [dbo].[vwProfiles]",
                 function (err, rowCount, rows) {
-                    console.log(rowCount + ' row(s) returned');
+                    context.res = {
+                        status: 200,
+                        body: rows
+                    };
                 }
             );
-            /**
-            conn.queryRaw("SELECT * FROM [dbo].[vwProfiles]", function (err, results) {
-                if (err) {
-                    context.res = {
-                        status: 500,
-                        body: err
-                    }
-                }
-                else {
-                    
-                    for (var i = 0; i < results.rows.length; i++) {
-                        results.rows[i][0]
-                    }
-                    
-            context.res = {
-                status: 200,
-                body: results.rows
-            };
-        }
-    });
-             */
         }
     });
     context.done();
