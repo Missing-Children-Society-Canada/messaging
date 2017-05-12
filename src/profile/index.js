@@ -21,6 +21,11 @@ module.exports = function (context, req) {
             }
         }
         else {
+            request = new Request("SELECT * FROM [dbo].[vwProfiles]",
+                function (err, rowCount, rows) {
+                    console.log(rowCount + ' row(s) returned');
+                }
+            );
             /**
             conn.queryRaw("SELECT * FROM [dbo].[vwProfiles]", function (err, results) {
                 if (err) {
