@@ -12,20 +12,14 @@ const config = {
 };
 
 module.exports = function (context, req) {
-    sql.connect(config).then(pool => {
+    return sql.connect(config).then(pool => {
         return pool.request()
             .query('select * from [dbo].[vwProfiles]')
     }).then(result => {
         context.log(result);
-        // context.res = {
-        //     status: 200,
-        //     body: result
-        // };
-    }).catch(err => {
-        context.log(err);
-    })
-
-    sql.on('error', err => {
-        context.log(err);
-    })
+        context.res = {
+            status: 200,
+            body: result
+        };
+    });
 }
