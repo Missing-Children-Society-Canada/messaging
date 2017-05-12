@@ -2,8 +2,7 @@
   "name": "messaging-functions",
   "version": "0.0.0",
   "dependencies": {
-    "instagram-node": "latest",
-    "applicationinsights": "latest"
+    "instagram-node": "latest"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
