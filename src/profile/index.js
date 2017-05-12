@@ -18,11 +18,13 @@ module.exports = function (context, req) {
 
                 context.res = {
                     status: 200,
+                    headers: {
+                        'Access-Control-Allow-Origin': '*'
+                    },
                     body: "WTF"//results.rows
                 };
             });
         }
     });
-
     context.done();
 }
