@@ -11,7 +11,7 @@
       "name": "token",
       "type": "documentDB",
       "direction": "in",
-      "connection": "DocDb_ConnectionString",
+      "connection": "DocumentDB",
       "databaseName": "mean-dev",
       "collectionName": "users",
       "sqlQuery": "SELECT c.instagram.token FROM c WHERE c.instagram['$id'] = {user_id}"
