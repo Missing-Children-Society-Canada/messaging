@@ -16,7 +16,7 @@ module.exports = function (context, req) {
         return pool.request()
             .query('select * from [dbo].[vwProfiles]')
     }).then(result => {
-        context.log(result);
+
         context.res = {
             status: 200,
             body: result
