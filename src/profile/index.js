@@ -1,6 +1,6 @@
 const sql = require('mssql');
 const config = {
-    server: "mcscroot.database.windows.net", // Use your SQL server name
+    server: "mcsc.database.windows.net", // Use your SQL server name
     database: "social", // Database to connect to
     user: "mcscroot", // Use your username
     password: "mqRJAxoRd1lvlS1N1UVuhn220OzT0d", // Use your password
@@ -24,7 +24,7 @@ module.exports = function (context, req) {
         pool.close()
     }).catch(err => {
         context.log(err);
-        
+
         pool.close()
     })
 
