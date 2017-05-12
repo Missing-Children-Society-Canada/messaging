@@ -33,7 +33,7 @@ module.exports = function (context, req) {
                     else {
                         context.res = {
                             status: 200,
-                            body: { test: "test", count: rowCount, rows }
+                            body: "WTF"//{ test: "test", count: rowCount, rows }
                         };
                     }s
                 }
