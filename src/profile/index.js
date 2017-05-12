@@ -21,10 +21,8 @@ module.exports = function (context, req) {
                     body: "WTF"//results.rows
                 };
             }
-        }
-        );
-}
-);
+        });
+    });
 
     context.done();
 }
