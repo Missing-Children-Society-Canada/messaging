@@ -22,6 +22,7 @@ module.exports = function (context, req) {
             }
         }
         else {
+            /*
             request = new Request("SELECT * FROM [dbo].[vwProfiles]",
                 function (err, rowCount, rows) {
                     if (err) {
@@ -37,7 +38,11 @@ module.exports = function (context, req) {
                         };
                     }s
                 }
-            );
+            ); */
+            context.res = {
+                status: 200,
+                body: "WTF"//{ test: "test", count: rowCount, rows }
+            }
         }
     });
 
