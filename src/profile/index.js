@@ -31,4 +31,6 @@ module.exports = function (context, req) {
     sql.on('error', err => {
         context.log(err);
     })
+
+    context.done();
 }
