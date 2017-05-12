@@ -2,7 +2,7 @@
   "name": "profile-api",
   "version": "0.0.0",
   "dependencies": {
-    "msnodesql": "latest",
+    "mssql": "latest",
     "applicationinsights": "latest"
   }
 }
