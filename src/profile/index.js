@@ -20,8 +20,12 @@ module.exports = function (context, req) {
             status: 200,
             body: result
         };
+
+        pool.close()
     }).catch(err => {
         context.log(err);
+        
+        pool.close()
     })
 
     sql.on('error', err => {
