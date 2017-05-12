@@ -1,10 +1,10 @@
 const sql = require('mssql');
 
 const config = {
-    server: "mcsc.database.windows.net",
-    database: "social",
-    user: "mcscroot",
-    password: "mqRJAxoRd1lvlS1N1UVuhn220OzT0d",
+    server: process.env.SqlServer,
+    database: process.env.SqlDatabase,
+    user: process.env.SqlUser,
+    password: process.env.SqlPassword,
     port: 1433,
     options: {
         encrypt: true
