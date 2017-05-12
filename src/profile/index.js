@@ -1,11 +1,11 @@
 const sql = require('mssql');
+
 const config = {
-    server: "mcsc.database.windows.net", // Use your SQL server name
-    database: "social", // Database to connect to
-    user: "mcscroot", // Use your username
-    password: "mqRJAxoRd1lvlS1N1UVuhn220OzT0d", // Use your password
+    server: "mcsc.database.windows.net",
+    database: "social",
+    user: "mcscroot",
+    password: "mqRJAxoRd1lvlS1N1UVuhn220OzT0d",
     port: 1433,
-    // Since we're on Windows Azure, we need to set the following options
     options: {
         encrypt: true
     }
@@ -13,7 +13,6 @@ const config = {
 
 module.exports = function (context, req) {
     return sql.connect(config).then(pool => {
-        
         return pool.request()
             .query('select * from [dbo].[vwProfiles]')
     }).then(result => {
