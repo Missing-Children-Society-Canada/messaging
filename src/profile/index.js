@@ -21,11 +21,11 @@ module.exports = function (context, req) {
             body: result
         };
 
-        pool.close()
+        sql.close()
     }).catch(err => {
         context.log(err);
 
-        pool.close()
+        sql.close()
     })
 
     sql.on('error', err => {
