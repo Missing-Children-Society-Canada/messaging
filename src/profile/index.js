@@ -2,7 +2,7 @@ var Connection = require('tedious').Connection;
 var Request = require('tedious').Request;
 
 module.exports = function (context, req) {
-    
+
     var config = {
         userName: 'mcscroot',
         password: 'mqRJAxoRd1lvlS1N1UVuhn220OzT0d',
@@ -25,7 +25,7 @@ module.exports = function (context, req) {
                 function (err, rowCount, rows) {
                     context.res = {
                         status: 200,
-                        body: rows
+                        body: { test: "test", count: rowCount, rows }
                     };
                 }
             );
