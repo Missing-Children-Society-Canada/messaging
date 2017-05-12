@@ -20,8 +20,8 @@ module.exports = function (context, req) {
                     status: 200,
                     body: "WTF"//results.rows
                 };
-            }
-        });
+            });
+        }
     });
 
     context.done();
