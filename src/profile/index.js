@@ -6,7 +6,9 @@ module.exports = function (context, req) {
 
     sql.open(conn_str, function (err, conn) {
         if (err) {
-            console.log("Error opening the connection!");
+                context.res = {
+                    status: 500
+                };
             return;
         }
         else {
@@ -24,6 +26,8 @@ module.exports = function (context, req) {
                     body: "WTF"//results.rows
                 };
             });
+
+            return;
         }
     });
     context.done();
