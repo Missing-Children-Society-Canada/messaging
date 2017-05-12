@@ -21,25 +21,24 @@ module.exports = function (context, req) {
                 body: err
             }
         }
-        else {
-            var request = new Request("SELECT * FROM [dbo].[vwProfiles]",
-                function (err, rowCount, rows) {
-                    if (err) {
-                        context.res = {
-                            status: 500,
-                            body: err
-                        }
-                    }
-                    else {
-                        context.res = {
-                            status: 200,
-                            body: "WTF"//rows
-                        };
-                    }
-                });
-        }
     });
 
+    var request = new Request("SELECT * FROM [dbo].[vwProfiles]",
+        function (err, rowCount, rows) {
+            if (err) {
+                context.res = {
+                    status: 500,
+                    body: err
+                }
+            }
+            else {
+                context.res = {
+                    status: 200,
+                    body: "WTF"//rows
+                };
+            }
+        });
+        
     connection.execSql(request);
 
     context.done();
