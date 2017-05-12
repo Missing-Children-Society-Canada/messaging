@@ -11,9 +11,9 @@ var gpsOptions = {
 
 var twit = new twitter({
     consumer_key: process.env.TwitterConsumerKey,
-    consumer_secret: process.env.ConsumerSecret,
-    access_token_key: process.env.AccessTokenKey,
-    access_token_secret: process.env.AccessTokenSecret
+    consumer_secret: process.env.TwitterConsumerSecret,
+    access_token_key: process.env.TwitterAccessTokenKey,
+    access_token_secret: process.env.TwitterAccessTokenSecret
 });
 
 module.exports = function (context, message) {
@@ -86,7 +86,7 @@ module.exports = function (context, message) {
     };
 
     if (message.latitude && message.longitude) {
-        params.geocode = `${message.latitude},${message.longitude},${process.env.TWITTER_SEARCH_RADIUS}km`;
+        params.geocode = `${message.latitude},${message.longitude},${process.env.TweetSearchRadius}km`;
     }
 
     return twit.get('search/tweets', params)

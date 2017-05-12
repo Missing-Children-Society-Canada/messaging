@@ -11,6 +11,15 @@ Additional Context added to messages for reporting.
 - Social context: friends, who, types of activity.
 - Time: social patterns, location patterns etc.
 
+Required Function app settings:
+1. GeoCoderProvider // e.g. Google 
+2. GeoCoderApiKey // Google Map API key
+3. TwitterConsumerKey
+4. TwitterConsumerSecret
+5. TwitterAccessTokenKey
+6. TwitterAccessTokenSecret
+7. TweetSearchRadius
+
 ## Store
 Data is stored in DocumentDB (needs to be moved to SQL Database)
 
