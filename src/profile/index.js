@@ -24,10 +24,18 @@ module.exports = function (context, req) {
         else {
             request = new Request("SELECT * FROM [dbo].[vwProfiles]",
                 function (err, rowCount, rows) {
-                    context.res = {
-                        status: 200,
-                        body: { test: "test", count: rowCount, rows }
-                    };
+                    if (err) {
+                        context.res = {
+                            status: 500,
+                            body: err
+                        }
+                    }
+                    else {
+                        context.res = {
+                            status: 200,
+                            body: { test: "test", count: rowCount, rows }
+                        };
+                    }s
                 }
             );
         }
