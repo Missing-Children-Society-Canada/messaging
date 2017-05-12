@@ -13,7 +13,7 @@ module.exports = function (context, req) {
     }
     var connection = new Connection(config);
 
-    sql.open(conn_str, function (err, conn) {
+    connection.on('connect', function (err) {
         if (err) {
             context.res = {
                 status: 500,
