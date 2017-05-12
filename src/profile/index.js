@@ -2,13 +2,13 @@ var Connection = require('tedious').Connection;
 var Request = require('tedious').Request;
 
 module.exports = function (context, req) {
-    // Create connection to database
+    
     var config = {
-        userName: 'mcscroot', // update me
-        password: 'mqRJAxoRd1lvlS1N1UVuhn220OzT0d', // update me
-        server: 'mcsc.database.windows.net', // update me
+        userName: 'mcscroot',
+        password: 'mqRJAxoRd1lvlS1N1UVuhn220OzT0d',
+        server: 'mcsc.database.windows.net',
         options: {
-            database: 'social' //update me
+            database: 'social'
         }
     }
     var connection = new Connection(config);
@@ -31,5 +31,6 @@ module.exports = function (context, req) {
             );
         }
     });
+
     context.done();
 }
