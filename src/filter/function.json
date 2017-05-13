@@ -9,13 +9,13 @@
       "accessRights": "Manage"
     },
     {
-      "name": "token",
+      "name": "userdata",
       "type": "documentDB",
       "direction": "in",
       "connection": "DocumentDB",
       "databaseName": "mean-dev",
       "collectionName": "users",
-      "sqlQuery": "SELECT c.instagram.token FROM c WHERE (c.instagram['$id'] = {userid} && 'instagram' = {platform}) || (c.twitter['$id'] = {userid} && 'twitter' = {platform}) || (c.facebook['$id'] = {userid} && 'facebook' = {platform})"
+      "sqlQuery": "SELECT c FROM c WHERE (c.instagram['$id'] = {userid} && 'instagram' = {platform}) || (c.twitter['$id'] = {userid} && 'twitter' = {platform}) || (c.facebook['$id'] = {userid} && 'facebook' = {platform})"
     },
     {
       "type": "serviceBus",

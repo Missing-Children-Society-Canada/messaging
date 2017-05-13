@@ -1,39 +1,55 @@
-var DocumentDBClient = require('documentdb').DocumentClient;
-
-var config = {
-    DatabaseId: "missingdata",
-    FacebookCollectionId: "facebook-profile",
-    TwitterCollectionId: "twitter-profile",
-    Host: process.env.DocDb_Host,
-    AuthKey: process.env.DocDb_AuthKey,
-};
-config.CollLink = 'dbs/' + config.DatabaseId + '/colls/' + config.TwitterCollectionId
-
-var docDbClient = new DocumentDBClient(config.Host, { masterKey: config.AuthKey });
-
 module.exports = function (context, message) {
 
-    switch (message.social_site) {
-        case providers.twitter://filter on twitter
+    var err = null;
 
-            docDbClient.readDocument(config.CollLink + '/docs/' + message.userid, function (err, results) {
+    var userdata = context.bindings.userdata[0];
+    context.log(userdata);//TEMP LOGGING
 
-                if (!err && results != null) {
-                    context.bindings.out = message;
-                }
+    if (!userdata.twitter && !userdata.facebook || !userdata.instagram) {
+        console.log('No social profiles');
 
-                context.done(err, message);
-            });
-
-            break;
-        case providers.facebook://filter on facebook
-            context.done(new Error('Facebook is not implemented yet'), message);
-            break;
-        case providers.instagram://filter on ig - see ig_media_filter
-            break;
-
-        default:
-            context.done(new Error('unknown type'), message);
-            break;
+        err = new Error('No social profiles');
     }
+
+    if (!userdata.id) {
+        console.log('No user id');
+
+        err = new Error('No social profiles');
+    }
+
+    var data = {
+        userid = message.userid
+    };
+
+    if (message.twitter) {
+        console.log('adding twitter');
+
+        data.twitter = {
+            id: message.twitter.$id,
+            token: message.twitter.token,
+            username: message.twitter.username,
+        };
+    }
+
+    if (message.instagram) {
+        console.log('adding instagram');
+
+        data.instagram = {
+            id: message.instagram.$id,
+            token: message.instagram.token,
+            username: message.instagram.username,
+        };
+    }
+
+    if (message.facebook) {
+        console.log('adding facebook');
+
+        data.facebook = {
+            id: message.facebook.$id,
+            token: message.facebook.token,
+            username: message.facebook.email,
+        };
+    }
+
+    context.done(err, data);
 };
