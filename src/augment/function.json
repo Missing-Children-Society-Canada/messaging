@@ -1,14 +1,13 @@
 {
   "bindings": [
-
-    {
-      "queueName": "toaugment",
-      "name": "in",
-      "type": "serviceBusTrigger",
-      "direction": "in",
-      "connection": "AzureWebJobsServiceBus",
-      "accessRights": "Manage"
-    },
+    // {
+    //   "queueName": "toaugment",
+    //   "name": "in",
+    //   "type": "serviceBusTrigger",
+    //   "direction": "in",
+    //   "connection": "AzureWebJobsServiceBus",
+    //   "accessRights": "Manage"
+    // },
     {
       "type": "serviceBus",
       "name": "out",
