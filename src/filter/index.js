@@ -2,7 +2,6 @@ module.exports = function (context, message, userdata) {
 
     let err = null;
 
-    let userdata = context.bindings.userdata[0];
     context.log(userdata);//TEMP LOGGING
 
     if (!userdata) {
