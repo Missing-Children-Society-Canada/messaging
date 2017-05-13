@@ -2,26 +2,26 @@ module.exports = function (context, message) {
 
     let err = null;
 
-    let userdata = context.bindings.userdata[0];
-    context.log(userdata);//TEMP LOGGING
+    // let userdata = context.bindings.userdata[0];
+    // context.log(userdata);//TEMP LOGGING
 
-    if (!userdata) {
-        console.log('Not tracking user');
+    // if (!userdata) {
+    //     console.log('Not tracking user');
 
-        err = new Error('Not tracking user');
-    }
+    //     err = new Error('Not tracking user');
+    // }
 
-    if (!userdata.twitter && !userdata.facebook || !userdata.instagram) {
-        console.log('No social profiles');
+    // if (!userdata.twitter && !userdata.facebook || !userdata.instagram) {
+    //     console.log('No social profiles');
 
-        err = new Error('No social profiles');
-    }
+    //     err = new Error('No social profiles');
+    // }
 
-    if (!userdata.id) {
-        console.log('No user id');
+    // if (!userdata.id) {
+    //     console.log('No user id');
 
-        err = new Error('No social profiles');
-    }
+    //     err = new Error('No social profiles');
+    // }
 
     let data = null;
 
