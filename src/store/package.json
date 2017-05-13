@@ -1,0 +1,7 @@
+{
+  "name": "data-store",
+  "version": "0.0.0",
+  "dependencies": {
+    "mssql": "latest"
+  }
+}

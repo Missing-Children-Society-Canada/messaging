@@ -1,3 +1,16 @@
+const sql = require('mssql');
+
+const config = {
+    server: process.env.SqlServer,
+    database: process.env.SqlDatabase,
+    user: process.env.SqlUser,
+    password: process.env.SqlPassword,
+    port: 1433,
+    options: {
+        encrypt: true
+    }
+};
+
 let providers = require('..\constants').providers;
 
 module.exports = function (context, message) {
