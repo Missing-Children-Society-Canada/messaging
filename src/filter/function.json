@@ -15,7 +15,7 @@
       "connection": "DocumentDB",
       "databaseName": "mean-dev",
       "collectionName": "users",
-      "sqlQuery": "SELECT * FROM c WHERE (c.twitter['$id'] = {userid} AND 'twitter' = {platform}) AND (c.instagram['$id'] = {userid} AND 'instagram' = {platform})"
+      "sqlQuery": "SELECT * FROM c WHERE c.{platform}['$id'] = {userid}"
     },
     {
       "type": "serviceBus",
