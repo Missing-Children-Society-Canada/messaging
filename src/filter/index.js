@@ -18,7 +18,9 @@ module.exports = function (context, message) {
     }
 
     var data = {
-        userid = message.userid
+        userid = userdata.id,
+        platform = message.platform,
+        mediaid = message.mediaid
     };
 
     if (message.twitter) {
