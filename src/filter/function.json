@@ -15,7 +15,7 @@
       "connection": "DocumentDB",
       "databaseName": "mean-dev",
       "collectionName": "users",
-      "sqlQuery": "SELECT c FROM c WHERE (c.instagram['$id'] = {userid} && 'instagram' = {platform}) || (c.twitter['$id'] = {userid} && 'twitter' = {platform}) || (c.facebook['$id'] = {userid} && 'facebook' = {platform})"
+      "sqlQuery": "SELECT c FROM c WHERE (c.instagram['$id'] = {userid} AND 'instagram' = {platform}) || (c.twitter['$id'] = {userid} AND 'twitter' = {platform}) || (c.facebook['$id'] = {userid} AND 'facebook' = {platform})"
     },
     {
       "type": "serviceBus",
