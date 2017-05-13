@@ -1,13 +1,14 @@
 {
   "bindings": [
-    // {
-    //   "queueName": "toaugment",
-    //   "name": "in",
-    //   "type": "serviceBusTrigger",
-    //   "direction": "in",
-    //   "connection": "AzureWebJobsServiceBus",
-    //   "accessRights": "Manage"
-    // },
+    {
+      "topicName": "toaugment",
+      "subscriptionName": "HALP",
+      "name": "in",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "connection": "AzureWebJobsServiceBus",
+      "accessRights": "Manage"
+    },
     {
       "type": "serviceBus",
       "name": "out",
