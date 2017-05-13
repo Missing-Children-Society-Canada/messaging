@@ -22,14 +22,12 @@ module.exports = function (context, message, userdata) {
         err = new Error('No social profiles');
     }
 
-    let data = null;
+    let data = new Object();
 
     if (!err) {
-        data = {
-            userid = userdata.id,
-            platform = message.platform,
-            mediaid = message.mediaid
-        };
+        data.userid = userdata.id;
+        data.platform = message.platform;
+        data.mediaid = message.mediaid;
 
         if (message.twitter) {
             console.log('adding twitter');
