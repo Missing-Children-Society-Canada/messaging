@@ -42,6 +42,18 @@ module.exports = function (context, message) {
         social_content: [content]
     };
 
+    const request = new sql.Request()
+    request.input('Identifier', sql.UniqueIdentifier, id);
+    request.input('AccountId', sql.NvarChar, message.userid);
+    request.input('MediaId', sql.NvarChar, content.id);
+    request.input('CreatedOn', sql.DateTime, new Date());
+    request.input('LastUpdatedOn', sql.DateTime, new Date());
+    request.input('Content', sql.NVarChar, content.content);
+
+    request.execute('[dbo].[StoreSocialInteraction]', (err, result) => {
+
+    });
+
     context.bindings.out = data;
 
     context.done();
