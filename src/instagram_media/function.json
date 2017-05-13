@@ -1,12 +1,11 @@
 {
   "bindings": [
     {
-      "queueName": "tofilter",
-      "name": "in",
-      "type": "serviceBusTrigger",
+      "name": "msg",
+      "type": "queueTrigger",
       "direction": "in",
-      "connection": "AzureWebJobsServiceBus",
-      "accessRights": "Manage"
+      "queueName": "ig-subscription-media",
+      "connection": "AzureWebJobsStorage"
     },
     {
       "name": "token",
@@ -15,12 +14,12 @@
       "connection": "DocumentDB",
       "databaseName": "mean-dev",
       "collectionName": "users",
-      "sqlQuery": "SELECT c.instagram.token FROM c WHERE c.instagram['$id'] = {userid} || c.twitter['$id'] = {userid} || c.facebook['$id'] = {userid}"
+      "sqlQuery": "SELECT c.instagram.token FROM c WHERE c.instagram['$id'] = {user_id}"
     },
     {
       "type": "serviceBus",
       "name": "out",
-      "topicName": "toaugment",
+      "queueName": "tostore",
       "connection": "AzureWebJobsServiceBus",
       "accessRights_": "Manage",
       "direction": "out"

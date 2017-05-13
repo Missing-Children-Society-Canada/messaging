@@ -1,5 +1,4 @@
 var DocumentDBClient = require('documentdb').DocumentClient;
-var providers = require('..\constants').providers;
 
 var config = {
     DatabaseId: "missingdata",

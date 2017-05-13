@@ -1,4 +1,5 @@
 let ig = require('instagram-node');
+let providers = require('..\constants').providers;
 
 module.exports = function (context, msg) {
     if (context.bindings.token.length) {
@@ -14,7 +15,7 @@ module.exports = function (context, msg) {
     function handleMedia(err, media) {
         if (media.tags.includes('hfm')) {
             let message = {
-                platform: 'instagram',
+                social_site: providers.instagram,
                 userid: msg.user_id,
                 longitude: media.location.longitude,
                 latitude: media.location.latitude,
