@@ -24,43 +24,43 @@ module.exports = function (context, message, userdata) {
 
     let data = null;
 
-    // if (!err) {
-    //     data = {
-    //         userid = userdata.id,
-    //         platform = message.platform,
-    //         mediaid = message.mediaid
-    //     };
+    if (!err) {
+        data = {
+            userid = userdata.id,
+            platform = message.platform,
+            mediaid = message.mediaid
+        };
 
-    //     if (message.twitter) {
-    //         console.log('adding twitter');
+        if (message.twitter) {
+            console.log('adding twitter');
 
-    //         data.twitter = {
-    //             id: message.twitter.$id,
-    //             token: message.twitter.token,
-    //             username: message.twitter.username,
-    //         };
-    //     }
+            data.twitter = {
+                id: message.twitter.$id,
+                token: message.twitter.token,
+                username: message.twitter.username,
+            };
+        }
 
-    //     if (message.instagram) {
-    //         console.log('adding instagram');
+        if (message.instagram) {
+            console.log('adding instagram');
 
-    //         data.instagram = {
-    //             id: message.instagram.$id,
-    //             token: message.instagram.token,
-    //             username: message.instagram.username,
-    //         };
-    //     }
+            data.instagram = {
+                id: message.instagram.$id,
+                token: message.instagram.token,
+                username: message.instagram.username,
+            };
+        }
 
-    //     if (message.facebook) {
-    //         console.log('adding facebook');
+        if (message.facebook) {
+            console.log('adding facebook');
 
-    //         data.facebook = {
-    //             id: message.facebook.$id,
-    //             token: message.facebook.token,
-    //             username: message.facebook.email,
-    //         };
-    //     }
-    // }
+            data.facebook = {
+                id: message.facebook.$id,
+                token: message.facebook.token,
+                username: message.facebook.email,
+            };
+        }
+    }
 
     context.done(err, data);
 };
