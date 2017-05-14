@@ -3,7 +3,7 @@
     {
       "topicName": "toaugment",
       "subscriptionName": "twitter_media",
-      "name": "in",
+      "name": "message",
       "type": "serviceBusTrigger",
       "direction": "in",
       "connection": "AzureWebJobsServiceBus",
