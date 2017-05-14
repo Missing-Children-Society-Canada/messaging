@@ -15,7 +15,7 @@ module.exports = function (context, message) {
     const docDbClient = new DocumentDBClient(config.Host, { masterKey: config.AuthKey });
     const querySpec = {
         //query: 'SELECT * FROM c',
-        query: 'SELECT * FROM c WHERE (c.twitter[\'$id\'] = @userid AND \'twitter\' = @platform)',// AND (c.instagram[\'$id\'] = @userid AND \'instagram\' = @platform) AND (c.facebook[\'$id\'] = @userid AND \'facebook\' = @platform)',
+        query: 'SELECT * FROM c WHERE (c.twitter[\'$id\'] = @userid AND \'twitter\' = \'@platform\') AND (c.instagram[\'$id\'] = @userid AND \'instagram\' = \'@platform\') AND (c.facebook[\'$id\'] = @userid AND \'facebook\' = \'@platform\')',
         parameters: [{
             name: '@userid',
             value: message.userid
@@ -29,7 +29,6 @@ module.exports = function (context, message) {
     docDbClient.queryDocuments(config.CollLink, querySpec).toArray(function (err, results) {
 
         let userdata = results[0];
-        context.log(userdata);
 
         if (!userdata || userdata == undefined) {
             context.log('Not tracking user');
@@ -44,12 +43,14 @@ module.exports = function (context, message) {
             context.log('No social profiles');
 
             err = new Error('No social profiles');
+            return;
         }
 
         if (!userdata.id) {
             context.log('No user id');
 
             err = new Error('No social profiles');
+            return;
         }
 
         let data = new Object();
