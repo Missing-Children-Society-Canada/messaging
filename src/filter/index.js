@@ -26,7 +26,8 @@ module.exports = function (context, message) {
     };
 
     docDbClient.queryDocuments(config.CollLink, querySpec).toArray(function (err, results) {
-
+context.log(err);
+context.log(results);
         let userdata = results[0];
 
         if (!userdata || userdata == undefined) {
