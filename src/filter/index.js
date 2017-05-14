@@ -10,28 +10,13 @@ config.CollLink = 'dbs/' + config.DatabaseId + '/colls/' + config.CollectionId
 
 module.exports = function (context, message) {
 
-
     let err = null;
 
     const docDbClient = new DocumentDBClient(config.Host, { masterKey: config.AuthKey });
-    const querySpec = {
-        query: 'SELECT * FROM c WHERE (c.twitter[\'$id\'] = \'@userid\' AND \'twitter\' = \'@platform\')',// OR (c.instagram[\'$id\'] = \'@userid\' AND \'instagram\' = \'@platform\') OR (c.facebook[\'$id\'] = \'@userid\' AND \'facebook\' = \'@platform\')',
-        parameters: [{
-            name: '@userid',
-            value: message.userid
-        },
-        {
-            name: '@platform',
-            value: message.platform
-        }]
-    };
-
     const query = 'SELECT * FROM c WHERE (c.twitter[\'$id\'] = \'' + message.userid + '\' AND \'twitter\' = \'' + message.platform + '\') OR (c.instagram[\'$id\'] = \'' + message.userid + '\' AND \'instagram\' = \'' + message.platform + '\') OR (c.facebook[\'$id\'] = \'' + message.userid + '\' AND \'facebook\' = \'' + message.platform + '\')';
 
-    context.log(querySpec);
     docDbClient.queryDocuments(config.CollLink, query).toArray(function (err, results) {
-        context.log(err);
-        context.log(results);
+
         let userdata = results[0];
 
         if (!userdata || userdata == undefined) {
