@@ -26,7 +26,7 @@ module.exports = function (context, message) {
         }]
     };
 
-    const query = 'SELECT * FROM c WHERE (c.twitter[\'$id\'] = \'' + message.userid + '\' AND \'twitter\' = \'' + message.platform + '\')';
+    const query = 'SELECT * FROM c WHERE (c.twitter[\'$id\'] = \'' + message.userid + '\' AND \'twitter\' = \'' + message.platform + '\') OR (c.instagram[\'$id\'] = \'' + message.userid + '\' AND \'instagram\' = \'' + message.platform + '\') OR (c.facebook[\'$id\'] = \'' + message.userid + '\' AND \'facebook\' = \'' + message.platform + '\')';
 
     context.log(querySpec);
     docDbClient.queryDocuments(config.CollLink, query).toArray(function (err, results) {
