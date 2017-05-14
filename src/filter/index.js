@@ -1,7 +1,32 @@
-module.exports = function (context, message, userdata) {
+const DocumentDBClient = require('documentdb').DocumentClient;
+const config = {
+    DatabaseId: "mean-dev",
+    CollectionId: "users",
+    Host: process.env.DocDb_Host,
+    AuthKey: process.env.DocDb_AuthKey,
+};
+
+config.CollLink = 'dbs/' + config.DatabaseId + '/colls/' + config.TwitterCollectionId
+
+module.exports = function (context, message) {
 
     let err = null;
 
+    const docDbClient = new DocumentDBClient(config.Host, { masterKey: config.AuthKey });
+    var querySpec = {
+        query: 'SELECT * FROM c WHERE (c.twitter[\'$id\'] = @userid AND \'twitter\' = @platform) AND (c.instagram[\'$id\'] = @userid AND \'instagram\' = @platform) AND (c.facebook[\'$id\'] = @userid AND \'facebook\' = @platform)',
+        parameters: [{
+            name: '@userid',
+            value: message.userid
+        },
+        {
+            name: '@platform',
+            value: message.platform
+        }]
+    };
+
+    let datas = docDbClient.queryCollections(config.CollLink, querySpec);
+    let userdata = datas[0];
     context.log(userdata);//TEMP LOGGING
 
     if (!userdata) {
