@@ -48,38 +48,38 @@ module.exports = function (context, message) {
         data.platform = message.platform;
         data.mediaid = message.mediaid;
 
-        if (message.twitter) {
+        if (userdata.twitter) {
             context.log('adding twitter');
 
             data.twitter = {
-                id: message.twitter.$id,
-                token: message.twitter.token,
-                username: message.twitter.username,
+                id: userdata.twitter.$id,
+                token: userdata.twitter.token,
+                username: userdata.twitter.username,
             };
         }
 
-        if (message.instagram) {
+        if (userdata.instagram) {
             context.log('adding instagram');
 
             data.instagram = {
-                id: message.instagram.$id,
-                token: message.instagram.token,
-                username: message.instagram.username,
+                id: userdata.instagram.$id,
+                token: userdata.instagram.token,
+                username: userdata.instagram.username,
             };
         }
 
-        if (message.facebook) {
+        if (userdata.facebook) {
             context.log('adding facebook');
 
             data.facebook = {
-                id: message.facebook.$id,
-                token: message.facebook.token,
-                username: message.facebook.email,
+                id: userdata.facebook.$id,
+                token: userdata.facebook.token,
+                username: userdata.facebook.email,
             };
         }
 
         context.log(data);
-        
+
         context.done(err, data);
     });
 };
