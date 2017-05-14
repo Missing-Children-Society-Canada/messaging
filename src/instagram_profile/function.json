@@ -12,7 +12,7 @@
     {
       "type": "serviceBus",
       "name": "out",
-      "queueName": "tostore",
+      "queueName": "store_instagram_profile",
       "connection": "AzureWebJobsServiceBus",
       "accessRights_": "Manage",
       "direction": "out"
