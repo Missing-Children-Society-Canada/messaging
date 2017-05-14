@@ -10,7 +10,6 @@ config.CollLink = 'dbs/' + config.DatabaseId + '/colls/' + config.CollectionId
 
 module.exports = function (context, message) {
 
-context.log(message);
 
     let err = null;
 
@@ -27,6 +26,7 @@ context.log(message);
         }]
     };
 
+context.log(querySpec);
     docDbClient.queryDocuments(config.CollLink, querySpec).toArray(function (err, results) {
 context.log(err);
 context.log(results);
