@@ -14,8 +14,7 @@ module.exports = function (context, message) {
 
     const docDbClient = new DocumentDBClient(config.Host, { masterKey: config.AuthKey });
     const querySpec = {
-        //query: 'SELECT * FROM c',
-        query: 'SELECT * FROM c WHERE (c.twitter[\'$id\'] = @userid AND \'twitter\' = \'@platform\')',// OR (c.instagram[\'$id\'] = @userid AND \'instagram\' = \'@platform\') OR (c.facebook[\'$id\'] = @userid AND \'facebook\' = \'@platform\')',
+        query: 'SELECT * FROM c WHERE (c.twitter[\'$id\'] = \'@userid\' AND \'twitter\' = \'@platform\') OR (c.instagram[\'$id\'] = \'@userid\' AND \'instagram\' = \'@platform\') OR (c.facebook[\'$id\'] = \'@userid\' AND \'facebook\' = \'@platform\')',
         parameters: [{
             name: '@userid',
             value: message.userid
