@@ -14,7 +14,7 @@ module.exports = function (context, message) {
 
     const docDbClient = new DocumentDBClient(config.Host, { masterKey: config.AuthKey });
     var querySpec = {
-        query: 'SELECT * FROM c WHERE (c.twitter[\'$id\'] = @userid AND \'twitter\' = @platform) AND (c.instagram[\'$id\'] = @userid AND \'instagram\' = @platform) AND (c.facebook[\'$id\'] = @userid AND \'facebook\' = @platform)',
+        query: 'SELECT * FROM c',
         parameters: [{
             name: '@userid',
             value: message.userid
