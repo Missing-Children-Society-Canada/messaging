@@ -21,7 +21,7 @@ module.exports = function (context, message) {
     request.input('LastUpdatedOn', sql.DateTime, new Date());
     request.input('Content', sql.NVarChar, message.tweettext || message.media_text);
 
-    request.execute('[dbo].[StoreSocialInteraction]');
+    request.execute('[dbo].[SaveSocialInteraction]');
 
     context.done();
 };

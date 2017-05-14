@@ -15,7 +15,7 @@ module.exports = function (context, req) {
     
     const request = new sql.Request();
 
-    request.execute('[dbo].[SaveTwitterProfile]');
+    request.execute('[dbo].[SaveFacebookMedia]');
 
     context.done();
 }

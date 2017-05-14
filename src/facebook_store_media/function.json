@@ -1,0 +1,13 @@
+{
+  "bindings": [
+    {
+      "queueName": "store_facebook_media",
+      "name": "in",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "connection": "AzureWebJobsServiceBus",
+      "accessRights": "Manage"
+    }
+  ],
+  "disabled": false
+}
