@@ -1,7 +1,7 @@
 {
   "bindings": [
     {
-      "queueName": "store_twitter_media",
+      "queueName": "store_twitter_profile",
       "name": "in",
       "type": "serviceBusTrigger",
       "direction": "in",

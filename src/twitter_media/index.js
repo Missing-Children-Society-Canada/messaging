@@ -2,14 +2,14 @@ var util = require('util');
 var twitter = require('twitter');
 var NodeGeocoder = require('node-geocoder');
 
-var gpsOptions = {
+const gpsOptions = {
     provider: process.env.GeoCoderProvider,
     httpAdapter: 'https', // Default 
     apiKey: process.env.GeoCoderApiKey, // for Mapquest, OpenCage, Google Premier 
     formatter: null         // 'gpx', 'string', ... 
 };
 
-var twit = new twitter({
+const twit = new twitter({
     consumer_key: process.env.TwitterConsumerKey,
     consumer_secret: process.env.TwitterConsumerSecret,
     access_token_key: process.env.TwitterAccessTokenKey,
