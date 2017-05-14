@@ -26,10 +26,12 @@ module.exports = function (context, message) {
         }]
     };
 
-context.log(querySpec);
-    docDbClient.queryDocuments(config.CollLink, querySpec).toArray(function (err, results) {
-context.log(err);
-context.log(results);
+    const query = 'SELECT * FROM c WHERE (c.twitter[\'$id\'] = \'' + message.userid + '\' AND \'twitter\' = \'' + message.platform + '\')';
+
+    context.log(querySpec);
+    docDbClient.queryDocuments(config.CollLink, query).toArray(function (err, results) {
+        context.log(err);
+        context.log(results);
         let userdata = results[0];
 
         if (!userdata || userdata == undefined) {
