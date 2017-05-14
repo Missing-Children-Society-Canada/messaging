@@ -9,15 +9,6 @@
       "accessRights": "Manage"
     },
     {
-      "name": "userdata",
-      "type": "documentDB",
-      "direction": "in",
-      "connection": "DocumentDB",
-      "databaseName": "mean-dev",
-      "collectionName": "users",
-      "sqlQuery": "SELECT * FROM c WHERE c.instagram['$id'] = {instagramuserid} || c.twitter['$id'] = {twitteruserid} || c.facebook['$id'] = {facebookuserid}"
-    },
-    {
       "type": "serviceBus",
       "name": "out",
       "topicName": "toaugment",
