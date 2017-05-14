@@ -4,7 +4,7 @@ module.exports = function (context, message) {
     let token = message.instagram.token;
     let client = ig.instagram();
     client.use({ access_token: token });
-    client.media(msg.media_id, handleMedia);
+    client.media(message.mediaid, handleMedia);
 
     function handleMedia(err, media) {
         if (media.tags.includes('hfm')) {
