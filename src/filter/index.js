@@ -10,6 +10,8 @@ config.CollLink = 'dbs/' + config.DatabaseId + '/colls/' + config.CollectionId
 
 module.exports = function (context, message) {
 
+context.log(message);
+
     let err = null;
 
     const docDbClient = new DocumentDBClient(config.Host, { masterKey: config.AuthKey });
