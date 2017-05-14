@@ -27,13 +27,13 @@ module.exports = function (context, message) {
     };
 
     docDbClient.queryDocuments(config.CollLink, querySpec).toArray(function (err, results) {
-        console.log(err);
-        console.log(results);
+        context.log(err);
+        context.log(results);
 
         let userdata = results[0];
 
         if (!userdata || userdata == undefined) {
-            console.log('Not tracking user');
+            context.log('Not tracking user');
 
             err = new Error('Not tracking user');
         }
@@ -41,13 +41,13 @@ module.exports = function (context, message) {
         if ((!userdata.twitter || userdata.twitter == undefined)
             && (!userdata.facebook || userdata.facebook == undefined)
             || (!userdata.instagram || userdata.instagram == undefined)) {
-            console.log('No social profiles');
+            context.log('No social profiles');
 
             err = new Error('No social profiles');
         }
 
         if (!userdata.id) {
-            console.log('No user id');
+            context.log('No user id');
 
             err = new Error('No social profiles');
         }
@@ -60,7 +60,7 @@ module.exports = function (context, message) {
             data.mediaid = message.mediaid;
 
             if (message.twitter) {
-                console.log('adding twitter');
+                context.log('adding twitter');
 
                 data.twitter = {
                     id: message.twitter.$id,
@@ -70,7 +70,7 @@ module.exports = function (context, message) {
             }
 
             if (message.instagram) {
-                console.log('adding instagram');
+                context.log('adding instagram');
 
                 data.instagram = {
                     id: message.instagram.$id,
@@ -80,7 +80,7 @@ module.exports = function (context, message) {
             }
 
             if (message.facebook) {
-                console.log('adding facebook');
+                context.log('adding facebook');
 
                 data.facebook = {
                     id: message.facebook.$id,
