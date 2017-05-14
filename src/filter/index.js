@@ -13,8 +13,8 @@ module.exports = function (context, message) {
     let err = null;
 
     const docDbClient = new DocumentDBClient(config.Host, { masterKey: config.AuthKey });
-    var querySpec = {
-        query: 'SELECT * FROM c',
+    const querySpec = {
+        query: 'SELECT * FROM c WHERE (c.twitter[\'$id\'] = @userid AND \'twitter\' = @platform) AND (c.instagram[\'$id\'] = @userid AND \'instagram\' = @platform) AND (c.facebook[\'$id\'] = @userid AND \'facebook\' = @platform)',
         parameters: [{
             name: '@userid',
             value: message.userid
@@ -25,11 +25,11 @@ module.exports = function (context, message) {
         }]
     };
 
-        context.log(config.CollLink);//TEMP LOGGING
     docDbClient.queryCollections(config.CollLink, querySpec).toArray(function (err, results) {
-        context.log(results);//TEMP LOGGING
+            console.log(err);
+            console.log(results);
+        
         let userdata = results[0];
-        context.log(userdata);//TEMP LOGGING
 
         if (!userdata || userdata == undefined) {
             console.log('Not tracking user');
