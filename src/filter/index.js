@@ -18,6 +18,7 @@ module.exports = function (context, message) {
     docDbClient.queryDocuments(config.CollLink, query).toArray(function (err, results) {
 
         let userdata = results[0];
+context.log(userdata);
 
         if (!userdata || userdata == undefined) {
             context.log('Not tracking user');
