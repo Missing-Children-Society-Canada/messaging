@@ -10,7 +10,7 @@ const twit = new twitter({
 
 module.exports = function (context, message) {
 
-    return twit.get(`users/show.json?screen_name=${message.twitter.username}`)
+    return twit.get(`users/show.json?user_id=${message.twitter.id}`)
         .then(log)
 
     function setOutputBinding(data) {
