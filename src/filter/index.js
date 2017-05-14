@@ -6,7 +6,7 @@ const config = {
     AuthKey: process.env.DocDb_AuthKey,
 };
 
-config.CollLink = 'dbs/' + config.DatabaseId + '/colls/' + config.TwitterCollectionId
+config.CollLink = 'dbs/' + config.DatabaseId + '/colls/' + config.CollectionId
 
 module.exports = function (context, message) {
 
