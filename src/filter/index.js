@@ -25,66 +25,68 @@ module.exports = function (context, message) {
         }]
     };
 
-    let datas = docDbClient.queryCollections(config.CollLink, querySpec).toArray();
-    context.log(datas);//TEMP LOGGING
-    let userdata = datas[0];
-    context.log(userdata);//TEMP LOGGING
+    docDbClient.queryCollections(config.CollLink, querySpec).toArray(function (err, results) {
+        context.log(results);//TEMP LOGGING
+        let userdata = results[0];
+        context.log(userdata);//TEMP LOGGING
 
-    if (!userdata || userdata == undefined) {
-        console.log('Not tracking user');
+        if (!userdata || userdata == undefined) {
+            console.log('Not tracking user');
 
-        err = new Error('Not tracking user');
-    }
-
-    if (!userdata.twitter && !userdata.facebook || !userdata.instagram) {
-        console.log('No social profiles');
-
-        err = new Error('No social profiles');
-    }
-
-    if (!userdata.id) {
-        console.log('No user id');
-
-        err = new Error('No social profiles');
-    }
-
-    let data = new Object();
-
-    if (!err) {
-        data.userid = userdata.id;
-        data.platform = message.platform;
-        data.mediaid = message.mediaid;
-
-        if (message.twitter) {
-            console.log('adding twitter');
-
-            data.twitter = {
-                id: message.twitter.$id,
-                token: message.twitter.token,
-                username: message.twitter.username,
-            };
+            err = new Error('Not tracking user');
         }
 
-        if (message.instagram) {
-            console.log('adding instagram');
+        if (!userdata.twitter && !userdata.facebook || !userdata.instagram) {
+            console.log('No social profiles');
 
-            data.instagram = {
-                id: message.instagram.$id,
-                token: message.instagram.token,
-                username: message.instagram.username,
-            };
+            err = new Error('No social profiles');
         }
 
-        if (message.facebook) {
-            console.log('adding facebook');
+        if (!userdata.id) {
+            console.log('No user id');
 
-            data.facebook = {
-                id: message.facebook.$id,
-                token: message.facebook.token,
-                username: message.facebook.email,
-            };
+            err = new Error('No social profiles');
         }
-    }
 
-    context.done(err, data);
+        let data = new Object();
+
+        if (!err) {
+            data.userid = userdata.id;
+            data.platform = message.platform;
+            data.mediaid = message.mediaid;
+
+            if (message.twitter) {
+                console.log('adding twitter');
+
+                data.twitter = {
+                    id: message.twitter.$id,
+                    token: message.twitter.token,
+                    username: message.twitter.username,
+                };
+            }
+
+            if (message.instagram) {
+                console.log('adding instagram');
+
+                data.instagram = {
+                    id: message.instagram.$id,
+                    token: message.instagram.token,
+                    username: message.instagram.username,
+                };
+            }
+
+            if (message.facebook) {
+                console.log('adding facebook');
+
+                data.facebook = {
+                    id: message.facebook.$id,
+                    token: message.facebook.token,
+                    username: message.facebook.email,
+                };
+            }
+        }
+
+        context.done(err, data);
+    });
+
 };
