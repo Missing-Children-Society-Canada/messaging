@@ -25,7 +25,7 @@ module.exports = function (context, message) {
         }]
     };
 
-    docDbClient.queryCollections(config.CollLink, querySpec).toArray(function (err, results) {
+    docDbClient.queryDocuments(config.CollLink, querySpec).toArray(function (err, results) {
             console.log(err);
             console.log(results);
         
