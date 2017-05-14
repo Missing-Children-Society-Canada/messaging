@@ -26,10 +26,11 @@ module.exports = function (context, message) {
     };
 
     let datas = docDbClient.queryCollections(config.CollLink, querySpec);
+    context.log(datas);//TEMP LOGGING
     let userdata = datas[0];
     context.log(userdata);//TEMP LOGGING
 
-    if (!userdata) {
+    if (!userdata || userdata == undefined) {
         console.log('Not tracking user');
 
         err = new Error('Not tracking user');
