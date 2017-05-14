@@ -11,6 +11,7 @@ const twit = new twitter({
 module.exports = function (context, message) {
 
     context.log(message);
+    context.log(message.twitter.id);
 
     return twit.get(`users/show.json?user_id=${message.twitter.id}`, { include_entities: true })
         .then(log)
