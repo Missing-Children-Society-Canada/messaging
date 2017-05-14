@@ -2,7 +2,7 @@
   "bindings": [
     {
       "topicName": "toaugment",
-      "subscriptionName": "instagram_profile",
+      "subscriptionName": "facebook_profile_augment",
       "name": "in",
       "type": "serviceBusTrigger",
       "direction": "in",
@@ -12,7 +12,7 @@
     {
       "type": "serviceBus",
       "name": "out",
-      "queueName": "store_instagram_profile",
+      "queueName": "facebook_profile_store",
       "connection": "AzureWebJobsServiceBus",
       "accessRights_": "Manage",
       "direction": "out"

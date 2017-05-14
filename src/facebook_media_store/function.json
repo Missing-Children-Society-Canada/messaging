@@ -1,7 +1,7 @@
 {
   "bindings": [
     {
-      "queueName": "store_instagram_profile",
+      "queueName": "facebook_media_store",
       "name": "in",
       "type": "serviceBusTrigger",
       "direction": "in",

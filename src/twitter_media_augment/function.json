@@ -2,7 +2,7 @@
   "bindings": [
     {
       "topicName": "toaugment",
-      "subscriptionName": "instagram_media",
+      "subscriptionName": "twitter_media_augment",
       "name": "message",
       "type": "serviceBusTrigger",
       "direction": "in",
@@ -12,7 +12,7 @@
     {
       "type": "serviceBus",
       "name": "out",
-      "queueName": "store_instagram_media",
+      "queueName": "twitter_media_store",
       "connection": "AzureWebJobsServiceBus",
       "accessRights_": "Manage",
       "direction": "out"
