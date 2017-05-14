@@ -36,6 +36,7 @@ module.exports = function (context, message) {
             context.log('Not tracking user');
 
             err = new Error('Not tracking user');
+            return;
         }
 
         if ((!userdata.twitter || userdata.twitter == undefined)
@@ -92,5 +93,4 @@ module.exports = function (context, message) {
 
         context.done(err, data);
     });
-
 };
