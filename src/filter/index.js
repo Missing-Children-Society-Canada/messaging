@@ -25,7 +25,7 @@ module.exports = function (context, message) {
         }]
     };
 
-    let datas = docDbClient.queryCollections(config.CollLink, querySpec);
+    let datas = docDbClient.queryCollections(config.CollLink, querySpec).toArray();
     context.log(datas);//TEMP LOGGING
     let userdata = datas[0];
     context.log(userdata);//TEMP LOGGING
