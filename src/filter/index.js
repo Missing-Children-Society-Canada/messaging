@@ -18,7 +18,7 @@ module.exports = function (context, message) {
     docDbClient.queryDocuments(config.CollLink, query).toArray(function (err, results) {
 
         let userdata = results[0];
-context.log(userdata);
+        context.log(userdata);
 
         if (!userdata || userdata == undefined) {
             context.log('Not tracking user');
@@ -45,40 +45,38 @@ context.log(userdata);
 
         let data = new Object();
 
-        if (!err) {
-            data.userid = userdata.id;
-            data.platform = message.platform;
-            data.mediaid = message.mediaid;
+        data.userid = userdata.id;
+        data.platform = message.platform;
+        data.mediaid = message.mediaid;
 
-            if (message.twitter) {
-                context.log('adding twitter');
+        if (message.twitter) {
+            context.log('adding twitter');
 
-                data.twitter = {
-                    id: message.twitter.$id,
-                    token: message.twitter.token,
-                    username: message.twitter.username,
-                };
-            }
+            data.twitter = {
+                id: message.twitter.$id,
+                token: message.twitter.token,
+                username: message.twitter.username,
+            };
+        }
 
-            if (message.instagram) {
-                context.log('adding instagram');
+        if (message.instagram) {
+            context.log('adding instagram');
 
-                data.instagram = {
-                    id: message.instagram.$id,
-                    token: message.instagram.token,
-                    username: message.instagram.username,
-                };
-            }
+            data.instagram = {
+                id: message.instagram.$id,
+                token: message.instagram.token,
+                username: message.instagram.username,
+            };
+        }
 
-            if (message.facebook) {
-                context.log('adding facebook');
+        if (message.facebook) {
+            context.log('adding facebook');
 
-                data.facebook = {
-                    id: message.facebook.$id,
-                    token: message.facebook.token,
-                    username: message.facebook.email,
-                };
-            }
+            data.facebook = {
+                id: message.facebook.$id,
+                token: message.facebook.token,
+                username: message.facebook.email,
+            };
         }
 
         context.done(err, data);
