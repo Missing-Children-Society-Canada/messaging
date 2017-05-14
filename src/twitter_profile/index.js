@@ -9,11 +9,6 @@ const twit = new twitter({
 });
 
 module.exports = function (context, message) {
-    return twit.get(`users/show.json?screen_name=${message.twitter.username}`)
-        .then(log)
+    return twit.get(`users/show.json?screen_name=${message.twitter.username}`);
 
-    function log(data) {
-        context.log(data);
-        return data;
-    }
 }
