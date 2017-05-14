@@ -17,7 +17,7 @@ var twit = new twitter({
 });
 
 module.exports = function (context, message) {
-    return twit.get(`statuses/show/${message.tweetid}`, { include_entities: true })
+    return twit.get(`statuses/show/${message.mediaid}`, { include_entities: true })
         .then(getLocation)
         .then(getImages)
         .then(getHistory)

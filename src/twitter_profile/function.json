@@ -2,7 +2,7 @@
   "bindings": [
     {
       "topicName": "toaugment",
-      "subscriptionName": "HALP",
+      "subscriptionName": "twitter_profile",
       "name": "in",
       "type": "serviceBusTrigger",
       "direction": "in",

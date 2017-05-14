@@ -1,0 +1,22 @@
+{
+  "bindings": [
+    {
+      "topicName": "toaugment",
+      "subscriptionName": "twitter_media",
+      "name": "in",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "connection": "AzureWebJobsServiceBus",
+      "accessRights": "Manage"
+    },
+    {
+      "type": "serviceBus",
+      "name": "out",
+      "queueName": "tostore",
+      "connection": "AzureWebJobsServiceBus",
+      "accessRights_": "Manage",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
