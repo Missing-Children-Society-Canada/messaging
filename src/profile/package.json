@@ -1,7 +1,0 @@
-{
-  "name": "profile-api",
-  "version": "0.0.1",
-  "dependencies": {
-    "mssql": "latest"
-  }
-}
