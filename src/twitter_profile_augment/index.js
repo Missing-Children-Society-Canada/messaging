@@ -8,18 +8,11 @@ const twit = new twitter({
 });
 
 module.exports = function (context, message) {
+    let params = {
+        user_id: message.twitter.id
+    };
 
-    context.log('A: ' + process.env.TwitterConsumerKey);
-    context.log('B: ' + process.env.TwitterConsumerSecret);
-    context.log('C: ' + process.env.TwitterAccessTokenKey);
-    context.log('D: ' + process.env.TwitterAccessTokenSecret);
-    context.log(message.twitter.id);
-
-    return twit.get(`users/show.json?user_id=${message.twitter.id}`)   
-        .then(setOutputBinding)
-
-    function setOutputBinding(message) {
-        context.bindings.out = message;
-        return message;
-    }
+    return twit.get('users/show.json', params, function(err, user) {
+        context.done(err, user);
+    });
 }
