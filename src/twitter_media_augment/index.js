@@ -16,6 +16,7 @@ const twit = new twitter({
 });
 
 module.exports = function (context, message) {
+    //context.log(JSON.stringify(message, null, 4));
 
     return twit.get(`statuses/show/${message.mediaid}`, { include_entities: true })
         .then(getLocation)
@@ -30,8 +31,6 @@ module.exports = function (context, message) {
     }
 
     function getLocation(message) {
-        context.log(JSON.stringify(message, null, 4));
-        
         var tweetLocation = message.place.full_name + ' ' + message.place.country_code;
 
         if (message.place.country_code == 'US') {//THIS SHOULD BE CONFIGURABLE
