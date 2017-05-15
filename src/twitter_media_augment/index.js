@@ -22,37 +22,34 @@ module.exports = function (context, message) {
         .then(getLocation)
         .then(getImages)
         .then(getHistory)
-        .then(setOutputBinding)
         .then(logTweetHistory)
-
-    function setOutputBinding(message) {
-        context.bindings.out = message;
-        return message;
-    }
+        .then(setOutputBinding)
 
     function getLocation(message) {
-        var tweetLocation = message.place.full_name + ' ' + message.place.country_code;
+        if (message.place != null) {
+            var tweetLocation = message.place.full_name + ' ' + message.place.country_code;
 
-        if (message.place.country_code == 'US') {//THIS SHOULD BE CONFIGURABLE
-            // Get GPS from Tweet       
-            if (message.coordinates != null && 2 <= message.coordinates.coordinates.length) {
-                message.latitude = message.coordinates.coordinates[0];
-                message.longitude = message.coordinates.coordinates[1];
-                context.log('Lon: ' + message.longitude, 'Lat: ' + message.latitude);
-            }
-            else if (message.place != null && message.place.full_name != null) { // Get GPS via 3rd party GeoLocation module
-                var geocoder = NodeGeocoder(gpsOptions);
+            if (message.place.country_code == 'US') {//THIS SHOULD BE CONFIGURABLE
+                // Get GPS from Tweet       
+                if (message.coordinates != null && 2 <= message.coordinates.coordinates.length) {
+                    message.latitude = message.coordinates.coordinates[0];
+                    message.longitude = message.coordinates.coordinates[1];
+                    context.log('Lon: ' + message.longitude, 'Lat: ' + message.latitude);
+                }
+                else if (message.place.full_name != null) { // Get GPS via 3rd party GeoLocation module
+                    var geocoder = NodeGeocoder(gpsOptions);
 
-                return new Promise((resolve, reject) => {
-                    geocoder.geocode(tweetLocation, function (err, res) {
-                        if (err)
-                            return reject(err);
-                        message.latitude = res[0].latitude;
-                        message.longitude = res[0].longitude;
-                        context.log('Lon: ' + message.longitude, 'Lat: ' + message.latitude);
-                        resolve(message);
+                    return new Promise((resolve, reject) => {
+                        geocoder.geocode(tweetLocation, function (err, res) {
+                            if (err)
+                                return reject(err);
+                            message.latitude = res[0].latitude;
+                            message.longitude = res[0].longitude;
+                            context.log('Lon: ' + message.longitude, 'Lat: ' + message.latitude);
+                            resolve(message);
+                        });
                     });
-                });
+                }
             }
         }
         return message;
@@ -109,5 +106,10 @@ module.exports = function (context, message) {
 
         return Promise.all(loggingPromises)
             .then(() => message);
+    }
+
+    function setOutputBinding(message) {
+        context.bindings.out = message;
+        return message;
     }
 };
