@@ -7,7 +7,7 @@ module.exports = function (context, message) {
     client.media(message.mediaid, handleMedia);
 
     function handleMedia(err, media) {
-        if (media.tags.includes('hfm')) {
+        if (media.tags.includes('hfm')) { //USED FOR FILTERING; Would be better upstream???
             let message = {
                 plaftorm: 'instagram',
                 userid: msg.user_id,
