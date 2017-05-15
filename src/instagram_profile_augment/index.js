@@ -1,10 +1,9 @@
 let ig = require('instagram-node');
 
-module.exports = function (context, req) {
+module.exports = function (context, message) {
     
     context.log(message.instagram.token);
 
-    let token = message.instagram.token;
     let client = ig.instagram();
     client.use({ access_token: message.instagram.token });
 
