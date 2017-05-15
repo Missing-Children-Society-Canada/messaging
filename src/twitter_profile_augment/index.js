@@ -12,7 +12,7 @@ module.exports = function (context, message) {
         bearer_token: message.twitter.token
     });
 
-    return twit.get(`users/show.json?user_id=${message.twitter.id}`, { include_entities: true })
+    return twit.get(`users/show.json?user_id=${message.twitter.id}`)
         .then(log)
         .then(setOutputBinding)
 
