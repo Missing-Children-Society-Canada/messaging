@@ -29,10 +29,7 @@ module.exports = function (context, message) {
 
     function setOutputBinding(data) {
         context.bindings.out = data;
-        
-        context.done();
-
-        return message;
+        return data;
     }
 
     function getLocation(message) {
