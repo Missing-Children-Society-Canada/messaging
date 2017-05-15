@@ -1,0 +1,21 @@
+{
+  "bindings": [
+    {
+      "topicName": "tostructure",
+      "name": "message",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "connection": "AzureWebJobsServiceBus",
+      "accessRights": "Manage"
+    },
+    {
+      "type": "serviceBus",
+      "name": "out",
+      "topicName": "toaugment",
+      "connection": "AzureWebJobsServiceBus",
+      "accessRights_": "Manage",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
