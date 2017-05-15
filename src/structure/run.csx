@@ -1,3 +1,3 @@
-public static void Run()
+public static void Run(string message, TraceWriter log)
 {
 }
