@@ -12,7 +12,7 @@
       "type": "documentDB",
       "name": "instagrammedia",
       "databaseName": "reporting",
-      "collectionName": "profile",
+      "collectionName": "media",
       "createIfNotExists": true,
       "connection": "DocumentDB",
       "direction": "out"
