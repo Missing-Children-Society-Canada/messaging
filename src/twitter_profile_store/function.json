@@ -2,7 +2,7 @@
   "bindings": [
     {
       "queueName": "twitter_profile_store",
-      "name": "in",
+      "name": "message",
       "type": "serviceBusTrigger",
       "direction": "in",
       "connection": "AzureWebJobsServiceBus",

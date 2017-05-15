@@ -1,4 +1,4 @@
-module.exports = function (context, req) {
+module.exports = function (context, message) {
     let err = null;
     let data = message;
     
