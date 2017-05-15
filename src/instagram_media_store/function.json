@@ -10,7 +10,7 @@
     },
     {
       "type": "documentDB",
-      "name": "instagrammedia",
+      "name": "out",
       "databaseName": "reporting",
       "collectionName": "media",
       "createIfNotExists": true,

@@ -10,7 +10,7 @@
     },
     {
       "type": "documentDB",
-      "name": "instagramprofile",
+      "name": "out",
       "databaseName": "reporting",
       "collectionName": "profile",
       "createIfNotExists": true,
