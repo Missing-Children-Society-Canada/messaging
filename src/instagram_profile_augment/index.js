@@ -1,9 +1,12 @@
 let ig = require('instagram-node');
 
 module.exports = function (context, req) {
+    
+    context.log(message.instagram.token);
+
     let token = message.instagram.token;
     let client = ig.instagram();
-    client.use({ access_token: token });
+    client.use({ access_token: message.instagram.token });
 
     client.media(message.mediaid, handleMedia); //USED FOR FILTERING; Would be better upstream???
 
@@ -16,10 +19,7 @@ module.exports = function (context, req) {
     }
 
     function handleProfile(err, result) {
-        let data = result;
-
-        context.bindings.out = data;
-        //Format Data
+        context.bindings.out = result;
 
         context.done(err);
     }
