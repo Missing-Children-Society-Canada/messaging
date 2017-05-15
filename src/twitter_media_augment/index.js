@@ -1,4 +1,3 @@
-var util = require('util');
 var twitter = require('twitter');
 var NodeGeocoder = require('node-geocoder');
 
