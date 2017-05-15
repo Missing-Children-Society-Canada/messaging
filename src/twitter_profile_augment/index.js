@@ -8,11 +8,7 @@ const twit = new twitter({
 });
 
 module.exports = function (context, message) {
-    let params = {
-        user_id: message.twitter.id
-    };
-
-    return twit.get('users/show.json', params, function(err, user) {
+    return twit.get('users/show.json', { user_id: message.twitter.id }, function (err, user) {
         context.done(err, user);
     });
 }

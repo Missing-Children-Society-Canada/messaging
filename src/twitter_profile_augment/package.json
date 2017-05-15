@@ -2,7 +2,6 @@
   "name": "twitter_profile",
   "version": "0.1.0",
   "dependencies": {
-    "util": "^0.10.3",
     "twitter": "^1.4.0"
   }
 }
