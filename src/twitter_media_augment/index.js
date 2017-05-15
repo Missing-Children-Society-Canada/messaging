@@ -22,8 +22,8 @@ module.exports = function (context, message) {
         .then(getLocation)
         .then(getImages)
         .then(getHistory)
-        .then(logTweetHistory)
         .then(setOutputBinding)
+        //.then(logTweetHistory)
 
     function getLocation(message) {
         if (message.place != null) {
@@ -97,6 +97,11 @@ module.exports = function (context, message) {
             });
     }
 
+    function setOutputBinding(message) {
+        context.bindings.out = message;
+        return message;
+    }
+
     function logTweetHistory(message) {
 
         var loggingPromises = message.tweethistory_ids.map(historyId => {
@@ -109,10 +114,5 @@ module.exports = function (context, message) {
 
         return Promise.all(loggingPromises)
             .then(() => message);
-    }
-
-    function setOutputBinding(message) {
-        context.bindings.out = message;
-        return message;
     }
 };
