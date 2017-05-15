@@ -14,16 +14,16 @@ module.exports = function (context, message) {
     });
 
     return twit.get(`users/show.json?user_id=${message.twitter.id}`)
-        .then(log)
+        .then(logData)
         .then(setOutputBinding)
 
-    function setOutputBinding(data) {
-        context.bindings.out = data;
-        return data;
+    function setOutputBinding(message) {
+        context.bindings.out = message;
+        return message;
     }
 
-    function log(data) {
-        context.log(data);
-        return data;
+    function logData(message) {
+        context.log(message);
+        return message;
     }
 }
