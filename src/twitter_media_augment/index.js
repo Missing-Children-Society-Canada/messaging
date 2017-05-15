@@ -78,7 +78,7 @@ module.exports = function (context, message) {
     function getHistory(message) {
         message.tweethistory_ids = [];
         var params = {
-            q: options.screen_name,  // REQUIRED
+            q: message.user.screen_name,  // REQUIRED
             result_type: 'mixed',
             lang: 'en',
             max_id: message.tweetid
