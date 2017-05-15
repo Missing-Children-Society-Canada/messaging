@@ -7,7 +7,7 @@ module.exports = function (context, message) {
     let client = ig.instagram();
     client.use({ access_token: message.instagram.token });
 
-    ig.user(message.instagram.id, function (err, result) {
+    client.user(message.instagram.id, function (err, result) {
         context.bindings.out = result;
 
         context.done(err);
