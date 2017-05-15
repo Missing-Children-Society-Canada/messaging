@@ -31,7 +31,6 @@ module.exports = function (context, message) {
 
     function getLocation(message) {
         var tweetLocation = message.place.full_name + ' ' + message.place.country_code;
-        context.log(tweetLocation);
 
         if (message.place.country_code == 'US') {
             // Get GPS from Tweet       
@@ -68,9 +67,9 @@ module.exports = function (context, message) {
         }
 
         // Print photo urls
-        message.photourls.forEach(function (photourl) {
-            context.log(photourl);
-        });
+        // message.photourls.forEach(function (photourl) {
+        //     context.log(photourl);
+        // });
 
         return message;
     }
@@ -102,8 +101,8 @@ module.exports = function (context, message) {
         var loggingPromises = message.tweethistory_ids.map(historyId => {
             twit.get(`statuses/show/${historyId}`, { include_entities: true })
                 .then(msg => {
-                    context.log('tweethistory_id:' + historyId);
-                    context.log(msg.text);
+                    // context.log('tweethistory_id:' + historyId);
+                    // context.log(msg.text);
                 });
         });
 
