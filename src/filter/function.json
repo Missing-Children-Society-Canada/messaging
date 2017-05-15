@@ -11,7 +11,7 @@
     {
       "type": "serviceBus",
       "name": "out",
-      "topicName": "toaugment",
+      "queueName": "tostructure",
       "connection": "AzureWebJobsServiceBus",
       "accessRights_": "Manage",
       "direction": "out"
