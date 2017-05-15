@@ -58,16 +58,18 @@ module.exports = function (context, message) {
     function getImages(message) {
         // Add photo urls
         message.photourls = [];
-        if (message.entities.media.length > 0) {
-            message.entities.media.forEach(function (item) {
-                message.photourls.push(item.media_url);
-            });
-        }
+        if (message.entities != null && mesasge.entities.media != null) {
+            if (message.entities.media.length > 0) {
+                message.entities.media.forEach(function (item) {
+                    message.photourls.push(item.media_url);
+                });
+            }
 
-        // Print photo urls
-        // message.photourls.forEach(function (photourl) {
-        //     context.log(photourl);
-        // });
+            // Print photo urls
+            // message.photourls.forEach(function (photourl) {
+            //     context.log(photourl);
+            // });
+        }
 
         return message;
     }
