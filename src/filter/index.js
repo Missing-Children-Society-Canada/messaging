@@ -42,43 +42,11 @@ module.exports = function (context, message) {
             return;
         }
 
-        let data = new Object();
+        context.bindings.out = {
+            user = userdata,
+            msg = message
+        };
 
-        data.userid = userdata.id;
-        data.platform = message.platform;
-        data.mediaid = message.mediaid;
-
-        if (userdata.twitter) {
-            context.log('adding twitter');
-
-            data.twitter = {
-                id: userdata.twitter.$id,
-                token: userdata.twitter.token,
-                username: userdata.twitter.username,
-            };
-        }
-
-        if (userdata.instagram) {
-            context.log('adding instagram');
-
-            data.instagram = {
-                id: userdata.instagram.$id,
-                token: userdata.instagram.token,
-                username: userdata.instagram.username,
-            };
-        }
-
-        if (userdata.facebook) {
-            context.log('adding facebook');
-
-            data.facebook = {
-                id: userdata.facebook.$id,
-                token: userdata.facebook.token,
-                username: userdata.facebook.email,
-            };
-        }
-
-        context.bindings.out = data;
         context.done(err, data);
     });
 };

@@ -24,8 +24,8 @@ module.exports = function (context, message) {
         .then(setOutputBinding)
         .then(logTweetHistory)
 
-    function setOutputBinding(message) {
-        context.bindings.out = message;
+    function setOutputBinding(data) {
+        context.bindings.out = data;
         
         context.done();
 
