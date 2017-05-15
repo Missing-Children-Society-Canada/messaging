@@ -7,6 +7,14 @@
       "direction": "in",
       "connection": "AzureWebJobsServiceBus",
       "accessRights": "Manage"
+    },
+    {
+      "type": "documentDB",
+      "name": "out",
+      "databaseName": "reporting",
+      "collectionName": "media",
+      "connection": "DocumentDB",
+      "direction": "out"
     }
   ],
   "disabled": false
