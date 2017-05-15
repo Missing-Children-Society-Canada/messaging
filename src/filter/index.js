@@ -78,6 +78,8 @@ module.exports = function (context, message) {
             };
         }
 
+        context.binding.out = data;
+
         context.done(err, data);
     });
 };
