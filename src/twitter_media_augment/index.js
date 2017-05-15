@@ -28,9 +28,9 @@ module.exports = function (context, message) {
         .then(setOutputBinding)
         .then(logTweetHistory)
 
-    function setOutputBinding(data) {
-        context.bindings.out = data;
-        return data;
+    function setOutputBinding(message) {
+        context.bindings.out = message;
+        return message;
     }
 
     function getLocation(message) {
@@ -105,8 +105,8 @@ module.exports = function (context, message) {
         var loggingPromises = message.tweethistory_ids.map(historyId => {
             twit.get(`statuses/show/${historyId}`, { include_entities: true })
                 .then(msg => {
-                    // context.log('tweethistory_id:' + historyId);
-                    // context.log(msg.text);
+                     context.log('tweethistory_id:' + historyId);
+                     context.log(msg.text);
                 });
         });
 
