@@ -2,7 +2,7 @@
   "bindings": [
     {
       "topicName": "toaugment",
-      "subscriptionName": "facebook_profile_augment",
+      "subscriptionName": "facebook_media_augment",
       "name": "in",
       "type": "serviceBusTrigger",
       "direction": "in",
