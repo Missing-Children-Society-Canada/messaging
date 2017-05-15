@@ -9,7 +9,8 @@ module.exports = function (context, message) {
     const twit = new twitter({
         consumer_key: process.env.TwitterConsumerKey,
         consumer_secret: process.env.TwitterConsumerSecret,
-        bearer_token: message.twitter.token
+        access_token_key: process.env.TwitterAccessTokenKey,
+        access_token_secret: process.env.TwitterAccessTokenSecret
     });
 
     return twit.get(`users/show.json?user_id=${message.twitter.id}`)

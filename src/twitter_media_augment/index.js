@@ -11,14 +11,11 @@ const gpsOptions = {
 
 module.exports = function (context, message) {
 
-    context.log(message.mediaid);
-    context.log(message.twitter.id);
-    context.log(message.twitter.token);
-
     const twit = new twitter({
         consumer_key: process.env.TwitterConsumerKey,
         consumer_secret: process.env.TwitterConsumerSecret,
-        bearer_token: message.twitter.token
+        access_token_key: process.env.TwitterAccessTokenKey,
+        access_token_secret: process.env.TwitterAccessTokenSecret
     });
 
     return twit.get(`statuses/show/${message.mediaid}`, { include_entities: true })
