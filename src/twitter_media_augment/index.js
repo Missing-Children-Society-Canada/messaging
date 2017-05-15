@@ -58,7 +58,7 @@ module.exports = function (context, message) {
     function getImages(message) {
         // Add photo urls
         message.photourls = [];
-        if (message.entities != null && mesasge.entities.media != null) {
+        if (message.entities != null && message.entities.media != null) {
             if (message.entities.media.length > 0) {
                 message.entities.media.forEach(function (item) {
                     message.photourls.push(item.media_url);
@@ -98,6 +98,7 @@ module.exports = function (context, message) {
     }
 
     function logTweetHistory(message) {
+
         var loggingPromises = message.tweethistory_ids.map(historyId => {
             twit.get(`statuses/show/${historyId}`, { include_entities: true })
                 .then(msg => {
