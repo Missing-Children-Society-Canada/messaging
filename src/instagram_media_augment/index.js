@@ -14,7 +14,6 @@ module.exports = function (context, message) {
                 longitude: media.location.longitude,
                 latitude: media.location.latitude,
                 profileimageurl: media.user.profile_picture,
-                photos: [],
                 media_id: media.id,
                 media_text: media.caption.text
             }
