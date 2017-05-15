@@ -26,6 +26,9 @@ module.exports = function (context, message) {
 
     function setOutputBinding(message) {
         context.bindings.out = message;
+        
+        context.done();
+
         return message;
     }
 
