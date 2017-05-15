@@ -1,4 +1,5 @@
 const DocumentDBClient = require('documentdb').DocumentClient;
+
 const config = {
     DatabaseId: "mean-dev",
     CollectionId: "users",
