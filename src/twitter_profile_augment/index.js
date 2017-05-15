@@ -9,8 +9,12 @@ const twit = new twitter({
 
 module.exports = function (context, message) {
 
+    context.log('A: ' + process.env.TwitterConsumerKey);
+    context.log('B: ' + process.env.TwitterConsumerSecret);
+    context.log('C: ' + process.env.TwitterAccessTokenKey);
+    context.log('D: ' + process.env.TwitterAccessTokenSecret);
     context.log(message.twitter.id);
-    
+
     return twit.get(`users/show.json?user_id=${message.twitter.id}`)   
         .then(setOutputBinding)
 
