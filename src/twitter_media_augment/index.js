@@ -41,7 +41,7 @@ module.exports = function (context, message) {
                 message.longitude = message.coordinates.coordinates[1];
                 context.log('Lon: ' + message.longitude, 'Lat: ' + message.latitude);
             }
-            else if (message.place.full_name != null) { // Get GPS via 3rd party GeoLocation module
+            else if (message.place != null && message.place.full_name != null) { // Get GPS via 3rd party GeoLocation module
                 var geocoder = NodeGeocoder(gpsOptions);
 
                 return new Promise((resolve, reject) => {
