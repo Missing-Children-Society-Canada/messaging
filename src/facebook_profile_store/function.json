@@ -10,9 +10,10 @@
     },
     {
       "type": "documentDB",
-      "name": "out",
+      "name": "facebookprofile",
       "databaseName": "reporting",
       "collectionName": "profile",
+      "createIfNotExists": true,
       "connection": "DocumentDB",
       "direction": "out"
     }

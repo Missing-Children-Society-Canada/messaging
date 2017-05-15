@@ -10,9 +10,10 @@
     },
     {
       "type": "documentDB",
-      "name": "out",
+      "name": "twittermedia",
       "databaseName": "reporting",
       "collectionName": "media",
+      "createIfNotExists": true,
       "connection": "DocumentDB",
       "direction": "out"
     }
