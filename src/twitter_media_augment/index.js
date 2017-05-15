@@ -9,14 +9,14 @@ const gpsOptions = {
     formatter: null         // 'gpx', 'string', ... 
 };
 
-module.exports = function (context, message) {
+const twit = new twitter({
+    consumer_key: process.env.TwitterConsumerKey,
+    consumer_secret: process.env.TwitterConsumerSecret,
+    access_token_key: process.env.TwitterAccessTokenKey,
+    access_token_secret: process.env.TwitterAccessTokenSecret
+});
 
-    const twit = new twitter({
-        consumer_key: process.env.TwitterConsumerKey,
-        consumer_secret: process.env.TwitterConsumerSecret,
-        access_token_key: process.env.TwitterAccessTokenKey,
-        access_token_secret: process.env.TwitterAccessTokenSecret
-    });
+module.exports = function (context, message) {
 
     return twit.get(`statuses/show/${message.mediaid}`, { include_entities: true })
         .then(getLocation)
@@ -102,8 +102,8 @@ module.exports = function (context, message) {
         var loggingPromises = message.tweethistory_ids.map(historyId => {
             twit.get(`statuses/show/${historyId}`, { include_entities: true })
                 .then(msg => {
-                     context.log('tweethistory_id:' + historyId);
-                     context.log(msg.text);
+                    context.log('tweethistory_id:' + historyId);
+                    context.log(msg.text);
                 });
         });
 

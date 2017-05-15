@@ -1,17 +1,17 @@
 var util = require('util');
 var twitter = require('twitter');
 
+const twit = new twitter({
+    consumer_key: process.env.TwitterConsumerKey,
+    consumer_secret: process.env.TwitterConsumerSecret,
+    access_token_key: process.env.TwitterAccessTokenKey,
+    access_token_secret: process.env.TwitterAccessTokenSecret
+});
+
 module.exports = function (context, message) {
 
     context.log(message.twitter.id);
     context.log(message.twitter.token);
-
-    const twit = new twitter({
-        consumer_key: process.env.TwitterConsumerKey,
-        consumer_secret: process.env.TwitterConsumerSecret,
-        access_token_key: process.env.TwitterAccessTokenKey,
-        access_token_secret: process.env.TwitterAccessTokenSecret
-    });
 
     return twit.get(`users/show.json?user_id=${message.twitter.id}`)
         .then(logData)
