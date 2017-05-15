@@ -32,7 +32,7 @@ module.exports = function (context, message) {
     function getLocation(message) {
         var tweetLocation = message.place.full_name + ' ' + message.place.country_code;
 
-        if (message.place.country_code == 'US') {
+        if (message.place.country_code == 'US') {//THIS SHOULD BE CONFIGURABLE
             // Get GPS from Tweet       
             if (message.coordinates != null && 2 <= message.coordinates.coordinates.length) {
                 message.latitude = message.coordinates.coordinates[0];
