@@ -39,7 +39,7 @@ module.exports = function (context, inmessage) {
         outmessage.customProperties.isinstagram = true;
         outmessage.social.instagram = {
             id: inmessage.user.instagram.$id,
-            token: userdinmessage.user.instagram.token,
+            token: inmessage.user.instagram.token,
             username: inmessage.user.instagram.username
         };
     }
