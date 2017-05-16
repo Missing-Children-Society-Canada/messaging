@@ -16,14 +16,15 @@ const twit = new twitter({
 });
 
 module.exports = function (context, message) {
-    //context.log(JSON.stringify(message, null, 4));
 
     return twit.get(`statuses/show/${message.mediaid}`, { include_entities: true })
         .then(getLocation)
         .then(getImages)
         .then(getHistory)
         .then(setOutputBinding)
-        //.then(logTweetHistory)
+        .then(logTweetHistory)
+        .catch((error) => context.log(error))
+        .finally(() => context.done());
 
     function getLocation(message) {
         if (message.place != null) {
@@ -45,7 +46,6 @@ module.exports = function (context, message) {
                                 return reject(err);
                             message.latitude = res[0].latitude;
                             message.longitude = res[0].longitude;
-                           // context.log('Lon: ' + message.longitude, 'Lat: ' + message.latitude);
                             resolve(message);
                         });
                     });
