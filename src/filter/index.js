@@ -28,8 +28,8 @@ module.exports = function (context, message) {
         }
 
         if ((!userdata.twitter || userdata.twitter == undefined)
-            && (!userdata.facebook || userdata.facebook == undefined)
-            || (!userdata.instagram || userdata.instagram == undefined)) {
+                && (!userdata.facebook || userdata.facebook == undefined)
+                || (!userdata.instagram || userdata.instagram == undefined)) {
             context.log('No social profiles');
 
             err = new Error('No social profiles');
@@ -44,10 +44,20 @@ module.exports = function (context, message) {
         }
 
         context.bindings.out = {
+            id: guid(),
             user: userdata,
             msg: message
         };
 
         context.done(err);
     });
+
+    function guid() {
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+        }
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+    }
 };
