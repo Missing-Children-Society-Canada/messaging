@@ -46,7 +46,7 @@ module.exports = function (context, message) {
         context.bindings.out = {
             id: guid(),
             user: userdata,
-            msg: message
+            request: message
         };
 
         context.done(err);
