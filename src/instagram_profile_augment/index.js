@@ -1,14 +1,19 @@
 let ig = require('instagram-node');
 
 module.exports = function (context, message) {
-
-    context.log(message.instagram.token);
-
     let client = ig.instagram();
-    client.use({ access_token: message.instagram.token });
+    client.use({ access_token: message.social.instagram.token });
 
     client.user(message.instagram.id, function (err, result) {
-        context.bindings.out = result;
+        let data = message;
+        
+        data.response = {
+            platform: "instagram",
+            type: "profile",
+            data: result
+        };
+
+        context.bindings.out = data;
 
         context.done(err);
     });

@@ -16,12 +16,11 @@ const twit = new twitter({
 });
 
 module.exports = function (context, message) {
-
     return twit.get(`statuses/show/${message.mediaid}`, { include_entities: true })
         .then(getLocation)
         .then(getImages)
         .then(getHistory)
-        .then(setOutputBinding)
+        .then((result) => { return setOutputBinding(result, message) })
         .then(logTweetHistory)
         .catch((error) => context.log(error))
         .finally(() => context.done());
@@ -97,9 +96,17 @@ module.exports = function (context, message) {
             });
     }
 
-    function setOutputBinding(message) {
-        context.bindings.out = message;
-        return message;
+    function setOutputBinding(result, message) {
+        let data = message;
+
+        data.response = {
+            platform: "twitter",
+            type: "media",
+            data: result
+        };
+
+        context.bindings.out = data;
+        return data;
     }
 
     function logTweetHistory(message) {

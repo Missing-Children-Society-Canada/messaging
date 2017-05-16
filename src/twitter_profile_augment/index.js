@@ -9,7 +9,16 @@ const twit = new twitter({
 
 module.exports = function (context, message) {
     return twit.get('users/show.json', { user_id: message.twitter.id }, function (err, user) {
-        context.bindings.out = user;
+        let data = message;
+
+        data.response = {
+            platform: "twitter",
+            type: "profile",
+            data: user
+        };
+
+        context.bindings.out = data;
+        
         context.done(err);
     });
 }

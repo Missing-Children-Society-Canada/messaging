@@ -2,13 +2,13 @@ var request = require('request-promise');
 
 module.exports = function (context, message) {
 
-    let myPath = '/' + message.request.facebook.id + '?fields=email,first_name,last_name,birthday,locale,location,picture.width(500),about,education,friends,hometown,photos,relationship_status,religion,political,tagged_places,work';
+    let path = '/' + message.social.facebook.id + '?fields=email,first_name,last_name,birthday,locale,location,picture.width(500),about,education,friends,hometown,photos,relationship_status,religion,political,tagged_places,work';
 
     let options = {
-        uri: "https://graph.facebook.com" + myPath,
+        uri: "https://graph.facebook.com" + path,
         method: 'GET',
         headers: {
-            'Authorization': 'OAuth ' + message.request.facebook.token
+            'Authorization': 'OAuth ' + message.social.facebook.token
         }
     };
 
