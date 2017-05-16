@@ -48,6 +48,6 @@ module.exports = function (context, message) {
             msg: message
         };
 
-        context.done(err, data);
+        context.done(err);
     });
 };
