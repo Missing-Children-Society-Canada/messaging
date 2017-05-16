@@ -45,7 +45,7 @@ module.exports = function (context, inmessage) {
     }
 
     //send message
-    serviceBusService.sendTopicMessage(topic, outmessage, function (error) {
+    serviceBusService.sendTopicMessage(topic, JSON.stringify(outmessage), function (error) {
         if (error) {
             context.log(error);
         }
