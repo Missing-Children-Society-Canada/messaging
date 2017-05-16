@@ -10,7 +10,7 @@
     },
     {
       "type": "serviceBus",
-      "name": "out",
+      "name": "output",
       "topicName": "toaugment",
       "connection": "AzureWebJobsServiceBus",
       "accessRights_": "Manage",
