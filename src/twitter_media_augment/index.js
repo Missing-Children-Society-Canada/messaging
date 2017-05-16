@@ -34,7 +34,7 @@ module.exports = function (context, message) {
                 if (message.coordinates != null && 2 <= message.coordinates.coordinates.length) {
                     message.latitude = message.coordinates.coordinates[0];
                     message.longitude = message.coordinates.coordinates[1];
-                    context.log('Lon: ' + message.longitude, 'Lat: ' + message.latitude);
+                    //context.log('Lon: ' + message.longitude, 'Lat: ' + message.latitude);
                 }
                 else if (message.place.full_name != null) { // Get GPS via 3rd party GeoLocation module
                     var geocoder = NodeGeocoder(gpsOptions);
@@ -45,7 +45,7 @@ module.exports = function (context, message) {
                                 return reject(err);
                             message.latitude = res[0].latitude;
                             message.longitude = res[0].longitude;
-                            context.log('Lon: ' + message.longitude, 'Lat: ' + message.latitude);
+                           // context.log('Lon: ' + message.longitude, 'Lat: ' + message.latitude);
                             resolve(message);
                         });
                     });
