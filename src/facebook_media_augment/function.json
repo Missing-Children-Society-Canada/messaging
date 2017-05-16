@@ -12,9 +12,9 @@
     {
       "type": "serviceBus",
       "name": "out",
-      "queueName": "facebook_media_store",
+      "queueName": "store",
       "connection": "AzureWebJobsServiceBus",
-      "accessRights_": "Manage",
+      "accessRights": "Manage",
       "direction": "out"
     }
   ],

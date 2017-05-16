@@ -1,7 +1,7 @@
 {
   "bindings": [
     {
-      "queueName": "twitter_profile_store",
+      "queueName": "facebook_media_store",
       "name": "message",
       "type": "serviceBusTrigger",
       "direction": "in",
@@ -12,7 +12,7 @@
       "type": "documentDB",
       "name": "out",
       "databaseName": "reporting",
-      "collectionName": "profile",
+      "collectionName": "data",
       "createIfNotExists": true,
       "connection": "DocumentDB",
       "direction": "out"

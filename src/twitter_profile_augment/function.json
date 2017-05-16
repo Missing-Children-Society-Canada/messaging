@@ -14,7 +14,7 @@
       "name": "out",
       "queueName": "twitter_profile_store",
       "connection": "AzureWebJobsServiceBus",
-      "accessRights_": "Manage",
+      "accessRights": "Manage",
       "direction": "out"
     }
   ],
