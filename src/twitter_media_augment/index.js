@@ -23,7 +23,7 @@ module.exports = function (context, message) {
         .then((result) => { return setOutputBinding(result, message) })
         .then(logTweetHistory)
         .catch((error) => { context.log(error) })
-        .finally(() => { context.done() });
+        .finally(context.done);
 
     function getLocation(message) {
         if (message.place != null) {
