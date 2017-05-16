@@ -23,7 +23,7 @@ module.exports = function (context, inmessage) {
     outmessage.social = {};
 
     if (inmessage.user.twitter != undefined) {
-        outmessage.customProperties.istwitter = true;
+        customProperties.istwitter = true;
         outmessage.social.twitter = {
             id: inmessage.user.twitter.$id,
             token: inmessage.user.twitter.token,
@@ -32,7 +32,7 @@ module.exports = function (context, inmessage) {
     }
 
     if (inmessage.user.facebook != undefined) {
-        outmessage.customProperties.isfacebook = true;
+        customProperties.isfacebook = true;
         outmessage.social.facebook = {
             id: inmessage.user.facebook.$id,
             token: inmessage.user.facebook.token,
@@ -40,7 +40,7 @@ module.exports = function (context, inmessage) {
         };
     }
     if (inmessage.user.instagram != undefined) {
-        outmessage.customProperties.isinstagram = true;
+        customProperties.isinstagram = true;
         outmessage.social.instagram = {
             id: inmessage.user.instagram.$id,
             token: inmessage.user.instagram.token,
