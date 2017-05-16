@@ -2,6 +2,6 @@
   "name": "structure-messages",
   "version": "0.1.0",
   "dependencies": {
-    "azure": "^2.0.0-preview"
+    "azure": "2.0.0-preview"
   }
 }
