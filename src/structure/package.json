@@ -2,7 +2,6 @@
   "name": "structure-messages",
   "version": "0.1.0",
   "dependencies": {
-    "azure": "2.0.0-preview",
-    "azure-storage":"2.1.0"
+    "azure-sb": "0.10.4"
   }
 }

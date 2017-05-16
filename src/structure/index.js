@@ -1,4 +1,4 @@
-var azure = require('azure');
+var azure = require('azure-sb');
 
 module.exports = function (context, inmessage) {
     let err = null;
