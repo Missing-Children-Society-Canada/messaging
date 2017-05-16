@@ -1,6 +1,6 @@
 module.exports = function (context, message) {
 
-    context.bindings.out = JSON.stringify(message);
+    context.bindings.out = message;
 
     context.done();
 };
