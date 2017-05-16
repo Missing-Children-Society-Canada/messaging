@@ -2,8 +2,6 @@
   "name": "messaging-functions",
   "version": "0.0.0",
   "dependencies": {
-    "instagram-node": "latest",
-    "azure": "2.0.0-preview"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
