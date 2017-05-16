@@ -12,7 +12,7 @@
       "type": "documentDB",
       "name": "out",
       "databaseName": "reporting",
-      "collectionName": "data",
+      "collectionName": "events",
       "createIfNotExists": true,
       "connection": "DocumentDB",
       "direction": "out"
