@@ -50,6 +50,6 @@ module.exports = function (context, inmessage) {
             context.log(error);
         }
     });
-
-    context.done(err, data);
+    
+    context.done(err);
 };
