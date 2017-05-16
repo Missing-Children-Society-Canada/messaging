@@ -3,13 +3,13 @@ var request = require('request-promise');
 module.exports = function (context, message) {
 
     // connect to facebook graph
-    let myPath = '/' + message.request.facebook.id + '?fields=id,picture,place,name,comments,reactions';
+    let myPath = '/' + message.social.facebook.id + '?fields=id,picture,place,name,comments,reactions';
 
     let options = {
         uri: "https://graph.facebook.com" + myPath,
         method: 'GET',
         headers: {
-            'Authorization': 'OAuth ' + message.request.facebook.token
+            'Authorization': 'OAuth ' + message.social.facebook.token
         }
     };
 
