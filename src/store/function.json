@@ -1,0 +1,22 @@
+{
+  "bindings": [
+    {
+      "queueName": "tostore",
+      "name": "message",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "connection": "AzureWebJobsServiceBus",
+      "accessRights": "Manage"
+    },
+    {
+      "type": "documentDB",
+      "name": "out",
+      "databaseName": "reporting",
+      "collectionName": "events",
+      "createIfNotExists": true,
+      "connection": "DocumentDB",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
