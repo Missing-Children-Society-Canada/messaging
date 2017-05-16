@@ -13,17 +13,10 @@ module.exports = function (context, inmessage) {
         request: inmessage.request,
         id: inmessage.id
     };
-    let customProperties = {
-        istwitter: false,
-        isfacebook: false,
-        isinstagram: false,
-        platform: inmessage.platform
-    };
 
     outmessage.social = {};
 
     if (inmessage.user.twitter != undefined) {
-        customProperties.istwitter = true;
         outmessage.social.twitter = {
             id: inmessage.user.twitter.$id,
             token: inmessage.user.twitter.token,
@@ -32,7 +25,6 @@ module.exports = function (context, inmessage) {
     }
 
     if (inmessage.user.facebook != undefined) {
-        customProperties.isfacebook = true;
         outmessage.social.facebook = {
             id: inmessage.user.facebook.$id,
             token: inmessage.user.facebook.token,
@@ -40,7 +32,6 @@ module.exports = function (context, inmessage) {
         };
     }
     if (inmessage.user.instagram != undefined) {
-        customProperties.isinstagram = true;
         outmessage.social.instagram = {
             id: inmessage.user.instagram.$id,
             token: inmessage.user.instagram.token,
@@ -49,21 +40,17 @@ module.exports = function (context, inmessage) {
     }
 
     let brokeredMessage = {
-        customProperties: customProperties,
-        body: outmessage
-    }
-
-    var outmessage2 = {
         body: JSON.stringify(outmessage),
         customProperties: {
-            istwitter: false,
-            isfacebook: false,
-            isinstagram: false
+            istwitter: inmessage.user.twitter != undefined,
+            isfacebook: inmessage.user.facebook != undefined,
+            isinstagram: inmessage.user.instagram != undefined,
+            platform = inmessage.platform
         }
     }   
 
     //send message
-    serviceBusService.sendTopicMessage(topic, outmessage2, function (error) {
+    serviceBusService.sendTopicMessage(topic, brokeredMessage, function (error) {
         if (error) {
             context.log(error);
         }
