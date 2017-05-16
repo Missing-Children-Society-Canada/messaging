@@ -3,18 +3,18 @@
     {
       "topicName": "toaugment",
       "subscriptionName": "facebook_media_augment",
-      "name": "in",
+      "name": "message",
       "type": "serviceBusTrigger",
       "direction": "in",
       "connection": "AzureWebJobsServiceBus",
-      "accessRights": "Manage"
+      "accessRights": "manage"
     },
     {
       "type": "serviceBus",
       "name": "out",
-      "queueName": "facebook_media_store",
+      "queueName": "store",
       "connection": "AzureWebJobsServiceBus",
-      "accessRights_": "Manage",
+      "accessRights": "manage",
       "direction": "out"
     }
   ],
