@@ -5,7 +5,7 @@ module.exports = function (context, message) {
 
     client.use({ access_token: message.social.instagram.token });
 
-    client.media(message.mediaid, function (err, media) {
+    client.media(message.request.mediaid, function (err, media) {
         let data = message;
         
         data.response = {
