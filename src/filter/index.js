@@ -1,7 +1,8 @@
 const DocumentDBClient = require('documentdb').DocumentClient;
+
 const config = {
-    DatabaseId: "mean-dev",
-    CollectionId: "users",
+    DatabaseId: "user",
+    CollectionId: "socials",
     Host: process.env.DocDb_Host,
     AuthKey: process.env.DocDb_AuthKey,
 };
@@ -27,8 +28,8 @@ module.exports = function (context, message) {
         }
 
         if ((!userdata.twitter || userdata.twitter == undefined)
-            && (!userdata.facebook || userdata.facebook == undefined)
-            || (!userdata.instagram || userdata.instagram == undefined)) {
+                && (!userdata.facebook || userdata.facebook == undefined)
+                || (!userdata.instagram || userdata.instagram == undefined)) {
             context.log('No social profiles');
 
             err = new Error('No social profiles');
@@ -43,10 +44,20 @@ module.exports = function (context, message) {
         }
 
         context.bindings.out = {
-            user = userdata,
-            msg = message
+            id: guid(),
+            user: userdata,
+            request: message
         };
 
-        context.done(err, data);
+        context.done(err);
     });
+
+    function guid() {
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+        }
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+    }
 };

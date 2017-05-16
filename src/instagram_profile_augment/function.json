@@ -3,7 +3,7 @@
     {
       "topicName": "toaugment",
       "subscriptionName": "instagram_profile_augment",
-      "name": "in",
+      "name": "message",
       "type": "serviceBusTrigger",
       "direction": "in",
       "connection": "AzureWebJobsServiceBus",
@@ -12,9 +12,9 @@
     {
       "type": "serviceBus",
       "name": "out",
-      "queueName": "instagram_profile_store",
+      "queueName": "tostore",
       "connection": "AzureWebJobsServiceBus",
-      "accessRights_": "Manage",
+      "accessRights": "Manage",
       "direction": "out"
     }
   ],

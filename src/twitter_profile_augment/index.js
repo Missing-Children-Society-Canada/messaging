@@ -1,4 +1,3 @@
-var util = require('util');
 var twitter = require('twitter');
 
 const twit = new twitter({
@@ -9,17 +8,17 @@ const twit = new twitter({
 });
 
 module.exports = function (context, message) {
-    return twit.get(`users/show.json?user_id=${message.twitter.id}`, { include_entities: true })
-        .then(log)
-        .then(setOutputBinding)
+    return twit.get('users/show.json', { user_id: message.twitter.id }, function (err, user) {
+        let data = message;
 
-    function setOutputBinding(data) {
+        data.response = {
+            platform: "twitter",
+            type: "profile",
+            data: user
+        };
+
         context.bindings.out = data;
-        return data;
-    }
-
-    function log(data) {
-        context.log(data);
-        return data;
-    }
+        
+        context.done(err);
+    });
 }

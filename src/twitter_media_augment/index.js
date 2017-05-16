@@ -1,4 +1,3 @@
-var util = require('util');
 var twitter = require('twitter');
 var NodeGeocoder = require('node-geocoder');
 
@@ -21,40 +20,35 @@ module.exports = function (context, message) {
         .then(getLocation)
         .then(getImages)
         .then(getHistory)
-        .then(setOutputBinding)
+        .then((result) => { return setOutputBinding(result, message) })
         .then(logTweetHistory)
-
-    function setOutputBinding(data) {
-        context.bindings.out = data;
-        
-        context.done();
-
-        return message;
-    }
+        .catch((error) => context.log(error))
+        .finally(() => context.done());
 
     function getLocation(message) {
-        var tweetLocation = message.place.full_name + ' ' + message.place.country_code;
+        if (message.place != null) {
+            var tweetLocation = message.place.full_name + ' ' + message.place.country_code;
 
-        if (message.place.country_code == 'US') {//THIS SHOULD BE CONFIGURABLE
-            // Get GPS from Tweet       
-            if (message.coordinates != null && 2 <= message.coordinates.coordinates.length) {
-                message.latitude = message.coordinates.coordinates[0];
-                message.longitude = message.coordinates.coordinates[1];
-                context.log('Lon: ' + message.longitude, 'Lat: ' + message.latitude);
-            }
-            else if (message.place.full_name != null) { // Get GPS via 3rd party GeoLocation module
-                var geocoder = NodeGeocoder(gpsOptions);
+            if (message.place.country_code == 'US') {//THIS SHOULD BE CONFIGURABLE
+                // Get GPS from Tweet       
+                if (message.coordinates != null && 2 <= message.coordinates.coordinates.length) {
+                    message.latitude = message.coordinates.coordinates[0];
+                    message.longitude = message.coordinates.coordinates[1];
+                    //context.log('Lon: ' + message.longitude, 'Lat: ' + message.latitude);
+                }
+                else if (message.place.full_name != null) { // Get GPS via 3rd party GeoLocation module
+                    var geocoder = NodeGeocoder(gpsOptions);
 
-                return new Promise((resolve, reject) => {
-                    geocoder.geocode(tweetLocation, function (err, res) {
-                        if (err)
-                            return reject(err);
-                        message.latitude = res[0].latitude;
-                        message.longitude = res[0].longitude;
-                        context.log('Lon: ' + message.longitude, 'Lat: ' + message.latitude);
-                        resolve(message);
+                    return new Promise((resolve, reject) => {
+                        geocoder.geocode(tweetLocation, function (err, res) {
+                            if (err)
+                                return reject(err);
+                            message.latitude = res[0].latitude;
+                            message.longitude = res[0].longitude;
+                            resolve(message);
+                        });
                     });
-                });
+                }
             }
         }
         return message;
@@ -63,16 +57,18 @@ module.exports = function (context, message) {
     function getImages(message) {
         // Add photo urls
         message.photourls = [];
-        if (message.entities.media.length > 0) {
-            message.entities.media.forEach(function (item) {
-                message.photourls.push(item.media_url);
-            });
-        }
+        if (message.entities != null && message.entities.media != null) {
+            if (message.entities.media.length > 0) {
+                message.entities.media.forEach(function (item) {
+                    message.photourls.push(item.media_url);
+                });
+            }
 
-        // Print photo urls
-        // message.photourls.forEach(function (photourl) {
-        //     context.log(photourl);
-        // });
+            // Print photo urls
+            // message.photourls.forEach(function (photourl) {
+            //     context.log(photourl);
+            // });
+        }
 
         return message;
     }
@@ -81,7 +77,7 @@ module.exports = function (context, message) {
     function getHistory(message) {
         message.tweethistory_ids = [];
         var params = {
-            q: options.screen_name,  // REQUIRED
+            q: message.user.screen_name,  // REQUIRED
             result_type: 'mixed',
             lang: 'en',
             max_id: message.tweetid
@@ -100,12 +96,26 @@ module.exports = function (context, message) {
             });
     }
 
+    function setOutputBinding(result, message) {
+        let data = message;
+
+        data.response = {
+            platform: "twitter",
+            type: "media",
+            data: result
+        };
+
+        context.bindings.out = data;
+        return data;
+    }
+
     function logTweetHistory(message) {
+
         var loggingPromises = message.tweethistory_ids.map(historyId => {
             twit.get(`statuses/show/${historyId}`, { include_entities: true })
                 .then(msg => {
-                    // context.log('tweethistory_id:' + historyId);
-                    // context.log(msg.text);
+                    context.log('tweethistory_id:' + historyId);
+                    context.log(msg.text);
                 });
         });
 

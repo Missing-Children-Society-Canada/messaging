@@ -12,9 +12,9 @@
     {
       "type": "serviceBus",
       "name": "out",
-      "queueName": "twitter_media_store",
+      "queueName": "tostore",
       "connection": "AzureWebJobsServiceBus",
-      "accessRights_": "Manage",
+      "accessRights": "Manage",
       "direction": "out"
     }
   ],
