@@ -2,7 +2,7 @@
   "bindings": [
     {
       "queueName": "tostructure",
-      "name": "message",
+      "name": "inmessage",
       "type": "serviceBusTrigger",
       "direction": "in",
       "connection": "AzureWebJobsServiceBus",
