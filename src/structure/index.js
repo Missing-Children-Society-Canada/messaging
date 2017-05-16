@@ -4,32 +4,18 @@ module.exports = function (context, inmessage) {
     let err = null;
 
     //configure sb client
-    var retryOperations = new azure.ExponentialRetryPolicyFilter();
-    var serviceBusService = azure.createServiceBusService(process.env.AzureWebJobsServiceBus).withFilter(retryOperations);
+    var serviceBusService = azure.createServiceBusService(process.env.AzureWebJobsServiceBus);
     var topic = "toaugment";
 
     //build outgoing message
-    var outmessage = {
-        body: '',
-        id: 0,
-        user: "",
-        customProperties: {
-            istwitter: false,
-            isfacebook: false,
-            isinstagram: false
-        },
-        social: {}
-    }
-
-    outmessage.id = inmessage.id;
-
-    if (!inmessage.user || inmessage.user == undefined) {
-        context.log('No user data');
-
-        err = new Error('Not tracking user');
-        return;
-    }
-
+    let outmessage = inmessage;
+    outmessage.customProperties = {
+        istwitter: false,
+        isfacebook: false,
+        isinstagram: false,
+        platform: inmessage.platform
+    };
+    
     if (inmessage.user.twitter != undefined) {
         outmessage.customProperties.istwitter = true;
         outmessage.social.twitter = {
@@ -38,6 +24,7 @@ module.exports = function (context, inmessage) {
             username: inmessage.user.twitter.username,
         };
     }
+
     if (inmessage.user.facebook != undefined) {
         outmessage.customProperties.isfacebook = true;
         outmessage.social.facebook = {
@@ -55,17 +42,10 @@ module.exports = function (context, inmessage) {
         };
     }
 
-    outmessage.customProperties.istwitter = inmessage.social.twitter != undefined;
-    outmessage.customProperties.isfacebook = inmessage.social.facebook != undefined;
-    outmessage.customProperties.isinstagram = inmessage.social.instagram != undefined;
-
-    outmessage.body = inmessage.body;
-    outmessage.customProperties.platform = inmessage.platform
-
     //send message
     serviceBusService.sendTopicMessage(topic, outmessage, function (error) {
         if (error) {
-            console.log(error);
+            context.log(error);
         }
     });
 
