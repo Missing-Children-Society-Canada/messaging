@@ -7,11 +7,6 @@ module.exports = function (context, inmessage) {
     var retryOperations = new azure.ExponentialRetryPolicyFilter();
     var serviceBusService = azure.createServiceBusService(process.env.AzureWebJobsServiceBus).withFilter(retryOperations);
     var topic = "toaugment";
-    serviceBusService.createTopicIfNotExists(topic, function (error) {
-        if (!error) {
-            console.log(topic + ' topic created or exists.');
-        }
-    });
 
     //build outgoing message
     var outmessage = {
