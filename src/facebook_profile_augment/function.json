@@ -3,7 +3,7 @@
     {
       "topicName": "toaugment",
       "subscriptionName": "facebook_profile_augment",
-      "name": "in",
+      "name": "inMsg",
       "type": "serviceBusTrigger",
       "direction": "in",
       "connection": "AzureWebJobsServiceBus",
@@ -11,10 +11,10 @@
     },
     {
       "type": "serviceBus",
-      "name": "out",
+      "name": "outMsg",
       "queueName": "facebook_profile_store",
       "connection": "AzureWebJobsServiceBus",
-      "accessRights_": "Manage",
+      "accessRights": "Manage",
       "direction": "out"
     }
   ],
