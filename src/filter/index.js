@@ -44,8 +44,8 @@ module.exports = function (context, message) {
         }
 
         context.bindings.out = {
-            user = userdata,
-            msg = message
+            user: userdata,
+            msg: message
         };
 
         context.done(err, data);
