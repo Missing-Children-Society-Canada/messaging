@@ -3,7 +3,7 @@
     {
       "topicName": "toaugment",
       "subscriptionName": "facebook_profile_augment",
-      "name": "inMsg",
+      "name": "message",
       "type": "serviceBusTrigger",
       "direction": "in",
       "connection": "AzureWebJobsServiceBus",
