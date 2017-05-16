@@ -42,10 +42,10 @@ module.exports = function (context, inmessage) {
     let brokeredMessage = {
         body: JSON.stringify(outmessage),
         customProperties: {
-            istwitter: inmessage.user.twitter != undefined,
-            isfacebook: inmessage.user.facebook != undefined,
-            isinstagram: inmessage.user.instagram != undefined,
-            platform = inmessage.platform
+            hastwitter: inmessage.user.twitter != undefined,
+            hasfacebook: inmessage.user.facebook != undefined,
+            hasinstagram: inmessage.user.instagram != undefined,
+            platform: inmessage.platform
         }
     }   
 
