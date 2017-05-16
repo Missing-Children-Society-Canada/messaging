@@ -54,14 +54,14 @@ module.exports = function (context, inmessage) {
     }
 
     var outmessage2 = {
-        body: '',
+        body: outmessage,
         customProperties: {
             istwitter: false,
             isfacebook: false,
             isinstagram: false
         }
-    }
-    
+    }   
+
     //send message
     serviceBusService.sendTopicMessage(topic, outmessage2, function (error) {
         if (error) {
