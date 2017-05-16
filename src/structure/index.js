@@ -50,7 +50,7 @@ module.exports = function (context, inmessage) {
 
     let brokeredMessage = {
         customProperties: customProperties,
-        body: outmessage
+        body: JSON.stringify(outmessage)
     }
 
     //send message
