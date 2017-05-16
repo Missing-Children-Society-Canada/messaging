@@ -12,7 +12,7 @@
     {
       "type": "serviceBus",
       "name": "out",
-      "queueName": "twitter_profile_store",
+      "queueName": "tostore",
       "connection": "AzureWebJobsServiceBus",
       "accessRights": "Manage",
       "direction": "out"

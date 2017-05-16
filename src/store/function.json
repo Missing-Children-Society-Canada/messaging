@@ -1,7 +1,7 @@
 {
   "bindings": [
     {
-      "queueName": "facebook_media_store",
+      "queueName": "tostore",
       "name": "message",
       "type": "serviceBusTrigger",
       "direction": "in",
