@@ -19,5 +19,4 @@ module.exports = function (context, message) {
         })
         .catch((error) => context.log(error))
         .finally(() => context.done());
-
 }
