@@ -15,7 +15,9 @@ module.exports = function (context, inmessage) {
         isinstagram: false,
         platform: inmessage.platform
     };
-    
+
+    outmessage.social = {};
+
     if (inmessage.user.twitter != undefined) {
         outmessage.customProperties.istwitter = true;
         outmessage.social.twitter = {
