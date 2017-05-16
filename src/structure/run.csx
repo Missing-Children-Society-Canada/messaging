@@ -1,4 +1,4 @@
-public static object Run(string message, TraceWriter log)
+public static void Run(string message, TraceWriter log, out string output)
 {
-    return message;//pass along
+    output = message;
 }
