@@ -2,7 +2,7 @@ const DocumentDBClient = require('documentdb').DocumentClient;
 
 const config = {
     DatabaseId: "user",
-    CollectionId: "social",
+    CollectionId: "socials",
     Host: process.env.DocDb_Host,
     AuthKey: process.env.DocDb_AuthKey,
 };
