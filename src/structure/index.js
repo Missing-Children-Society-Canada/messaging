@@ -39,7 +39,7 @@ module.exports = function (context, inmessage) {
         };
     }
 
-    let brokeredMessage = {
+    var brokeredMessage = {
         body: JSON.stringify(outmessage),
         customProperties: {
             hastwitter: inmessage.user.twitter != undefined,
