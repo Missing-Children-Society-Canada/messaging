@@ -42,9 +42,9 @@ module.exports = function (context, inmessage) {
     var brokeredMessage = {
         body: '',
         customProperties: {
-            hastwitter: inmessage.user.twitter != undefined,
-            hasfacebook: inmessage.user.facebook != undefined,
-            hasinstagram: inmessage.user.instagram != undefined,
+            hastwitter: false,
+            hasfacebook: false,
+            hasinstagram:false,
             platform: inmessage.platform
         }
     }   
