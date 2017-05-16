@@ -11,7 +11,7 @@
     },
     {
       "type": "serviceBus",
-      "name": "outMsg",
+      "name": "out",
       "queueName": "facebook_profile_store",
       "connection": "AzureWebJobsServiceBus",
       "accessRights": "Manage",

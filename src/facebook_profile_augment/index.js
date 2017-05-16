@@ -15,7 +15,7 @@ module.exports = function (context, message) {
 
     request(options)
         .then((response) => {
-            context.bindings.outMsg = response;
+            context.bindings.out = response;
         })
         .catch((error) => context.log(error))
         .finally(() => context.done());
