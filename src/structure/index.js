@@ -50,16 +50,15 @@ module.exports = function (context, inmessage) {
 
     let brokeredMessage = {
         customProperties: customProperties,
-        body: JSON.stringify(outmessage)
+        body: outmessage
     }
 
     //send message
-    serviceBusService.sendTopicMessage(topic, brokeredMessage, function (error) {
+    serviceBusService.sendTopicMessage(topic, JSON.stringify(brokeredMessage), function (error) {
         if (error) {
             context.log(error);
         }
     });
-
     
     context.done(err);
-};
+}
