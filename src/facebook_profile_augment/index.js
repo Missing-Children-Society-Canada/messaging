@@ -15,7 +15,9 @@ module.exports = function (context, message) {
 
     request(options)
         .then((response) => {
-            context.bindings.out = response;
+            let data = message;
+            message.facebook.profile = response;
+            context.bindings.out = data;
         })
         .catch((error) => context.log(error))
         .finally(() => context.done());
