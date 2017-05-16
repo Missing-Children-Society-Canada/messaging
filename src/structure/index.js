@@ -53,8 +53,17 @@ module.exports = function (context, inmessage) {
         body: outmessage
     }
 
+    var outmessage2 = {
+        body: '',
+        customProperties: {
+            istwitter: false,
+            isfacebook: false,
+            isinstagram: false
+        }
+    }
+    
     //send message
-    serviceBusService.sendTopicMessage(topic, JSON.stringify(brokeredMessage), function (error) {
+    serviceBusService.sendTopicMessage(topic, outmessage2, function (error) {
         if (error) {
             context.log(error);
         }
