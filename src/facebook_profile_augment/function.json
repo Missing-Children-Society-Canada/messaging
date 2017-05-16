@@ -12,7 +12,7 @@
     {
       "type": "serviceBus",
       "name": "out",
-      "queueName": "facebook_profile_store",
+      "queueName": "tostore",
       "connection": "AzureWebJobsServiceBus",
       "accessRights": "Manage",
       "direction": "out"

@@ -1,7 +1,7 @@
 {
   "bindings": [
     {
-      "queueName": "twitter_profile_store",
+      "queueName": "tostore",
       "name": "message",
       "type": "serviceBusTrigger",
       "direction": "in",
@@ -12,7 +12,7 @@
       "type": "documentDB",
       "name": "out",
       "databaseName": "reporting",
-      "collectionName": "profile",
+      "collectionName": "events",
       "createIfNotExists": true,
       "connection": "DocumentDB",
       "direction": "out"

@@ -1,8 +1,8 @@
 const DocumentDBClient = require('documentdb').DocumentClient;
 
 const config = {
-    DatabaseId: "mean-dev",
-    CollectionId: "users",
+    DatabaseId: "users",
+    CollectionId: "social",
     Host: process.env.DocDb_Host,
     AuthKey: process.env.DocDb_AuthKey,
 };
