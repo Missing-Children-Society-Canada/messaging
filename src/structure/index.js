@@ -8,8 +8,12 @@ module.exports = function (context, inmessage) {
     var topic = "toaugment";
 
     //build outgoing message
-    let outmessage = inmessage;
-    outmessage.customProperties = {
+    let outmessage = {
+        user: inmessage.user,
+        request: inmessage.request,
+        id: inmessage.id
+    };
+    let customProperties = {
         istwitter: false,
         isfacebook: false,
         isinstagram: false,
@@ -44,12 +48,18 @@ module.exports = function (context, inmessage) {
         };
     }
 
+    let brokeredMessage = {
+        customProperties: customProperties,
+        body: outmessage
+    }
+
     //send message
-    serviceBusService.sendTopicMessage(topic, JSON.stringify(outmessage), function (error) {
+    serviceBusService.sendTopicMessage(topic, brokeredMessage, function (error) {
         if (error) {
             context.log(error);
         }
     });
+
     
     context.done(err);
 };
