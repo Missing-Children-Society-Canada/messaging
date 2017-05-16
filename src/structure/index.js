@@ -54,7 +54,7 @@ module.exports = function (context, inmessage) {
     }
 
     var outmessage2 = {
-        body: outmessage,
+        body: JSON.stringify(outmessage),
         customProperties: {
             istwitter: false,
             isfacebook: false,
