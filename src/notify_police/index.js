@@ -18,7 +18,11 @@ module.exports = function (context, req) {
         context.log('------>' + myToken.accesstoken);
         context.log('------>' + myToken.expires);
 
+        //save to document db
         context.bindings.out = myToken;
+
+        //send mail
+        sendMail(myToken.userid,myToken.email,myToken.accesstoken);
 
         responseBody = "Access Token Created, Email Sent";
     }
@@ -29,60 +33,49 @@ module.exports = function (context, req) {
     };
 
     context.done();
+}
 
-    // context.log('JavaScript queue trigger function processed email notification');
+function sendMail(userid,email,token) {
 
-    // var inmessage = {
-    //     toEmail: 'someone@someone.com',
-    //     userId: '1231232312'
-    // };
+    console.log('Sending Notification');
 
-    // var toEmail = inmessage.toEmail;
-    // var userId = inmessage.userId;
-    // var userToken = guid();
-    // var profileUrl = util.format("%s%s?access_token=%s",process.env.DashboardProfileUrl, userId, userToken);
+    var toEmail = email;
+    var userId = userid
+    var userToken = token;
+    var profileUrl = util.format("%s%s?access_token=%s",process.env.DashboardProfileUrl, userId, userToken);
 
-    // context.log('------>' + toEmail);
-    // context.log('------>' + userId);
-    // context.log('------>' + userToken);
-    // context.log('------>' + profileUrl);
+    console.log('------>' + profileUrl);
 
-    // context.done();
+    var msgContent = util.format("Please view the profile here: %s", profileUrl);
 
-    // //store the access token for this request
-    // storeToken(userId,userToken);
-
-    // var msgContent = util.format("Please view the profile here: %s", dashboardProfileUrl);
-
-    // var helper = require('sendgrid').mail;
+    var helper = require('sendgrid').mail;
     
-    // from_email = new helper.Email(process.env.NotifyEmailFrom);
-    // to_email = new helper.Email(toEmail);
-    // subject = "Missing Children of Canada Alert";
-    // content = new helper.Content("text/plain", msgContent);
-    // mail = new helper.Mail(from_email, subject, to_email, content);
+    from_email = new helper.Email(process.env.NotifyEmailFrom);
+    to_email = new helper.Email(toEmail);
+    subject = "Missing Children of Canada Alert";
+    content = new helper.Content("text/plain", msgContent);
+    mail = new helper.Mail(from_email, subject, to_email, content);
     
-    // // Set to high importance
-    // header = new helper.Header("Priority", "Urgent");
-    // mail.addHeader(header);
-    // header = new helper.Header("Importance", "high");
-    // mail.addHeader(header);
+    // Set to high importance
+    header = new helper.Header("Priority", "Urgent");
+    mail.addHeader(header);
+    header = new helper.Header("Importance", "high");
+    mail.addHeader(header);
 
-    // var sg = require('sendgrid')(process.env.SendGridAPIKey);
+    var sg = require('sendgrid')(process.env.SendGridAPIKey);
 
-    // var requestBody = mail.toJSON();
-    // var emptyRequest = require('sendgrid-rest').request;
-    // var requestPost = JSON.parse(JSON.stringify(emptyRequest));
-    // requestPost.method = 'POST';
-    // requestPost.path = '/v3/mail/send';
-    // requestPost.body = requestBody;
-    // sg.API(requestPost, function (error, response) {
-    //     context.log(response.statusCode);
-    //     context.log(response.body);
-    //     context.log(response.headers);
-    // })
+    var requestBody = mail.toJSON();
+    var emptyRequest = require('sendgrid-rest').request;
+    var requestPost = JSON.parse(JSON.stringify(emptyRequest));
+    requestPost.method = 'POST';
+    requestPost.path = '/v3/mail/send';
+    requestPost.body = requestBody;
+    sg.API(requestPost, function (error, response) {
+        console.log(response.statusCode);
+        // console.log(response.body);
+        // console.log(response.headers);
+    })
 
-    // context.done();
 }
 
 function storeToken(userId, access_token) {
