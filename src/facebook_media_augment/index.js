@@ -22,8 +22,9 @@ module.exports = function (context, message) {
                 data: JSON.parse(response)
             };
 
+            context.log(JSON.stringify(data, null, 4));
             context.bindings.out = data;
+            context.done();
         })
-        .catch((error) => context.log(error))
-        .finally(() => context.done());
+        .catch((error) => context.log(error));
 }
