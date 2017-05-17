@@ -1,6 +1,12 @@
 module.exports = function (context, message) {
 
-    context.bindings.out = message;
+    let data = message;
+
+    data.store = {
+        storedOn: new Date()
+    };
+
+    context.bindings.out = data;
 
     context.done();
 };
