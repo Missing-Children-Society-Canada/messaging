@@ -2,7 +2,7 @@ var request = require('request-promise');
 
 module.exports = function (context, message) {
 
-    let path = '/' + message.social.facebook.id + '?fields=id,picture,place,name,comments,reactions';
+    let path = '/' + message.request.mediaid + '?fields=id,picture,place,name,comments,reactions';
 
     let options = {
         uri: "https://graph.facebook.com" + path,
