@@ -2,19 +2,19 @@ const azure = require('azure-sb');
 const topic = "toaugment";
 
 module.exports = function (context, inmessage) {
-    
-    let outmessage = inmessage;
-    outmessage.customProperties = {
-        istwitter: false,
-        isfacebook: false,
-        isinstagram: false,
-        platform: inmessage.platform
+
+    let customProperties = {
+        hastwitter: inmessage.user.twitter != undefined,
+        hasfacebook: inmessage.user.facebook != undefined,
+        hasinstagram: inmessage.user.instagram != undefined,
+        platform: inmessage.request.platform
     };
+
+    let outmessage = inmessage;
 
     outmessage.social = {};
 
     if (inmessage.user.twitter != undefined) {
-        outmessage.customProperties.istwitter = true;
         outmessage.social.twitter = {
             id: inmessage.user.twitter.$id,
             token: inmessage.user.twitter.token,
@@ -23,7 +23,6 @@ module.exports = function (context, inmessage) {
     }
 
     if (inmessage.user.facebook != undefined) {
-        outmessage.customProperties.isfacebook = true;
         outmessage.social.facebook = {
             id: inmessage.user.facebook.$id,
             token: inmessage.user.facebook.token,
@@ -32,7 +31,6 @@ module.exports = function (context, inmessage) {
     }
 
     if (inmessage.user.instagram != undefined) {
-        outmessage.customProperties.isinstagram = true;
         outmessage.social.instagram = {
             id: inmessage.user.instagram.$id,
             token: inmessage.user.instagram.token,
@@ -40,8 +38,18 @@ module.exports = function (context, inmessage) {
         };
     }
 
+    var brokeredMessage = {
+        body: JSON.stringify(outmessage),
+        customProperties: {
+            hastwitter: inmessage.user.twitter != undefined,
+            hasfacebook: inmessage.user.facebook != undefined,
+            hasinstagram: inmessage.user.instagram != undefined,
+            platform: inmessage.request.platform
+        }
+    }
+
     let serviceBusService = azure.createServiceBusService(process.env.AzureWebJobsServiceBus);
-    serviceBusService.sendTopicMessage(topic, JSON.stringify(outmessage), function (error) {
+    serviceBusService.sendTopicMessage(topic, brokeredMessage, function (error) {
         context.done(error);
     });
-};
+}
