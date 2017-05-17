@@ -1,0 +1,25 @@
+{
+  "bindings": [
+      {
+          "authLevel": "function",
+          "type": "httpTrigger",
+          "direction": "in",
+          "name": "req"
+      },    
+    // {
+    //   "topicName": "toaugment",
+    //   "subscriptionName": "notifypolice",
+    //   "name": "message",
+    //   "type": "serviceBusTrigger",
+    //   "direction": "in",
+    //   "connection": "AzureWebJobsServiceBus",
+    //   "accessRights": "manage"
+    // },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ],
+  "disabled": false
+}
