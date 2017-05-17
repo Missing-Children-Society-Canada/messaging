@@ -48,7 +48,7 @@ module.exports = function (context, inmessage) {
             platform: ''
         }
     }   
-    brokeredMessage.patform = inmessage.request.platform;
+    brokeredMessage.customProperties.platform = inmessage.request.platform;
 
 
     //send message
