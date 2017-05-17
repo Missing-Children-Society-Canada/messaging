@@ -1,24 +1,27 @@
 {
   "bindings": [
-      {
-          "authLevel": "function",
-          "type": "httpTrigger",
-          "direction": "in",
-          "name": "req"
-      },    
-    // {
-    //   "topicName": "toaugment",
-    //   "subscriptionName": "notifypolice",
-    //   "name": "message",
-    //   "type": "serviceBusTrigger",
-    //   "direction": "in",
-    //   "connection": "AzureWebJobsServiceBus",
-    //   "accessRights": "manage"
-    // },
+    {
+        "authLevel": "function",
+        "type": "httpTrigger",
+        "direction": "in",
+        "name": "req",
+        "methods": [
+          "post"
+        ]
+    },    
     {
       "type": "http",
       "direction": "out",
       "name": "res"
+    },
+    {
+      "name": "out",
+      "type": "documentDB",
+      "databaseName": "reporting",
+      "collectionName": "accesstokens",
+      "createIfNotExists": true,
+      "connection": "MyAccount_COSMOSDB",     
+      "direction": "out"
     }
   ],
   "disabled": false

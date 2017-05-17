@@ -3,24 +3,51 @@ var util = require('util');
 
 module.exports = function (context, req) {
 
-    context.log('JavaScript queue trigger function processed email notification');
+    var statusCode = 400;
+    var responseBody = "Invalid request object";
 
-    var inmessage = {
-        toEmail: 'someone@someone.com',
-        userId: '1231232312'
+    if (typeof req.body != 'undefined' && typeof req.body == 'object') {
+        
+        statusCode = 201;
+        //context.bindings.outTable = req.body;
+        var myReq = req.body;
+        var myToken = new oAccessToken(myReq.userid,myReq.email,guid());
+
+        context.log('------>' + myToken.email);
+        context.log('------>' + myToken.userid);
+        context.log('------>' + myToken.accesstoken);
+        context.log('------>' + myToken.expires);
+
+        context.bindings.out = myToken;
+
+        responseBody = "Access Token Created, Email Sent";
+    }
+
+    context.res = {
+        status: statusCode,
+        body: responseBody
     };
 
-    var toEmail = inmessage.toEmail;
-    var userId = inmessage.userId;
-    var userToken = guid();
-    var profileUrl = util.format("%s%s?access_token=%s",process.env.DashboardProfileUrl, userId, userToken);
-
-    context.log('------>' + toEmail);
-    context.log('------>' + userId);
-    context.log('------>' + userToken);
-    context.log('------>' + profileUrl);
-
     context.done();
+
+    // context.log('JavaScript queue trigger function processed email notification');
+
+    // var inmessage = {
+    //     toEmail: 'someone@someone.com',
+    //     userId: '1231232312'
+    // };
+
+    // var toEmail = inmessage.toEmail;
+    // var userId = inmessage.userId;
+    // var userToken = guid();
+    // var profileUrl = util.format("%s%s?access_token=%s",process.env.DashboardProfileUrl, userId, userToken);
+
+    // context.log('------>' + toEmail);
+    // context.log('------>' + userId);
+    // context.log('------>' + userToken);
+    // context.log('------>' + profileUrl);
+
+    // context.done();
 
     // //store the access token for this request
     // storeToken(userId,userToken);
@@ -60,6 +87,21 @@ module.exports = function (context, req) {
 
 function storeToken(userId, access_token) {
     //store id / token to the db
+}
+
+function oAccessToken(userid,email,accesstoken) {
+    this.userid = userid;
+    this.email = email;
+    this.accesstoken = accesstoken;
+    this.expires = getCurrentDate();
+}
+
+function getCurrentDate() {
+    var dateTime = require('node-datetime');
+    var dt = dateTime.create();
+    dt.offsetInDays(1);
+    var formatted = dt.format('Y-m-d H:M:S');
+    return formatted;
 }
 
 function guid() {
