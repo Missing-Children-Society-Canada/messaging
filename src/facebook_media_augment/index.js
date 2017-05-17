@@ -19,7 +19,7 @@ module.exports = function (context, message) {
             data.response = {
                 platform: "facebook",
                 type: "media",
-                data: response
+                data: JSON.parse(response)
             };
 
             context.bindings.out = data;
