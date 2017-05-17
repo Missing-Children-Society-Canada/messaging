@@ -45,10 +45,10 @@ module.exports = function (context, inmessage) {
             hastwitter: false,
             hasfacebook: false,
             hasinstagram:false,
-            platform: ''
+            platform: inmessage.request.platform
         }
     }   
-    brokeredMessage.customProperties.platform = inmessage.request.platform;
+ //   brokeredMessage.customProperties.platform = inmessage.request.platform;
 
 
     //send message
