@@ -14,6 +14,12 @@ module.exports = function (context, message) {
     content = new helper.Content("text/plain", msgContent);
     mail = new helper.Mail(from_email, subject, to_email, content);
     
+    // Set to high importance
+    header = new helper.Header("Priority", "Urgent");
+    mail.addHeader(header);
+    header = new helper.Header("Importance", "high");
+    mail.addHeader(header);
+
     var sg = require('sendgrid')(process.env.SendGridAPIKey);
 
     var requestBody = mail.toJSON();
