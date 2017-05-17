@@ -2,10 +2,10 @@ var request = require('request-promise');
 
 module.exports = function (context, message) {
 
-    let myPath = '/' + message.social.facebook.id + '?fields=id,picture,place,name,comments,reactions';
+    let path = '/' + message.social.facebook.id + '?fields=id,picture,place,name,comments,reactions';
 
     let options = {
-        uri: "https://graph.facebook.com" + myPath,
+        uri: "https://graph.facebook.com" + path,
         method: 'GET',
         headers: {
             'Authorization': 'OAuth ' + message.social.facebook.token
@@ -16,7 +16,7 @@ module.exports = function (context, message) {
         .then((response) => {
             let data = message;
             
-            message.response = {
+            data.response = {
                 platform: "facebook",
                 type: "media",
                 data: response
@@ -26,5 +26,4 @@ module.exports = function (context, message) {
         })
         .catch((error) => context.log(error))
         .finally(() => context.done());
-
 }
