@@ -45,9 +45,11 @@ module.exports = function (context, inmessage) {
             hastwitter: false,
             hasfacebook: false,
             hasinstagram:false,
-            platform: '"' +inmessage.request.platform + '"'
+            platform: ''
         }
     }   
+    broker.patform = inmessage.request.platform;
+
 
     //send message
     serviceBusService.sendTopicMessage(topic, brokeredMessage, function (error) {
