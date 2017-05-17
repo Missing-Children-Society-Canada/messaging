@@ -45,7 +45,7 @@ module.exports = function (context, inmessage) {
             hastwitter: false,
             hasfacebook: false,
             hasinstagram:false,
-            platform: inmessage.platform
+            platform: JSON.stringify(inmessage.platform)
         }
     }   
 
