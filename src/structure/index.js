@@ -1,13 +1,8 @@
-var azure = require('azure-sb');
+const azure = require('azure-sb');
+const topic = "toaugment";
 
 module.exports = function (context, inmessage) {
-    let err = null;
-
-    //configure sb client
-    var serviceBusService = azure.createServiceBusService(process.env.AzureWebJobsServiceBus);
-    var topic = "toaugment";
-
-    //build outgoing message
+    
     let outmessage = inmessage;
     outmessage.customProperties = {
         istwitter: false,
@@ -35,7 +30,7 @@ module.exports = function (context, inmessage) {
             username: inmessage.user.facebook.email
         };
     }
-    
+
     if (inmessage.user.instagram != undefined) {
         outmessage.customProperties.isinstagram = true;
         outmessage.social.instagram = {
@@ -45,12 +40,8 @@ module.exports = function (context, inmessage) {
         };
     }
 
-    //send message
+    let serviceBusService = azure.createServiceBusService(process.env.AzureWebJobsServiceBus);
     serviceBusService.sendTopicMessage(topic, JSON.stringify(outmessage), function (error) {
-        if (error) {
-            context.log(error);
-        }
+        context.done(error);
     });
-    
-    context.done(err);
 };
