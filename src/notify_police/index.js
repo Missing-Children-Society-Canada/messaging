@@ -13,11 +13,6 @@ module.exports = function (context, req) {
         var myReq = req.body;
         var myToken = new oAccessToken(myReq.userid,myReq.email,guid());
 
-        context.log('------>' + myToken.email);
-        context.log('------>' + myToken.userid);
-        context.log('------>' + myToken.accesstoken);
-        context.log('------>' + myToken.expires);
-
         //save to document db
         context.bindings.out = myToken;
 
@@ -44,7 +39,7 @@ function sendMail(userid,email,token) {
     var userToken = token;
     var profileUrl = util.format("%s%s?access_token=%s",process.env.DashboardProfileUrl, userId, userToken);
 
-    console.log('------>' + profileUrl);
+    //console.log('------>' + profileUrl);
 
     var msgContent = util.format("Please view the profile here: %s", profileUrl);
 
@@ -71,7 +66,7 @@ function sendMail(userid,email,token) {
     requestPost.path = '/v3/mail/send';
     requestPost.body = requestBody;
     sg.API(requestPost, function (error, response) {
-        console.log(response.statusCode);
+        //console.log(response.statusCode);
         // console.log(response.body);
         // console.log(response.headers);
     })
