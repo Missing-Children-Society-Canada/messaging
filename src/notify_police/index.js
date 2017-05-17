@@ -73,10 +73,6 @@ function sendMail(userid,email,token) {
 
 }
 
-function storeToken(userId, access_token) {
-    //store id / token to the db
-}
-
 function oAccessToken(userid,email,accesstoken) {
     this.userid = userid;
     this.email = email;
