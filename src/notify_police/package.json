@@ -1,0 +1,10 @@
+{
+  "name": "notify",
+  "version": "0.1.0",
+  "description": "Sends Notification Email",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "sendgrid" : "5.1.0",
+    "node-datetime":"1.0.0"
+  }
+}
