@@ -24,8 +24,8 @@ module.exports = function (context, message) {
         }
 
         if ((!userdata.twitter || userdata.twitter == undefined)
-                && (!userdata.facebook || userdata.facebook == undefined)
-                && (!userdata.instagram || userdata.instagram == undefined)) {
+            && (!userdata.facebook || userdata.facebook == undefined)
+            && (!userdata.instagram || userdata.instagram == undefined)) {
             context.log('No social profiles');
 
             err = new Error('No social profiles');
@@ -42,7 +42,8 @@ module.exports = function (context, message) {
         context.bindings.out = {
             id: guid(),
             user: userdata,
-            request: message
+            request: message,
+            triggeredOn: new Date()
         };
 
         context.done(err);
