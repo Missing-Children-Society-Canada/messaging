@@ -1,13 +1,9 @@
 const DocumentDBClient = require('documentdb').DocumentClient;
 
 const config = {
-    DatabaseId: "users",
-    CollectionId: "social",
     Host: process.env.DocDb_Host,
     AuthKey: process.env.DocDb_AuthKey,
 };
-
-config.CollLink = 'dbs/' + config.DatabaseId + '/colls/' + config.CollectionId
 
 module.exports = function (context, message) {
 
@@ -16,7 +12,7 @@ module.exports = function (context, message) {
     const docDbClient = new DocumentDBClient(config.Host, { masterKey: config.AuthKey });
     const query = 'SELECT * FROM c WHERE (c.twitter[\'$id\'] = \'' + message.userid + '\' AND \'twitter\' = \'' + message.platform + '\') OR (c.instagram[\'$id\'] = \'' + message.userid + '\' AND \'instagram\' = \'' + message.platform + '\') OR (c.facebook[\'$id\'] = \'' + message.userid + '\' AND \'facebook\' = \'' + message.platform + '\')';
 
-    docDbClient.queryDocuments(config.CollLink, query).toArray(function (err, results) {
+    docDbClient.queryDocuments('dbs/user/colls/socials', query).toArray(function (err, results) {
 
         let userdata = results[0];
 
@@ -28,8 +24,8 @@ module.exports = function (context, message) {
         }
 
         if ((!userdata.twitter || userdata.twitter == undefined)
-                && (!userdata.facebook || userdata.facebook == undefined)
-                || (!userdata.instagram || userdata.instagram == undefined)) {
+            && (!userdata.facebook || userdata.facebook == undefined)
+            && (!userdata.instagram || userdata.instagram == undefined)) {
             context.log('No social profiles');
 
             err = new Error('No social profiles');
@@ -46,7 +42,8 @@ module.exports = function (context, message) {
         context.bindings.out = {
             id: guid(),
             user: userdata,
-            request: message
+            request: message,
+            triggeredOn: new Date()
         };
 
         context.done(err);

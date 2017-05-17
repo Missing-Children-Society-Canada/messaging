@@ -1,12 +1,13 @@
 {
   "bindings": [
     {
-      "queueName": "tostructure",
-      "name": "inmessage",
+      "topicName": "toaugment",
+      "subscriptionName": "notify",
+      "name": "message",
       "type": "serviceBusTrigger",
       "direction": "in",
       "connection": "AzureWebJobsServiceBus",
-      "accessRights": "Manage"
+      "accessRights": "manage"
     },
     {
       "type": "http",
