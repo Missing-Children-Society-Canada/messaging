@@ -2,7 +2,6 @@ var request = require('request-promise');
 
 module.exports = function (context, message) {
 
-    // connect to facebook graph
     let myPath = '/' + message.social.facebook.id + '?fields=id,picture,place,name,comments,reactions';
 
     let options = {
