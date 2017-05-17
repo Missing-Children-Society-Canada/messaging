@@ -28,7 +28,7 @@ module.exports = function (context, message) {
         if (message.place != null) {
             var tweetLocation = message.place.full_name + ' ' + message.place.country_code;
 
-            if (message.place.country_code == 'US') {//THIS SHOULD BE CONFIGURABLE
+            //if (message.place.country_code == 'US') {//THIS SHOULD BE CONFIGURABLE
                 // Get GPS from Tweet       
                 if (message.coordinates != null && 2 <= message.coordinates.coordinates.length) {
                     message.latitude = message.coordinates.coordinates[0];
@@ -48,7 +48,7 @@ module.exports = function (context, message) {
                         });
                     });
                 }
-            }
+           // }
         }
         return message;
     }
@@ -75,6 +75,7 @@ module.exports = function (context, message) {
     // Get all past tweets that contains user's handle
     function getHistory(message) {
         message.tweethistory_ids = [];
+        
         var params = {
             q: message.user.screen_name,  // REQUIRED
             result_type: 'mixed',

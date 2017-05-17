@@ -35,6 +35,7 @@ module.exports = function (context, inmessage) {
             username: inmessage.user.facebook.email
         };
     }
+    
     if (inmessage.user.instagram != undefined) {
         outmessage.customProperties.isinstagram = true;
         outmessage.social.instagram = {
