@@ -44,7 +44,7 @@ module.exports = function (context, inmessage) {
         customProperties: {
             hastwitter: false,
             hasfacebook: false,
-            hasinstagram:false,
+            hasinstagram: inmessage.user.facebook != undefined,
             platform: inmessage.request.platform
         }
     }   
