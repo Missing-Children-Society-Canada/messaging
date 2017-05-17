@@ -7,9 +7,7 @@ module.exports = function (context, req) {
     var responseBody = "Invalid request object";
 
     if (typeof req.body != 'undefined' && typeof req.body == 'object') {
-        
-        statusCode = 201;
-        //context.bindings.outTable = req.body;
+     
         var myReq = req.body;
         var myToken = new oAccessToken(myReq.userid,myReq.email,guid());
 
@@ -19,6 +17,7 @@ module.exports = function (context, req) {
         //send mail
         sendMail(myToken.userid,myToken.email,myToken.accesstoken);
 
+        statusCode = 201;
         responseBody = "Access Token Created, Email Sent";
     }
 
