@@ -111,6 +111,13 @@ module.exports = function (context, message) {
 
     function logTweetHistory(message) {
 
+        var params = {
+            q: message.user.screen_name,  // REQUIRED
+            result_type: 'mixed',
+            lang: 'en',
+            max_id: message.tweetid
+        };
+
         return twit.get('search/tweets', params)
             .then(historyData => {
                 message.tweethistory_texts 
