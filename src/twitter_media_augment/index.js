@@ -21,7 +21,7 @@ module.exports = function (context, message) {
         .then(getImages)
         .then(getHistory)
         .then((result) => { return setOutputBinding(result, message) })
-        //.then(logTweetHistory) MAP DOESNT EXIST?
+        .then(logTweetHistory) //MAP DOESNT EXIST?
         .catch((error) => { context.log(error) });
 
     function getLocation(message) {
