@@ -114,6 +114,9 @@ module.exports = function (context, message) {
         var loggingPromises = message.tweethistory_ids.map(historyId => {
             twit.get(`statuses/show/${historyId}`, { include_entities: true })
                 .then(msg => {
+                    message.tweethistory_texts = msg.text
+                    .map(statusItem => statusItem.id_str);
+
                     context.log('tweethistory_id:' + historyId);
                     context.log(msg.text);
                 });
@@ -121,5 +124,6 @@ module.exports = function (context, message) {
 
         return Promise.all(loggingPromises)
             .then(() => message);
+
     }
 };
