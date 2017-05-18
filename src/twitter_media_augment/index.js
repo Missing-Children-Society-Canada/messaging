@@ -7,7 +7,7 @@ const gpsOptions = {
     apiKey: process.env.GeoCoderApiKey, // for Mapquest, OpenCage, Google Premier 
     formatter: null         // 'gpx', 'string', ... 
 };
-//testing log history
+
 const twit = new twitter({
     consumer_key: process.env.TwitterConsumerKey,
     consumer_secret: process.env.TwitterConsumerSecret,
@@ -20,8 +20,8 @@ module.exports = function (context, message) {
         .then(getLocation)
         .then(getImages)
         .then(getHistory)
-        .then(logTweetHistory) //MAP DOESNT EXIST?
         .then((result) => { return setOutputBinding(result, message) })
+        //.then(logTweetHistory) MAP DOESNT EXIST?
         .catch((error) => { context.log(error) });
 
     function getLocation(message) {
@@ -76,7 +76,6 @@ module.exports = function (context, message) {
     function getHistory(message) {
         message.tweethistory_ids = [];
         
-
         var params = {
             q: message.user.screen_name,  // REQUIRED
             result_type: 'mixed',
