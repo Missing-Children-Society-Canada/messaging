@@ -89,8 +89,8 @@ module.exports = function (context, message) {
 
         return twit.get('search/tweets', params)
             .then(historyData => {
-                message.tweethistory_ids = historyData.statuses
-                    .map(statusItem => statusItem.id_str);
+                message.tweethistory_ids 
+                    = historyData.statuses.map(statusItem => statusItem.id_str);
 
                 return message;
             });
@@ -111,19 +111,14 @@ module.exports = function (context, message) {
 
     function logTweetHistory(message) {
 
-        var loggingPromises = message.tweethistory_ids.map(historyId => {
-            twit.get(`statuses/show/${historyId}`, { include_entities: true })
-                .then(msg => {
-                    message.tweethistory_texts = msg.text
-                    .map(statusItem => statusItem.id_str);
+        return twit.get('search/tweets', params)
+            .then(historyData => {
+                message.tweethistory_texts 
+                    = historyData.statuses.map(statusItem => statusItem.text);
 
-                    context.log('tweethistory_id:' + historyId);
-                    context.log(msg.text);
-                });
-        });
+                return message;
+            });
 
-        return Promise.all(loggingPromises)
-            .then(() => message);
 
     }
 };
