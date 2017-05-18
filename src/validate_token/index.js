@@ -32,22 +32,17 @@ module.exports = function (context, req) {
 
         docDbClient.queryDocuments(config.CollLink, query, options).toArray(function (err, results) {
             
-            if(results == null){
+            var accessResult = "false";
+
+            if(results.length == 0){
                 context.log("document does not exist");
-                responseBody = "false";
             } else {
                 context.log("document exists");
-                responseBody = "true";
+                accessResult = "true";
             }
 
             statusCode = "200";
-
-            context.res = {
-                status: statusCode,
-                body: responseBody
-            };
-            context.log("not logging yet");
-            context.bindings.res = "nothing";
+            context.bindings.res = accessResult;
             context.done();
         });
 
