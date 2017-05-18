@@ -5,6 +5,7 @@
   "dependencies": {
     "dotenv": "^4.0.0",
     "sendgrid" : "5.1.0",
-    "node-datetime":"1.0.0"
+    "node-datetime":"1.0.0",
+    "sendgrid-rest": "2.3.0"    
   }
 }
