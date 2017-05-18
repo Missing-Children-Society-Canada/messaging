@@ -20,8 +20,8 @@ module.exports = function (context, message) {
         .then(getLocation)
         .then(getImages)
         .then(getHistory)
-        .then((result) => { return setOutputBinding(result, message) })
         .then(logTweetHistory) //MAP DOESNT EXIST?
+        .then((result) => { return setOutputBinding(result, message) })
         .catch((error) => { context.log(error) });
 
     function getLocation(message) {
