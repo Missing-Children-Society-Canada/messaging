@@ -25,6 +25,7 @@ module.exports = function (context, message) {
         .catch((error) => { context.log(error) });
 
     function getLocation(message) {
+        context.log(message);
         if (message.place != null) {
             var tweetLocation = message.place.full_name + ' ' + message.place.country_code;
 
