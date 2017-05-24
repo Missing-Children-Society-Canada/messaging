@@ -1,9 +1,11 @@
 # Internal Systems Messaging
 Data processing pipeline broken into microservices and run on Azure Functions.
-Message Enters Queue -> Filter checks to see if user is 'tracked' -> Context is added during Augment -> Data is Stored
+Message Enters Queue (from trigger) -> Filter checks to see if user is 'known' -> Context is added during Augment -> Finally Data is Stored
+- Each Step the message is added to a queue for resiliance
+- System is designed as an Event Sourcing Model; with each step being additive.
 
 ## Filter
-Ensures that only register users are tracked; within geo-boundaries
+Ensures that only register users are tracked
 
 ## Augment
 Additional Context added to messages for reporting.
@@ -21,7 +23,7 @@ Required Function app settings:
 7. TweetSearchRadius
 
 ## Store
-Data is stored in DocumentDB (needs to be moved to SQL Database)
+Data is stored in CosmosDB
 
 ## Profile API
 Get Profile data of missing persons that have initiated a call for help.
