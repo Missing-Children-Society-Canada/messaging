@@ -1,13 +1,15 @@
-# Internal Systems Messaging
+# Missing Children Society of Canada
+
+## Description
 Data processing pipeline broken into microservices and run on Azure Functions.
 Message Enters Queue (from trigger) -> Filter checks to see if user is 'known' -> Context is added during Augment -> Finally Data is Stored
 - Each Step the message is added to a queue for resiliance
 - System is designed as an Event Sourcing Model; with each step being additive.
 
-## Filter
+### Filter
 Ensures that only register users are tracked
 
-## Augment
+### Augment
 Additional Context added to messages for reporting.
 - GPS or Lat/Long is critical
 - Social context: friends, who, types of activity.
@@ -22,8 +24,10 @@ Required Function app settings:
 6. TwitterAccessTokenSecret
 7. TweetSearchRadius
 
-## Store
+### Store
 Data is stored in CosmosDB
 
-## Profile API
+### Profile API
 Get Profile data of missing persons that have initiated a call for help.
+
+### Quick start
