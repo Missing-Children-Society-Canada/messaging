@@ -18,20 +18,14 @@ module.exports = function (context, req) {
         var myReq = req.body;
         var myAccess = new AccessRequest(myReq.userid, myReq.token);
 
-        context.log(myAccess.token);
-        context.log(myAccess.userid);
-
         const docDbClient = new DocumentDBClient(config.Host, { masterKey: config.AuthKey });
         const query = util.format('SELECT * FROM c where c.accesstoken=\'%s\' and c.userid=\'%s\'', myAccess.token, myAccess.userid);
-
-        context.log(query);
 
         const options = {
             enableCrossPartitionQuery: true
         }
 
         docDbClient.queryDocuments(config.CollLink, query, options).toArray(function (err, results) {
-
             var accessResult = "false";
 
             if (results.length == 0) {
@@ -45,9 +39,7 @@ module.exports = function (context, req) {
             context.bindings.res = accessResult;
             context.done();
         });
-
     }
-
 };
 
 function AccessRequest(userid, token) {

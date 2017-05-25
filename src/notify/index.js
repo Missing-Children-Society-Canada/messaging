@@ -2,9 +2,6 @@ require('dotenv').config();
 var util = require('util');
 
 module.exports = function (context, message) {
-
-    context.log('JavaScript queue trigger function processed email notification');
-
     var helper = require('sendgrid').mail;
 
     from_email = new helper.Email(process.env.NotifyEmailFrom);
@@ -30,7 +27,6 @@ module.exports = function (context, message) {
     requestPost.body = requestBody;
     sg.API(requestPost, function (error, response) {
         context.log(response.statusCode);
-        context.log(response.body);
         context.log(response.headers);
     })
 
