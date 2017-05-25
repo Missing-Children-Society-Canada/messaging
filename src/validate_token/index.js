@@ -8,21 +8,21 @@ const config = {
 };
 
 module.exports = function (context, req) {
-    
+
     var statusCode = 400;
     var responseBody = "Invalid request object";
 
     //something was passed in
     if (typeof req.body != 'undefined' && typeof req.body == 'object') {
-     
+
         var myReq = req.body;
-        var myAccess = new AccessRequest(myReq.userid,myReq.token);
+        var myAccess = new AccessRequest(myReq.userid, myReq.token);
 
         context.log(myAccess.token);
         context.log(myAccess.userid);
 
         const docDbClient = new DocumentDBClient(config.Host, { masterKey: config.AuthKey });
-        const query =  util.format('SELECT * FROM c where c.accesstoken=\'%s\' and c.userid=\'%s\'',myAccess.token,myAccess.userid);
+        const query = util.format('SELECT * FROM c where c.accesstoken=\'%s\' and c.userid=\'%s\'', myAccess.token, myAccess.userid);
 
         context.log(query);
 
@@ -31,10 +31,10 @@ module.exports = function (context, req) {
         }
 
         docDbClient.queryDocuments(config.CollLink, query, options).toArray(function (err, results) {
-            
+
             var accessResult = "false";
 
-            if(results.length == 0){
+            if (results.length == 0) {
                 context.log("document does not exist");
             } else {
                 context.log("document exists");
@@ -50,7 +50,7 @@ module.exports = function (context, req) {
 
 };
 
-function AccessRequest(userid,token){
+function AccessRequest(userid, token) {
     this.userid = userid;
     this.token = token;
 }
