@@ -7,7 +7,7 @@ module.exports = function (context, message) {
 
     client.media(message.request.mediaid, function (err, result) {
         let data = message;
-        
+
         data.response = {
             platform: "instagram",
             type: "media",

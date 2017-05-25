@@ -18,7 +18,7 @@ module.exports = function (context, message) {
         };
 
         context.bindings.out = data;
-        
+
         context.done(err);
     });
 }

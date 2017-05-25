@@ -29,25 +29,25 @@ module.exports = function (context, message) {
             var tweetLocation = message.place.full_name + ' ' + message.place.country_code;
 
             //if (message.place.country_code == 'US') {//THIS SHOULD BE CONFIGURABLE
-                // Get GPS from Tweet       
-                if (message.coordinates != null && 2 <= message.coordinates.coordinates.length) {
-                    message.latitude = message.coordinates.coordinates[0];
-                    message.longitude = message.coordinates.coordinates[1];
-                }
-                else if (message.place.full_name != null) { // Get GPS via 3rd party GeoLocation module
-                    var geocoder = NodeGeocoder(gpsOptions);
+            // Get GPS from Tweet       
+            if (message.coordinates != null && 2 <= message.coordinates.coordinates.length) {
+                message.latitude = message.coordinates.coordinates[0];
+                message.longitude = message.coordinates.coordinates[1];
+            }
+            else if (message.place.full_name != null) { // Get GPS via 3rd party GeoLocation module
+                var geocoder = NodeGeocoder(gpsOptions);
 
-                    return new Promise((resolve, reject) => {
-                        geocoder.geocode(tweetLocation, function (err, res) {
-                            if (err)
-                                return reject(err);
-                            message.latitude = res[0].latitude;
-                            message.longitude = res[0].longitude;
-                            resolve(message);
-                        });
+                return new Promise((resolve, reject) => {
+                    geocoder.geocode(tweetLocation, function (err, res) {
+                        if (err)
+                            return reject(err);
+                        message.latitude = res[0].latitude;
+                        message.longitude = res[0].longitude;
+                        resolve(message);
                     });
-                }
-           // }
+                });
+            }
+            // }
         }
         return message;
     }
@@ -74,7 +74,7 @@ module.exports = function (context, message) {
     // Get all past tweets that contains user's handle
     function getHistory(message) {
         message.tweethistory_ids = [];
-        
+
         var params = {
             q: message.user.screen_name,  // REQUIRED
             result_type: 'mixed',
@@ -88,7 +88,7 @@ module.exports = function (context, message) {
 
         return twit.get('search/tweets', params)
             .then(historyData => {
-                message.tweethistory_ids 
+                message.tweethistory_ids
                     = historyData.statuses.map(statusItem => statusItem.id_str);
 
                 return message;
@@ -119,7 +119,7 @@ module.exports = function (context, message) {
 
         return twit.get('search/tweets', params)
             .then(historyData => {
-                message.tweethistory_texts 
+                message.tweethistory_texts
                     = historyData.statuses.map(statusItem => statusItem.text);
 
                 return message;

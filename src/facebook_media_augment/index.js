@@ -15,7 +15,7 @@ module.exports = function (context, message) {
     request(options)
         .then((response) => {
             let data = message;
-            
+
             data.response = {
                 platform: "facebook",
                 type: "media",
