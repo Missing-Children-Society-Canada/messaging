@@ -20,7 +20,7 @@
       "databaseName": "reporting",
       "collectionName": "accesstokens",
       "createIfNotExists": true,
-      "connection": "MyAccount_COSMOSDB",     
+      "connection": "DocumentDB",     
       "direction": "out"
     }
   ],
