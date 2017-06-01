@@ -7,7 +7,7 @@ Message Enters Queue (from trigger) -> Filter checks to see if user is 'known' -
 - System is designed as an Event Sourcing Model; with each step being additive.
 
 ** Diagram **
-![Diagram](https://raw.githubusercontent.com/Missing-Children-Society-Canada/messaging/blob/master/docs/system-overview.PNG)
+![Diagram](https://github.com/Missing-Children-Society-Canada/messaging/raw/master/docs/system-overview.PNG)
 
 ### Filter
 Ensures that only register users are tracked
