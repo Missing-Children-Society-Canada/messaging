@@ -31,3 +31,6 @@ Data is stored in CosmosDB
 Get Profile data of missing persons that have initiated a call for help.
 
 ### Quick start
+- Clone
+- NPM Install
+[Running Azure Functions Locally with the CLI and VS Code](https://blogs.msdn.microsoft.com/appserviceteam/2016/12/01/running-azure-functions-locally-with-the-cli/)
