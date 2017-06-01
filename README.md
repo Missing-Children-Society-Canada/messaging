@@ -2,7 +2,7 @@
 
 ## Description
 Data processing pipeline broken into microservices and run on Azure Functions.
-Message Enters Queue (from trigger) -> Filter checks to see if user is 'known' -> Context is added during Augment -> Finally Data is Stored
+Message Enters Queue (from trigger) -> Filter checks to see if user is 'known' -> Structure is called to format messages for Topic -> Context is added during Augment -> Finally Data is Stored
 - Each Step the message is added to a queue for resiliance
 - System is designed as an Event Sourcing Model; with each step being additive.
 
