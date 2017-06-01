@@ -24,12 +24,7 @@ Pulls out message property and adds them to brokered message so that Topic Subsc
 - Twitter Media
 - Twitter Profile
 
-Additional Context added to messages for reporting.
-- GPS or Lat/Long is critical
-- Social context: friends, who, types of activity.
-- Time: social patterns, location patterns etc.
-
-Required Function app settings:
+Configuration (App Settings):
 1. GeoCoderProvider // e.g. Google 
 2. GeoCoderApiKey // Google Map API key
 3. TwitterConsumerKey
