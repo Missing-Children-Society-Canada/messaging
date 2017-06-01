@@ -12,7 +12,18 @@ Message Enters Queue (from trigger) -> Filter checks to see if user is 'known' -
 ### Filter
 Ensures that only register users are tracked
 
+### Structure
+Pulls out message property and adds them to brokered message so that Topic Subscriptions can filter on key values
+
 ### Augment
+**Items**
+- Facebook Media
+- Facebook Profile
+- Instagram Media
+- Instagram Profile
+- Twitter Media
+- Twitter Profile
+
 Additional Context added to messages for reporting.
 - GPS or Lat/Long is critical
 - Social context: friends, who, types of activity.
@@ -28,10 +39,16 @@ Required Function app settings:
 7. TweetSearchRadius
 
 ### Store
-Data is stored in CosmosDB
+All data is stored to Cosmos DB.
 
-### Profile API
-Get Profile data of missing persons that have initiated a call for help.
+### Notify
+DESCRIPTION NEEDED
+
+### Notify Police
+DESCRIPTION NEEDED
+
+### Validate Token
+DESCRIPTION NEEDED
 
 ### Quick start
 - Clone
