@@ -24,14 +24,22 @@ Pulls out message property and adds them to brokered message so that Topic Subsc
 - Twitter Media
 - Twitter Profile
 
-Configuration (App Settings):
-1. GeoCoderProvider // e.g. Google 
-2. GeoCoderApiKey // Google Map API key
-3. TwitterConsumerKey
-4. TwitterConsumerSecret
-5. TwitterAccessTokenKey
-6. TwitterAccessTokenSecret
-7. TweetSearchRadius
+### Configuration (App Settings):
+- AzureWebJobsServiceBus: Service Bus connection string
+- DocumentDB: Cosmos DB connection string
+- DocDb_Host: Cosmos DB host
+- DocDb_AuthKey: Cosmos DB auth key
+- TwitterConsumerKey: Twitter consumer key
+- TwitterConsumerSecret: Twitter consumer secret
+- TwitterAccessTokenKey: Twitter access token key
+- TwitterAccessTokenSecret: Twitter access token secret
+- IG_TOKEN_VERIFY: Instagram verification token
+- APPINSIGHTS_INSTRUMENTATIONKEY: App Insights api key
+- SendGridAPIKey: SendGrid api key
+- NotifyEmailTo: email to
+- NotifyEmailFrom: email from
+- DashboardURL: dashboard url
+- DashboardProfileURL: profile page in dashboard
 
 ### Store
 All data is stored to Cosmos DB.

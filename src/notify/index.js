@@ -7,7 +7,7 @@ module.exports = function (context, message) {
     from_email = new helper.Email(process.env.NotifyEmailFrom);
     to_email = new helper.Email(process.env.NotifyEmailTo);
     subject = "Missing Children of Canada Alert";
-    var msgContent = util.format("A new missing child has been added to the dashboard. Please visit the dashboard at the following link: %s", process.env.DasboardURL);
+    var msgContent = util.format("A new missing child has been added to the dashboard. Please visit the dashboard at the following link: %s", process.env.DashboardURL);
     content = new helper.Content("text/plain", msgContent);
     mail = new helper.Mail(from_email, subject, to_email, content);
 
