@@ -40,7 +40,7 @@ module.exports = function (context, message) {
         }
 
         context.bindings.out = {
-            id: guid(),
+            requestid: guid(),
             user: userdata,
             request: message,
             triggeredOn: new Date()
