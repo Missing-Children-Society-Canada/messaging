@@ -28,8 +28,30 @@ module.exports = function (context, message) {
     sg.API(requestPost, function (error, response) {
         context.log(response.statusCode);
         context.log(response.headers);
+        if (error){
+            returnFail(response.statusCode,"Error occurred sending email", context);
+        } else {
+            returnSuccess(200,"Email sent", context);
+        }
+        
     })
-
-    context.done();
+    
 }
 
+//helper function to set response code and message and complete the function (context.done())
+function returnSuccess(statusCode, Message, context){
+        var defaultstatusCode = 201;
+        var defaultresponseBody = "Access Token Created, Email Sent";
+        context.res = { status : (statusCode?statusCode:defaultstatusCode),
+                        body: (Message?Message:defaultresponseBody)};
+        context.done();
+}
+
+//helper function to set response code and message and complete the function (context.done())
+function returnFail(statusCode,Message,context){
+        var defaultstatusCode = 400;
+        var defaultresponseBody = "Invalid request object";
+        context.res = { status : (statusCode?statusCode:defaultstatusCode),
+                        body: (Message?Message:defaultresponseBody)};
+        context.done();
+}

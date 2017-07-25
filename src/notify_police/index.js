@@ -3,8 +3,7 @@ var util = require('util');
 
 module.exports = function (context, req) {
 
-    var statusCode = 400;
-    var responseBody = "Invalid request object";
+
 
     if (typeof req.body != 'undefined' && typeof req.body == 'object') {
 
@@ -14,22 +13,20 @@ module.exports = function (context, req) {
         //save to document db
         context.bindings.out = myToken;
 
-        //send mail
-        sendMail(myToken.userid, myToken.email, myToken.accesstoken);
-
-        statusCode = 201;
-        responseBody = "Access Token Created, Email Sent";
+        //send mail and return
+        sendMail(myToken.userid, myToken.email, myToken.accesstoken, context);
+        
+    } else {
+            var statusCode = 400;
+            var responseBody = "Invalid request object";
+            returnFail(statusCode,responseBody,context);
     }
 
-    context.res = {
-        status: statusCode,
-        body: responseBody
-    };
-
-    context.done();
 }
 
-function sendMail(userid, email, token) {
+
+
+function sendMail(userid, email, token, theContext) {
 
     console.log('Sending Notification');
 
@@ -65,9 +62,12 @@ function sendMail(userid, email, token) {
     requestPost.path = '/v3/mail/send';
     requestPost.body = requestBody;
     sg.API(requestPost, function (error, response) {
-        //console.log(response.statusCode);
-        // console.log(response.body);
-        // console.log(response.headers);
+        if (error){
+            returnFail(response.statusCode,"Error occurred sending email", theContext);
+        } else {
+            returnSuccess(201,"Access Token Created, Email sent", theContext);
+        }
+
     })
 
 }
@@ -97,3 +97,20 @@ function guid() {
         s4() + '-' + s4() + s4() + s4();
 }
 
+//helper function to set response code and message and complete the function (context.done())
+function returnSuccess(statusCode, Message, context){
+        var defaultstatusCode = 201;
+        var defaultresponseBody = "Access Token Created, Email Sent";
+        context.res = { status : (statusCode?statusCode:defaultstatusCode),
+                        body: (Message?Message:defaultresponseBody)};
+        context.done();
+}
+
+//helper function to set response code and message and complete the function (context.done())
+function returnFail(statusCode,Message,context){
+        var defaultstatusCode = 400;
+        var defaultresponseBody = "Invalid request object";
+        context.res = { status : (statusCode?statusCode:defaultstatusCode),
+                        body: (Message?Message:defaultresponseBody)};
+        context.done();
+}
