@@ -20,7 +20,6 @@ module.exports = function (context, message) {
         .then(getLocation)
         .then(getImages)
         .then(getHistory)
-        .then(logTweetHistory) //MAP DOESNT EXIST?
         .then((result) => { return setOutputBinding(result, message) })
         .catch((error) => { context.log(error) });
 
@@ -73,7 +72,9 @@ module.exports = function (context, message) {
 
     // Get all past tweets that contains user's handle
     function getHistory(message) {
-        message.tweethistory_ids = [];
+        message.tweetHistoryData = {
+            statuses = []
+        };
 
         var params = {
             q: message.user.screen_name,  // REQUIRED
@@ -88,9 +89,7 @@ module.exports = function (context, message) {
 
         return twit.get('search/tweets', params)
             .then(historyData => {
-                message.tweethistory_ids
-                    = historyData.statuses.map(statusItem => statusItem.id_str);
-
+                message.tweetHistoryData.statuses = historyData.statuses;
                 return message;
             });
     }
@@ -106,25 +105,5 @@ module.exports = function (context, message) {
 
         context.bindings.out = data;
         return data;
-    }
-
-    function logTweetHistory(message) {
-
-        var params = {
-            q: message.user.screen_name,  // REQUIRED
-            result_type: 'mixed',
-            lang: 'en',
-            max_id: message.tweetid
-        };
-
-        return twit.get('search/tweets', params)
-            .then(historyData => {
-                message.tweethistory_texts
-                    = historyData.statuses.map(statusItem => statusItem.text);
-
-                return message;
-            });
-
-
     }
 };
