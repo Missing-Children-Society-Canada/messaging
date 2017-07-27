@@ -1,7 +1,4 @@
 {
   "name": "filter-messages",
-  "version": "0.1.0",
-  "dependencies": {
-    "documentdb": "^1.12.0"
-  }
+  "version": "0.1.0"
 }
