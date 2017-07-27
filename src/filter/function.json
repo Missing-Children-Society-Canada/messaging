@@ -9,6 +9,15 @@
       "accessRights": "Manage"
     },
     {
+      "name": "documents",
+      "type": "documentDB",
+      "databaseName": "user",
+      "collectionName": "socials",
+      "sqlQuery": "SELECT * FROM c WHERE (c.twitter['$id'] = {userid} AND 'twitter' = {platform}) OR (c.instagram['$id'] = {userid} AND 'instagram' = {platform}) OR (c.facebook['$id'] = {userid} AND 'facebook' = {platform})",
+      "connection": "DocumentDB",     
+      "direction": "in"
+    },   
+    {
       "type": "serviceBus",
       "name": "out",
       "queueName": "tostructure",
