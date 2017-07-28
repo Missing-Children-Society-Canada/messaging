@@ -73,7 +73,7 @@ module.exports = function (context, message) {
     // Get all past tweets that contains user's handle
     function getHistory(message) {
         message.tweetHistoryData = {
-            statuses = []
+            statuses: []
         };
 
         var params = {
