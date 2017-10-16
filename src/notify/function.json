@@ -8,11 +8,6 @@
       "direction": "in",
       "connection": "AzureWebJobsServiceBus",
       "accessRights": "manage"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
     }
   ],
   "disabled": false
